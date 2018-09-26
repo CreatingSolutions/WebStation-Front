@@ -16,7 +16,7 @@ matrix:
   fast_finish: true
 
 before_install:
-  - npm install npm@8 -g
+  - npm install npm@latest -g
   - npm cache verify
   - npm prune
   - npm update
