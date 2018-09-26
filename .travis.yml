@@ -10,15 +10,13 @@ addons:
   chrome: stable
 
 node_js:
-  - "6"
-  - "7"
   - "8"
 
 matrix:
   fast_finish: true
 
 before_install:
-  - npm install npm@5 -g
+  - npm install npm@latest -g
   - npm cache verify
   - npm prune
   - npm update
@@ -27,4 +25,6 @@ install:
   - npm install
 
 script:
-  - npm run ci:travis
+	- npm run build
+	- npm run test
+	- npm run lint
