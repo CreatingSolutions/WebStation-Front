@@ -25,5 +25,5 @@ install:
   - npm install
 
 script:
-	- npm run build
+  - npm run build
   - sonar-scanner -Dsonar.projectKey=webstation-front -Dsonar.organization=creatingsolutions-github -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=c8e6fb27c5bb11d34fc24168bb0a0881087faacc
