@@ -9,7 +9,7 @@ cache:
 addons:
   chrome: stable
   sonarcloud:
-    organization: "creatingsolutions" # the key of the org you chose at step #3
+    organization: "creatingsolutions-github" # the key of the org you chose at step #3
     token:
       secure: "beXS78kdUm2DUcmdfokknPcoUKK36zcfmybme7XX3PrmilR2hovxt7U6rKyXQec1LdLsKlqpmoCVO38JpfxkhPc6fhRP/er6HpwV9jh2+2Fc7VRPRIdYI5mc3XrkzHRPN3SxQKDyuigbWeT/6fxBodkVqQ1W6kCHKS03Ce0Z9v2XrGob2HH/KSFHFXYDG4mqUc4wQ+q+t6Y+WcVNvLlqq/1ZrXNMrTraME4wRgIstd1a2oib4CUQeXRkr3BXVbP3YXpQ2Ff/voEXaNZK3IJ9FNguM32959MazMDp1gQK+CkkTIvOou7HvkXTgrdMkjciB1aUBVbocnvQBj2w8kxxrU3xN0Jm24FQipvdzK1mVq2RcoJt1Ge/xbXQN5fQKpp/n/OjJoWx0GJKPIsEqljZnkTKpqsQmgUCRJwrvKhmDBbynHMq0P/9M94Ien8AUdyJv9VeBNnHd7L88VmjGD4g+zFwVqkNnfnQn0TXVYN/gbRvtrIIwwXiYGKgUvlu8eYkEipkgA5G8nnhx6OCqQ0ToaC2OUKhuWp3QH84xYKE11fGWkbtKtfLJtSIC9AtQ5vBFk3UdksJzfEmucBZFmLqrhxl+egUVPqs5MDxXG9OG8bIw1dQqEotZ+pcBSmYIW+uEMLtrnlFL8kM9soFHay2E38jnnENGA/9nycD542vnkI=" # encrypted value of your token
 
