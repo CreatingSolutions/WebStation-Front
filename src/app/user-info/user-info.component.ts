@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
     selector: 'user-bar-info',
@@ -8,5 +9,17 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class UserInfoComponent {
-    faShippingCart = faShoppingCart
+    shoppingCart = faShoppingCart
+    userCircle = faUserCircle
+
+    constructor(private modalService: NgbModal) {}
+
+    login(content) {
+        this.modalService.open(content, { 
+            centered: true,
+            backdropClass: 'light-backdrop',
+            windowClass: 'dark-modal',
+            size: 'lg'
+        });
+    }
 }

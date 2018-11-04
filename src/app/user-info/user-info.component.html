@@ -1,4 +1,31 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Paramètre utilisateur</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <mat-tab-group>
+            <mat-tab label="Se connecter">
+                <p>
+                    <login></login>
+                </p>
+            </mat-tab>
+            <mat-tab label="S'enregistrer">
+                <p>
+                    <register></register>
+                </p>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Fermer</button>
+    </div>
+</ng-template>
 <nav class="navbar navbar-light bg-light border-bottom">
-    <div class="navbar-brand mb-0 h1" href="#"><a class="navbar-brand">Se connecter</a></div>
-    <a class="mb-0 h4 text-dark">Mon panier <fa-icon [icon]="faShippingCart"></fa-icon></a>
+    <div class="navbar-brand mb-0 h1"><a class="navbar-brand" (click)="login(content)">
+            <fa-icon [icon]="userCircle"></fa-icon> Se connecter
+        </a></div>
+    <a class="mb-0 h4 text-dark" href="/shoppingCart">Mon panier <fa-icon [icon]="shoppingCart"></fa-icon></a>
 </nav>

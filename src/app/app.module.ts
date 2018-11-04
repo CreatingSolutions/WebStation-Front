@@ -23,6 +23,10 @@ import { UserNavComponent } from "./user-nav/user-nav.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+import { LogementsComponent } from "./logements/logements.component";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -37,6 +41,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FontAwesomeModule,
     MatSelectModule,
     NgbModule,
+    MatTabsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -53,7 +58,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AlertComponent,
     PresentationComponent,
     UserInfoComponent,
-    UserNavComponent
+    UserNavComponent,
+    LoginComponent,
+    RegisterComponent,
+    LogementsComponent
   ],
   providers: [
     AlertService,
