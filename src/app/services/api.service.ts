@@ -10,6 +10,8 @@ const httpOptions = {
   })
 };
 
+const api: String = 'http://localhost:8081/api'
+
 @Injectable({
   providedIn: "root"
 })
@@ -17,12 +19,12 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   getAllLogement(): Observable<Logement> {
-    return this.httpClient.get<Logement>("", httpOptions);
+    return this.httpClient.get<Logement>(`${api}/flat/`, httpOptions);
   }
 
   login(username: string, password: string): Observable<string> {
     return this.httpClient
-      .post<any>(`/users/authenticate`, {
+      .post<any>(`${api}/authenticate`, {
         username: username,
         password: password
       })
