@@ -3,3 +3,20 @@
         <h1 class="display-7 text-dark">Réserver un logement</h1>
     </div>
 </div>
+<mat-card class="logement-card" *ngFor="let logement of logements">
+    <mat-card-header>
+        <mat-card-title>{{logement.title}}</mat-card-title>
+    </mat-card-header>
+    <div class="card-content">
+        <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfc52b3dfd1e5f9bc/image/if28f30148ead863d/version/1489684570/image.jpg"
+            alt={{logement.title}} width="256" height="256">
+        <mat-card-content>
+            <p>
+                {{logement.description}}
+            </p>
+        </mat-card-content>
+    </div>
+    <mat-card-actions>
+        <button class="btn btn-primary">Ajouter au panier</button>
+    </mat-card-actions>
+</mat-card>

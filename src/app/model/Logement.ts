@@ -1,11 +1,8 @@
 export class Logement {
     id_flat: number;
+    title: string;
     description: string;
-    startDay: Date;
-    endDay: Date;
-    season: number;
-    price: number;
-    laundry: number;
-    garage: number;
-    baby: number;
+    nbPersonnes: string;
+    SdBWC: boolean;
+    orientation: string;
 }

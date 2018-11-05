@@ -1,0 +1,25 @@
+.logement-card {
+  transition: box-shadow 0.3s;
+  margin: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.logement-card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    padding: inherit;
+    text-align: justify;
+}
+
+.card-content>mat-card-content {
+    margin: 1em;
+}
+
+.card-content>img {
+    margin: 1em;
+}

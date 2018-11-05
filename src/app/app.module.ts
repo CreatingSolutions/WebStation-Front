@@ -22,11 +22,12 @@ import { UserInfoComponent } from "./user-info/user-info.component";
 import { UserNavComponent } from "./user-nav/user-nav.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTabsModule } from '@angular/material/tabs';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { MatTabsModule } from "@angular/material/tabs";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { LogementsComponent } from "./logements/logements.component";
+import { MatCardModule } from "@angular/material/card";
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MatSelectModule,
     NgbModule,
     MatTabsModule,
+    MatCardModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

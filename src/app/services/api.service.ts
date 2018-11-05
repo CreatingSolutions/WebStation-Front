@@ -18,8 +18,8 @@ const api: String = 'http://localhost:8081/api'
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllLogement(): Observable<Logement> {
-    return this.httpClient.get<Logement>(`${api}/flat/`, httpOptions);
+  getAllLogement(): Observable<Logement[]> {
+    return this.httpClient.get<Logement[]>(`${api}/flats`, httpOptions);
   }
 
   login(username: string, password: string): Observable<string> {
