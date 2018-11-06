@@ -15,7 +15,7 @@ export class MockService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getLogementsMock() {
-    return this.httpClient.get("../../assets/mock/expFlatsbis.json", httpOptions);
+  public getLogementsMock(): Observable<any> {
+    return this.httpClient.get<any>("../../assets/mock/expFlatsbis.json", httpOptions);
   }
 }
