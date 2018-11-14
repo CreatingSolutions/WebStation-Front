@@ -16,11 +16,6 @@
   align-items: center;
 }
 
-.card-content>mat-card-content {
-    margin: 1em;
-    word-wrap: break-word;
-}
-
 .card-content>img {
     margin: 1em;
 }

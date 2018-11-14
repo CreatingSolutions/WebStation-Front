@@ -11,7 +11,7 @@ const httpOptions = {
   })
 };
 
-const api: String = 'http://localhost:8081/api';
+const api = 'http://localhost:8081/api';
 
 @Injectable({
   providedIn: 'root'
