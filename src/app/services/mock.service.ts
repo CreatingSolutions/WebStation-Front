@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Logement } from "../model/Logement";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   })
 };
 
@@ -16,6 +15,6 @@ export class MockService {
   }
 
   public getLogementsMock(): Observable<any> {
-    return this.httpClient.get<any>("../../assets/mock/expFlatsbis.json", httpOptions);
+    return this.httpClient.get<any>('../../assets/mock/expFlatsbis.json', httpOptions);
   }
 }

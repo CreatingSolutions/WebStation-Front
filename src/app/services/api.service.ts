@@ -1,28 +1,30 @@
-import { Injectable } from "@angular/core";
-import { HttpHeaders, HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Logement } from "../model/Logement";
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Logement, User } from '../model';
+import { map } from 'rxjs/operators';
+import {LoadingService} from './loading.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   })
 };
 
-const api: String = 'http://localhost:8081/api'
+const api: String = 'http://localhost:8081/api';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private loader: LoadingService) {}
 
   getAllLogement(): Observable<Logement[]> {
     return this.httpClient.get<Logement[]>(`${api}/flats`, httpOptions);
   }
 
   login(username: string, password: string): Observable<string> {
+    this.loader.show();
     return this.httpClient
       .post<any>(`${api}/authenticate`, {
         username: username,
@@ -31,7 +33,7 @@ export class ApiService {
       .pipe(
         map(user => {
           if (user && user.token) {
-            localStorage.setItem("currentUser", JSON.stringify(user));
+            localStorage.setItem('currentUser', JSON.stringify(user));
           }
 
           return user;
@@ -40,10 +42,11 @@ export class ApiService {
   }
 
   logout() {
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem('currentUser');
   }
 
-  register(value: any): Observable<number> {
-    return this.httpClient.post<number>("", value, httpOptions);
+  register(user: User): Observable<number> {
+    console.log(user);
+    return this.httpClient.post<number>(`${api}/register`, user, httpOptions);
   }
 }

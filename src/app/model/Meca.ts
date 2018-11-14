@@ -1,2 +1,3 @@
-export class Meca {
+export interface Meca {
+    mecaId: number;
 }

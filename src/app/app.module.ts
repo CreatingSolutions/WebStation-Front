@@ -1,33 +1,32 @@
-import { NgModule } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AppComponent } from "./app.component";
-import { AppRoutingModule } from "./app-routing.module";
-import { FooterComponent } from "./footer/footer.component";
-import { HeaderComponent } from "./header/header.component";
-import { AlertService } from "./services/alert.service";
-import { ApiService } from "./services/api.service";
-import { LoadingService } from "./services/loading.service";
-import { AlertComponent } from "./alert/alert.component";
-import { HomeComponent } from "./home/home.component";
-import { UserService } from "./services/user.service";
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FooterComponent } from './footer';
+import { HeaderComponent } from './header';
+import { AlertService, ApiService, LoadingService, MockService } from './services';
+import { AlertComponent } from './alert';
+import { HomeComponent } from './home';
+import { PresentationComponent } from './presentation';
+import { UserInfoComponent } from './user-info';
+import { UserNavComponent } from './user-nav';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { LogementsComponent } from './logements';
 
-import { MatSelectModule } from "@angular/material/select";
-import { MockService } from "./services/mock.service";
-import { PresentationComponent } from "./presentation/presentation.component";
-import { UserInfoComponent } from "./user-info/user-info.component";
-import { UserNavComponent } from "./user-nav/user-nav.component";
-import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { MatTabsModule } from "@angular/material/tabs";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
-import { LogementsComponent } from "./logements/logements.component";
-import { MatCardModule } from "@angular/material/card";
+import { MatSelectModule } from '@angular/material/select';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ShoppingCartComponent } from './shoppingCart';
+import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -44,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NgbModule,
     MatTabsModule,
     MatCardModule,
+    MatProgressBarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -63,14 +63,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     UserNavComponent,
     LoginComponent,
     RegisterComponent,
-    LogementsComponent
+    LogementsComponent,
+    ShoppingCartComponent
   ],
   providers: [
     AlertService,
     ApiService,
     LoadingService,
-    UserService,
-    MockService
+    MockService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

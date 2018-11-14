@@ -1,4 +1,8 @@
-<div *ngIf="loading" class="spinner loading"></div>
+<div *ngIf="show" class="loader-overlay">
+    <div>
+        <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+    </div>
+</div>
 <WebStation-Header></WebStation-Header>
 <alert></alert>
 <WebStation-Home></WebStation-Home>

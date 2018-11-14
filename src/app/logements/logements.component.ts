@@ -1,17 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Logement } from "../model/Logement";
-import { ApiService } from "../services/api.service";
-import { LoadingService } from "../services/loading.service";
-import { AlertService } from "../services/alert.service";
-import { MockService } from "../services/mock.service";
+import { Component, OnInit } from '@angular/core';
+import { Logement } from '../model';
+import { ApiService, LoadingService, AlertService, MockService } from '../services';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: "logements",
-  templateUrl: "./logements.component.html",
-  styleUrls: ["./logements.component.css"]
+  selector: 'logements',
+  templateUrl: './logements.component.html',
+  styleUrls: ['./logements.component.css']
 })
 export class LogementsComponent implements OnInit {
   logements: Logement[];
+  faPlus = faPlus;
 
   constructor(
     private api: ApiService,
@@ -25,20 +24,18 @@ export class LogementsComponent implements OnInit {
   }
 
   public getLogement() {
-    this.loadingService.loading.next(true);
+    this.loadingService.show();
 
     this.mockService.getLogementsMock().subscribe(
       logements => {
         if (logements) {
           this.logements = logements.Logement as Logement[];
-          console.log(this.logements);
-          this.loadingService.loading.next(false);
+          this.loadingService.hide();
         }
       },
       error => {
-        console.log(error);
         this.alertService.error(error);
-        this.loadingService.loading.next(false);
+        this.loadingService.hide();
       }
     );
   }

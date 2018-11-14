@@ -1,15 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators, FormControl } from "@angular/forms";
-import { first } from "rxjs/operators";
-import { AlertService } from "../services/alert.service";
-import { ApiService } from "../services/api.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AlertService, ApiService } from '../services';
 
 @Component({
   selector: 'register',
-  templateUrl: "./register.component.html"
+  templateUrl: './register.component.html'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
@@ -23,11 +22,11 @@ export class RegisterComponent {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: new FormControl("", Validators.required),
-      lastName: new FormControl("", Validators.required),
-      email: new FormControl("", [Validators.required, Validators.email]),
-      username: new FormControl("", Validators.required),
-      password: new FormControl("", [Validators.required, Validators.minLength(6)])
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -48,8 +47,9 @@ export class RegisterComponent {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success("Registration successful", true);
-          this.router.navigate(["/"]);
+          console.log(data);
+          this.alertService.success('Registration successful', true);
+          this.router.navigate(['/']);
         },
         error => {
           this.alertService.error(error);

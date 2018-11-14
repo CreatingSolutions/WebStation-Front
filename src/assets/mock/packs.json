@@ -1,0 +1,19 @@
+{
+  "detente": [
+    {
+      "title": "",
+      "description": "",
+      "images": [
+        "",
+        ""
+      ],
+      "logement": [{}],
+      "ecole": [{}],
+      "materiel": [{}],
+      "meca": [{}],
+      "nbPersonnes": "4-6"
+    }
+  ],
+  "amis": [{}],
+  "famille" : [{}]
+}

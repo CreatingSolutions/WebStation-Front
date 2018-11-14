@@ -1,7 +1,6 @@
 .logement-card {
   transition: box-shadow 0.3s;
   margin: 20px;
-  border: 1px solid #ccc;
   background: #fff;
 }
 
@@ -10,10 +9,11 @@
 }
 
 .card-content {
-    display: flex;
-    flex-direction: row;
-    padding: inherit;
-    text-align: justify;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-content>mat-card-content {

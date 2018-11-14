@@ -1,5 +1,5 @@
-import { Component, OnInit , ViewEncapsulation } from '@angular/core';
-import { FlagImage } from '../model/FlagImage';
+import { Component, OnInit } from '@angular/core';
+import { FlagImage } from '../model';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -15,15 +15,15 @@ export class HeaderComponent implements OnInit {
   public selectedLanguage: FlagImage;
 
   constructor(public translate: TranslateService) {
-    this.languages.push(new FlagImage("fr", "../../assets/fr.svg"));
-    this.languages.push(new FlagImage("en", "../../assets/us.svg"));
+    this.languages.push(new FlagImage('fr', '../../assets/fr.svg'));
+    this.languages.push(new FlagImage('en', '../../assets/us.svg'));
 
     this.selectedLanguage = this.languages[0];
   }
 
   ngOnInit(): void {
     this.navTitle = 'WebStation';
-    this.season = 'Hiver'
+    this.season = 'Hiver';
   }
 
   public selectLanguage(language: FlagImage) {
