@@ -23,12 +23,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.navTitle = 'WebStation';
-    this.season = 'Hiver';
+
+    this.translate.onLangChange.subscribe(() => {
+      this.translate.get('HEADER.SEASON').subscribe((res: string) => {
+        console.log(res);
+        this.season = res;
+      });
+    });
   }
 
   public selectLanguage(language: FlagImage) {
     this.selectedLanguage = language;
-
-    this.translate.use(language.name);
+    this.translate.use(language.name.toLocaleLowerCase());
   }
 }
