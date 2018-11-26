@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer';
 import { HeaderComponent } from './header';
-import {AlertService, ApiService, LoadingService, MockService, UserService} from './services';
+import {AlertService, ApiService, LoadingService, MockService} from './services';
 import { AlertComponent } from './alert';
 import { HomeComponent } from './home';
 import { PresentationComponent } from './presentation';
