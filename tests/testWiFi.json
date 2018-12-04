@@ -1,0 +1,28 @@
+{
+"Flat": 
+[
+	{
+		"flatId":1,
+		"title":"test X personnes",
+		"description":"Test pour tous les apparts",
+		"nbPersonnes":"1-4 personnes",
+		"SdBWC":false,
+		"pet":true,
+		"orientation":"Sud",
+		"wifi":true,
+		"images":[]
+	},
+	{
+		"flatId":2,
+		"title":"test X personnes",
+		"description":"Test pour tous les apparts",
+		"nbPersonnes":"4-5 personnes",
+		"SdBWC":true,
+		"pet":false,
+		"orientation":"Sud",
+		"wifi":true,
+		"images":[]
+	},
+]
+
+}

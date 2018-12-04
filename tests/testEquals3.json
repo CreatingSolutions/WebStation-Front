@@ -1,0 +1,17 @@
+{
+"Flat": 
+[
+	{
+		"flatId":1,
+		"title":"test = 3 personnes",
+		"description":"Test pour appart 3 personnes",
+		"nbPersonnes":"1-4 personnes",
+		"SdBWC":false,
+		"pet":true,
+		"orientation":"Sud",
+		"wifi":true,
+		"images":[]
+	}
+]
+
+}

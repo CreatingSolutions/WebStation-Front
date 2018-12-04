@@ -1,0 +1,17 @@
+{
+"Flat": 
+[
+	{
+		"flatId":1,
+		"title":"test = 7 personnes",
+		"description":"Test pour appart de 7 personnes",
+		"nbPersonnes":"6-8 personnes",
+		"SdBWC":true,
+		"pet":true,
+		"orientation":"Sud",
+		"wifi":false,
+		"images":[]
+	}
+]
+
+}
