@@ -1,4 +1,4 @@
-export interface Logement {
+export interface Flat {
     flatId: number;
     title: string;
     description: string;

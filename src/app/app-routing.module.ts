@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import { PresentationComponent } from './presentation';
-import { LogementsComponent } from './logements';
+import { FlatsComponent } from './Flats';
 import { ShoppingCartComponent } from './shoppingCart';
 
 const routes: Routes = [
     { path: '', component: PresentationComponent, pathMatch: 'full' },
-    { path: 'logements', component: LogementsComponent },
+    { path: 'flats', component: FlatsComponent },
     { path: 'shoppingCart', component: ShoppingCartComponent },
     { path: '**', redirectTo: '' }
 ];

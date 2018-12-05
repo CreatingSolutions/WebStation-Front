@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Logement, User } from '../model';
-import { map } from 'rxjs/operators';
+import {HttpHeaders, HttpClient, HttpErrorResponse, HttpParams, HttpResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {Cart, Flat, User} from '../model';
+import {catchError, map, retry} from 'rxjs/operators';
 import {LoadingService} from './loading.service';
+import {UserService} from './user.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,36 +18,76 @@ const api = 'http://localhost:8081/api';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient, private loader: LoadingService) {}
+  constructor(private httpClient: HttpClient, private loader: LoadingService, private userService: UserService) {}
 
-  getAllLogement(): Observable<Logement[]> {
-    return this.httpClient.get<Logement[]>(`${api}/flats`, httpOptions);
+  private static handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.'
+    );
   }
 
-  login(username: string, password: string): Observable<string> {
-    this.loader.show();
+  public getAllFlat(): Observable<Flat[]> {
+    return this.httpClient.get<Flat[]>(`${api}/flats`, httpOptions);
+  }
+
+  public login(username: string, password: string): Observable<string> {
     return this.httpClient
       .post<any>(`${api}/authenticate`, {
         username: username,
         password: password
       })
       .pipe(
+        retry(3),
         map(user => {
-          if (user && user.token) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
+          if (user && user.user && user.applicationToken) {
+            this.userService.setUser(<User> user.user);
+            localStorage.setItem('token', user.applicationToken);
           }
 
           return user;
-        })
+        }),
+        catchError(ApiService.handleError)
       );
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
+  public register(user: User): Observable<HttpResponse<any>> {
+    return this.httpClient
+      .post<HttpResponse<any>>(`${api}/register`, {
+        user: user
+      }, {observe: 'response'})
+      .pipe(
+        retry(3),
+        catchError(ApiService.handleError)
+      );
   }
 
-  register(user: User): Observable<number> {
-    console.log(user);
-    return this.httpClient.post<number>(`${api}/register`, user, httpOptions);
+  public logout(): Observable<HttpResponse<any>> {
+    return this.httpClient.get(`${api}/register`,
+      {
+        observe: 'response',
+        params: new HttpParams().set('applicationToken', localStorage.getItem('token'))
+      }).pipe(
+      retry(3),
+      catchError(ApiService.handleError)
+    );
+  }
+
+  public getCartOf(userId: number): Observable<Cart> {
+    const cart = this.httpClient.get<Cart>(`${api}/cart`, {
+      headers:  new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Basic ${localStorage.getItem('token')}`
+      }),
+      params: new HttpParams().set('userId', `${userId}`)
+    }).pipe(retry(3), catchError(ApiService.handleError));
+    this.userService.addCartToUser(cart);
+    return cart;
   }
 }

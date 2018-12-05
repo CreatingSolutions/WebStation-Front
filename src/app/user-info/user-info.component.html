@@ -7,16 +7,8 @@
     </div>
     <div class="modal-body">
         <mat-tab-group>
-            <mat-tab [label]="'USER-INFO.LOGIN' | translate">
-                <p>
-                    <login></login>
-                </p>
-            </mat-tab>
-            <mat-tab [label]="'USER-INFO.SIGNIN' | translate">
-                <p>
-                    <register></register>
-                </p>
-            </mat-tab>
+            <login></login>
+            <register></register>
         </mat-tab-group>
     </div>
     <div class="modal-footer">
@@ -27,5 +19,7 @@
     <div class="navbar-brand mb-0 h1"><a class="navbar-brand" (click)="login(content)" translate>
             <fa-icon [icon]="userCircle"></fa-icon> USER-INFO.LOGIN
         </a></div>
-    <a class="mb-0 h4 text-dark" href="#/shoppingCart" translate>USER-INFO.SHIPCART <fa-icon [icon]="shoppingCart"></fa-icon></a>
+  <div class="pr-3" >
+    <a class="mb-0 h4 text-dark" href="#/shoppingCart" [matBadgeHidden]="!visible" matBadge="0" translate>USER-INFO.SHIPCART <fa-icon [icon]="shoppingCart"></fa-icon></a>
+  </div>
 </nav>

@@ -1,0 +1,1 @@
+export * from './flats.component';
