@@ -1,27 +1,22 @@
-import {FooterComponent} from './footer.component';
+import {AlertComponent} from './alert.component';
 import {ComponentFixture, ComponentFixtureAutoDetect, TestBed} from '@angular/core/testing';
 
 describe('HomeComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+  let component: AlertComponent;
+  let fixture: ComponentFixture<AlertComponent>;
 
   beforeEach( () => {
     TestBed.configureTestingModule({
-      declarations: [FooterComponent],
+      declarations: [AlertComponent],
       providers: [
         { provide: ComponentFixtureAutoDetect, useValue: true }
       ]
     });
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(AlertComponent);
     component = fixture.componentInstance;
   });
 
   it('should create', () => {
     expect(component).toBeDefined();
-  });
-
-  it('should footer title', () => {
-    const value: HTMLElement = fixture.nativeElement.querySelector('p');
-    expect(value.textContent).toContain(component.owner);
   });
 });

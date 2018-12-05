@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, EventEmitter} from '@angular/core';
 import { LoadingService } from './services';
-import { TranslateService } from '@ngx-translate/core';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LoaderState } from './model';
 
