@@ -1,2 +1,3 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1891568b3e1e468198423294f5fc7f91)](https://app.codacy.com/app/Debaerdm/WebStation-Front?utm_source=github.com&utm_medium=referral&utm_content=CreatingSolutions/WebStation-Front&utm_campaign=Badge_Grade_Settings)
 # Webstation-Front [![Build Status](https://travis-ci.org/CreatingSolutions/WebStation-Front.svg?branch=master)](https://travis-ci.org/CreatingSolutions/WebStation-Front) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=webstation-front&metric=alert_status)](https://sonarcloud.io/dashboard/index/webstation-front)
 Webstation Front 
