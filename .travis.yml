@@ -4,7 +4,7 @@ services:
 
 env:
   global:
-  - IMAGE_NAME=damilink/api
+  - IMAGE_NAME=damilink/front
   - REGISTRY_USER=damilink
   - REGISTRY_PASS=miagelille
 
