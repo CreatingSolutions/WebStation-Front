@@ -1,0 +1,37 @@
+{
+  "cartId": 1,
+  "logements": [{
+    "flatId": 1,
+    "title": "Appartement qui fait zizir",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor.",
+    "nbPersonnes": "1-4",
+    "SdBWC": true,
+    "pet": true,
+    "wifi": false,
+    "orientation": "sud",
+    "images": [
+      "https://picsum.photos/256/256/?image=1029",
+      "https://picsum.photos/256/256/?image=650",
+      "https://picsum.photos/256/256/?image=1031"
+    ]
+  },{
+    "flatId": 2,
+    "title": "Appartement de vos rêves",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor.",
+    "nbPersonnes": "4-5",
+    "SdBWC": false,
+    "pet": true,
+    "wifi": false,
+    "orientation": "nord",
+    "images": [
+      "https://picsum.photos/256/256/?image=500",
+      "https://picsum.photos/256/256/?image=501",
+      "https://picsum.photos/256/256/?image=502",
+      "https://picsum.photos/256/256/?image=503",
+      "https://picsum.photos/256/256/?image=504"
+    ]
+  }],
+  "ecoles": [],
+  "materiels": [],
+  "mecas": []
+}

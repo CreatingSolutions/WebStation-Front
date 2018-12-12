@@ -1,2 +1,3 @@
-export class Ecole {
+export interface Ecole {
+    teacherId: number;
 }

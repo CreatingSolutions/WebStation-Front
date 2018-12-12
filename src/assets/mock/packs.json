@@ -1,0 +1,19 @@
+{
+  "detente": [
+    {
+      "title": "Pack detente",
+      "description": "Voici un pack detente pour une sortie seul ou en amoureux ! ",
+      "images": [
+        "",
+        ""
+      ],
+      "logement": [{}],
+      "ecole": [{}],
+      "materiel": [{}],
+      "meca": [{}],
+      "nbPersonnes": "4-6"
+    }
+  ],
+  "amis": [{}],
+  "famille" : [{}]
+}

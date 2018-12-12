@@ -1,0 +1,12 @@
+{
+  "HEADER": {
+    "SEASON": "Hiver"
+  },
+  "USER-INFO": {
+    "LOGIN": "Se connecter",
+    "SIGNIN": "S'enregistrer",
+    "CLOSE": "Fermer",
+    "SHIPCART": "Mon panier",
+    "USERSETTINGS": "Parametres utilisateur"
+  }
+}

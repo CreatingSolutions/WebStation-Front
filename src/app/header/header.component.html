@@ -1,18 +1,17 @@
 <nav class="navbar navbar-light bg-light border-bottom">
   <div class="btn-group">
-    <button type="button" class="btn btn-secondary">
-      <img src={{selectedLanguage.url}} alt={{selectedLanguage.name}} height="16px" width="20px" />
-    </button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu">
-      <a *ngFor="let language of languages" (click)="selectLanguage(language)">
-        <img src={{language.url}} alt={{language.name}} height="16px" width="20px" />
-      </a>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle><img src={{selectedLanguage.url}}
+          alt={{selectedLanguage.name}} height="16px" width="20px" /></button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" *ngFor="let language of languages" (click)="selectLanguage(language)">
+          <img src={{language.url}} alt={{language.name}} height="16px" width="20px" />
+          <span class="p-3 text-uppercase">{{language.name}}</span>
+        </button>
+      </div>
     </div>
   </div>
-  <div class="navbar-brand mb-0 h1" href="#"><a class="navbar-brand">{{navTitle}}</a></div>
+  <div class="navbar-brand mb-0 h1"><a class="navbar-brand" href="#">{{navTitle}}</a></div>
   <span class="navbar-text">
     {{season}}
   </span>

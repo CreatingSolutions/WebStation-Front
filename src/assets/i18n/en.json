@@ -1,0 +1,12 @@
+{
+    "HEADER": {
+      "SEASON": "Winter"
+    },
+    "USER-INFO": {
+      "LOGIN": "Log in",
+      "SIGNIN": "Sign in",
+      "CLOSE": "Close",
+      "SHIPCART": "My cart",
+      "USERSETTINGS": "User settings"
+    }
+}

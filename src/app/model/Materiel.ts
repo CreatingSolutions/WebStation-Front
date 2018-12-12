@@ -1,2 +1,3 @@
-export class Materiel {
+export interface Materiel {
+    materielId: number;
 }

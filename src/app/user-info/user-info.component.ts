@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {ApiService, UserService} from '../services';
 
 @Component({
     selector: 'user-bar-info',
@@ -7,6 +9,41 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
     styleUrls: ['user-info.component.css']
 })
 
-export class UserInfoComponent {
-    faShippingCart = faShoppingCart
+export class UserInfoComponent implements OnInit, OnDestroy {
+    shoppingCart = faShoppingCart;
+    userCircle = faUserCircle;
+    visible: Boolean = false;
+    status: String = 'Se connecter';
+
+    constructor(private modalService: NgbModal, private userService: UserService, private apiService: ApiService) {}
+
+    login(content) {
+        this.modalService.open(content, {
+            centered: true,
+            backdropClass: 'light-backdrop',
+            windowClass: 'dark-modal',
+            size: 'lg'
+        });
+    }
+
+    ngOnInit() {
+      this.userService.carts.subscribe(cart => {
+        this.visible = !!(cart);
+      }, error => {
+        console.log(error);
+      });
+    }
+
+    logout() {
+      this.apiService.logout().subscribe(res => {
+        if (res.ok) {
+          this.userService.setUser(null);
+          localStorage.removeItem('token');
+        }
+      });
+    }
+
+  ngOnDestroy(): void {
+      this.userService.removeCurrentCart();
+  }
 }
