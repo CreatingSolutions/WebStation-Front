@@ -4,7 +4,7 @@
   justify-content: center;
   justify-items: center;
   background: url('../../../assets/background.png') no-repeat center center
-    fixed;
+  fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;

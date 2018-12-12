@@ -2,8 +2,12 @@
   <div class="container"><h1 class="display-7 text-dark">Mon panier</h1></div>
 </div>
 <div *ngIf="shoppingCartExist(); else shopping_cart_empty" class="card-content">
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step label="Validez votre panier">
+  <mat-horizontal-stepper (selectionChange)="stepClick($event)" [linear]="isLinear" contenteditable="false" #stepper>
+    <ng-template matStepperIcon="edit">
+      <mat-icon>check</mat-icon>
+    </ng-template>
+    <mat-step>
+      <ng-template matStepLabel>Validez votre panier</ng-template>
       <div class="text-right p-3">
         <mat-accordion>
           <mat-expansion-panel>
@@ -27,11 +31,11 @@
               </mat-selection-list>
             </div>
             <ng-template #flat_no_found
-              ><p
-                class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
-              >
-                Il n'y a pas d'appartement.
-              </p></ng-template
+            ><p
+              class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
+            >
+              Il n'y a pas d'appartement.
+            </p></ng-template
             >
             <section class="example-section"></section>
             <mat-action-row>
@@ -59,11 +63,11 @@
               class="card-content"
             ></div>
             <ng-template #ecoles_no_found
-              ><p
-                class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
-              >
-                Il n'y a pas de cours de ski reservé.
-              </p></ng-template
+            ><p
+              class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
+            >
+              Il n'y a pas de cours de ski reservé.
+            </p></ng-template
             >
             <section class="example-section"></section>
             <mat-action-row>
@@ -85,11 +89,11 @@
               class="card-content"
             ></div>
             <ng-template #materiels_no_found
-              ><p
-                class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
-              >
-                Il n'y a pas de materiel de ski choisi.
-              </p></ng-template
+            ><p
+              class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
+            >
+              Il n'y a pas de materiel de ski choisi.
+            </p></ng-template
             >
             <section class="example-section"></section>
             <mat-action-row>
@@ -108,11 +112,11 @@
             </mat-expansion-panel-header>
             <div *ngIf="false ; else mecas_no_found" class="card-content"></div>
             <ng-template #mecas_no_found
-              ><p
-                class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
-              >
-                Il n'y a pas de ticket reservé.
-              </p></ng-template
+            ><p
+              class="text-dark text-justify text-xl-center font-weight-bold p-lg-5"
+            >
+              Il n'y a pas de ticket reservé.
+            </p></ng-template
             >
             <section class="example-section"></section>
             <mat-action-row>
@@ -132,6 +136,7 @@
       </div>
     </mat-step>
     <mat-step label="Validez vos informations">
+      <payment></payment>
       <div class="text-right p-3">
         <button class="mr-lg-3 btn btn-primary" matStepperPrevious>Back</button>
         <button class="mr-lg-3 btn btn-primary" matStepperNext>

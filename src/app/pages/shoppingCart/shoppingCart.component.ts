@@ -6,9 +6,6 @@ import {
   UserService
 } from '../../services';
 import { ICart } from '../../model/Interface';
-import { Ecole, Flat, Materiel, Meca } from '../../model';
-import { MatTableDataSource } from '@angular/material';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'shopping',
@@ -34,16 +31,6 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingCart = this.userService.getCart();
   }
 
-  private getShoppingCarts() {
-    /*this.api.getCartOf(this.userService.getUser().userId).subscribe(cart => {
-        if (cart) {
-          this.shoppingCart = cart;
-        }
-      }, error => {
-        this.shoppingCart = this.userService.getCart();
-      });*/
-  }
-
   public clear(value: string = '') {
     if (value === 'flats') {
     } else if (value === '') {
@@ -56,5 +43,9 @@ export class ShoppingCartComponent implements OnInit {
 
   public update(value: any) {
     this.flatDisabled = value.source.selectedOptions.selected.length > 0;
+  }
+
+  public stepClick(value: any) {
+    console.log(value);
   }
 }

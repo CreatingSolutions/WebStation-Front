@@ -25,13 +25,13 @@
     </section>
     <section class="example-section">
       <mat-checkbox class="example-margin" [(ngModel)]="selectedAnimals"
-        >Animaux</mat-checkbox
+      >Animaux</mat-checkbox
       >
       <mat-checkbox class="example-margin" [(ngModel)]="selectedWifi"
-        >WIFI</mat-checkbox
+      >WIFI</mat-checkbox
       >
       <mat-checkbox class="example-margin" [(ngModel)]="selectedWC"
-        >Salle de bain et wc séparée</mat-checkbox
+      >Salle de bain et wc séparée</mat-checkbox
       >
     </section>
     <mat-action-row>
@@ -46,7 +46,7 @@
     <mat-card-header>
       <mat-card-title>{{flat.title}}</mat-card-title>
       <mat-card-subtitle
-        >Nombre de personne : {{flat.nbPersonnes}} <br />
+      >Nombre de personne : {{flat.nbPersonnes}} <br />
         Animaux :
         <ng-template [ngIf]="flat.pet" [ngIfElse]="animaux">
           <fa-icon [icon]="faCheckCircle"></fa-icon>
