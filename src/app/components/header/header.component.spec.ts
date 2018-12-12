@@ -6,7 +6,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { FlagImage } from '../model';
+import { FlagImage } from '../../model';
 
 describe('HomeComponent', () => {
   let component: HeaderComponent;
@@ -14,7 +14,6 @@ describe('HomeComponent', () => {
   let valueDebug: DebugElement;
   let valueElement: HTMLElement;
   let expectedLanguage;
-  FlagImage;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,10 +33,5 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeDefined();
-  });
-
-  it('should header language', () => {
-    const expectedPipedName = expectedHero.name.toUpperCase();
-    expect(heroEl.textContent).toContain(expectedPipedName);
   });
 });

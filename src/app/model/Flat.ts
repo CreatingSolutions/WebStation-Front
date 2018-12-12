@@ -11,3 +11,4 @@ export interface Flat {
   prix: number;
   images: string[];
 }
+
