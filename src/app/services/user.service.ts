@@ -1,20 +1,22 @@
 import {Injectable} from '@angular/core';
-import {Cart, User} from '../model';
-import {Observable} from 'rxjs';
+import { ICart } from '../model/Interface';
+import { User, CartModel } from '../model';
 
 @Injectable()
 export class UserService {
   private user: User;
-  public carts: Observable<Cart>;
+  private cart: ICart;
 
-  constructor() {}
-
-  public addCartToUser(cart: Observable<Cart>) {
-    this.carts = cart;
+  constructor() {
+    this.cart = new CartModel();
   }
 
-  public removeCurrentCart() {
-    this.carts = null;
+  public setCart(cart: ICart) {
+    this.cart = cart;
+  }
+
+  public getCart(): ICart {
+    return this.cart;
   }
 
   public getUser(): User {

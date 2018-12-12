@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpHeaders, HttpClient, HttpErrorResponse, HttpParams, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {Cart, Flat, User} from '../model';
+import {Flat, User} from '../model';
 import {catchError, map, retry} from 'rxjs/operators';
 import {LoadingService} from './loading.service';
 import {UserService} from './user.service';
+import { ICart } from '../model/Interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -84,15 +85,13 @@ export class ApiService {
     );
   }
 
-  public getCartOf(userId: number): Observable<Cart> {
-    const cart = this.httpClient.get<Cart>(`${api}/cart`, {
+  public getCartOf(userId: number): Observable<ICart> {
+    return this.httpClient.get<ICart>(`${api}/cart`, {
       headers:  new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Basic ${localStorage.getItem('token')}`
       }),
       params: new HttpParams().set('userId', `${userId}`)
     }).pipe(retry(3), catchError(ApiService.handleError));
-    this.userService.addCartToUser(cart);
-    return cart;
   }
 }

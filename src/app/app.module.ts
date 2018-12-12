@@ -6,17 +6,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './footer';
-import { HeaderComponent } from './header';
+import { FooterComponent } from './components/footer';
+import { HeaderComponent } from './components/header';
 import { AlertService, ApiService, LoadingService, MockService, UserService } from './services';
-import { AlertComponent } from './alert';
-import { HomeComponent } from './home';
-import { PresentationComponent } from './presentation';
-import { UserInfoComponent } from './user-info';
-import { UserNavComponent } from './user-nav';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { FlatsComponent } from './Flats';
+import { AlertComponent } from './components/alert';
+import { HomeComponent } from './pages/home';
+import { PresentationComponent } from './pages/presentation';
+import { UserInfoComponent } from './components/user-info';
+import { UserNavComponent } from './components/user-nav';
+import { LoginComponent } from './components/login';
+import { RegisterComponent } from './components/register';
+import { FlatsComponent } from './pages/flats';
 
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -34,7 +34,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
-import { ShoppingCartComponent } from './shoppingCart';
+import {MatListModule} from '@angular/material/list';
+import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -63,6 +64,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatPaginatorModule,
     MatBadgeModule,
     MatStepperModule,
+    MatListModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

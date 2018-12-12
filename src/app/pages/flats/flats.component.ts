@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Flat} from '../model';
-import {ApiService, LoadingService, AlertService, MockService} from '../services';
+import {Flat} from '../../model';
+import {ApiService, LoadingService, AlertService, MockService, UserService} from '../../services';
 import {faPlus, faCheckCircle, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'flats',
@@ -22,10 +23,12 @@ export class FlatsComponent implements OnInit {
   selectedWC = false;
 
   constructor(
-    private api: ApiService,
+    private apiService: ApiService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-    private mockService: MockService
+    private mockService: MockService,
+    private userSerivce: UserService,
+    private router: Router
   ) {
   }
 
@@ -61,6 +64,14 @@ export class FlatsComponent implements OnInit {
 
   public getFlatsLength(): number {
     return this.flats.length;
+  }
+
+  public addFlatToCart(flat: Flat) {
+    this.userSerivce.getCart().addFlat(flat);
+    if(this.userSerivce.getCart().flats && this.userSerivce.getCart().flats.includes(flat)) {
+      console.log(this.userSerivce.getCart());
+      this.router.navigate(['/shoppingCart'])
+    }
   }
 
   public getFlat() {
