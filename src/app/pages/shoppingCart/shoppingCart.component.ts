@@ -34,16 +34,6 @@ export class ShoppingCartComponent implements OnInit {
     this.shoppingCart = this.userService.getCart();
   }
 
-  private getShoppingCarts() {
-    /*this.api.getCartOf(this.userService.getUser().userId).subscribe(cart => {
-        if (cart) {
-          this.shoppingCart = cart;
-        }
-      }, error => {
-        this.shoppingCart = this.userService.getCart();
-      });*/
-  }
-
   public clear(value: string = '') {
     if (value === 'flats') {
     } else if (value === '') {

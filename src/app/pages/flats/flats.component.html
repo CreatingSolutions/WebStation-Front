@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid bg-white border-bottom">
-  <div class="container">
-    <h1 class="display-7 text-dark">Réserver un appartement</h1>
-  </div>
+    <div class="container">
+        <h1 class="display-7 text-dark">Réserver un appartement</h1>
+    </div>
 </div>
 <mat-accordion>
   <mat-expansion-panel>
@@ -11,91 +11,69 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <section class="example-section">
-      <mat-form-field class="example-margin">
-        <mat-select
-          placeholder="Nombre de personnes"
-          [formControl]="personnesControl"
-          multiple
-        >
-          <mat-option *ngFor="let personne of personnes" [value]="personne">
-            {{personne}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field class="example-margin">
+      <mat-select placeholder="Nombre de personnes" [formControl]="personnesControl" multiple>
+        <mat-option *ngFor="let personne of personnes" [value]="personne">
+          {{personne}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     </section>
     <section class="example-section">
-      <mat-checkbox class="example-margin" [(ngModel)]="selectedAnimals"
-        >Animaux</mat-checkbox
-      >
-      <mat-checkbox class="example-margin" [(ngModel)]="selectedWifi"
-        >WIFI</mat-checkbox
-      >
-      <mat-checkbox class="example-margin" [(ngModel)]="selectedWC"
-        >Salle de bain et wc séparée</mat-checkbox
-      >
+      <mat-checkbox class="example-margin" [(ngModel)]="selectedAnimals">Animaux</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="selectedWifi">WIFI</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="selectedWC">Salle de bain et wc séparée</mat-checkbox>
     </section>
     <mat-action-row>
-      <button (click)="makeFilter()" class="mr-lg-3 btn btn-primary">
-        Filtrer
-      </button>
+      <button (click)="makeFilter()" class="mr-lg-3 btn btn-primary">Filtrer</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <div *ngIf="getFlatsLength() > 0" class="card-content">
-  <mat-card class="flat-card" *ngFor="let flat of flats">
+<mat-card class="flat-card" *ngFor="let flat of flats">
     <mat-card-header>
-      <mat-card-title>{{flat.title}}</mat-card-title>
-      <mat-card-subtitle
-        >Nombre de personne : {{flat.nbPersonnes}} <br />
-        Animaux :
-        <ng-template [ngIf]="flat.pet" [ngIfElse]="animaux">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
-        </ng-template>
-        <ng-template #animaux>
-          <fa-icon [icon]="faTimes"></fa-icon>
-        </ng-template>
-        <br />
-        WIFI :
-        <ng-template [ngIf]="flat.wifi" [ngIfElse]="wifi">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
-        </ng-template>
-        <ng-template #wifi> <fa-icon [icon]="faTimes"></fa-icon> </ng-template>
-        <br />
-        Toilette/Salle de bain :
-        <ng-template [ngIf]="flat.SdBWC" [ngIfElse]="wc">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
-        </ng-template>
-        <ng-template #wc> <fa-icon [icon]="faTimes"></fa-icon> </ng-template>
-      </mat-card-subtitle>
+        <mat-card-title>{{flat.title}}</mat-card-title>
+        <mat-card-subtitle>Nombre de personne : {{flat.nbPersonnes}} <br/> Animaux :
+          <ng-template [ngIf]="flat.pet" [ngIfElse]="animaux">
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
+          </ng-template>
+          <ng-template #animaux>
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </ng-template> <br/> WIFI :
+          <ng-template [ngIf]="flat.wifi" [ngIfElse]="wifi">
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
+          </ng-template>
+          <ng-template #wifi>
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </ng-template> <br/> Toilette/Salle de bain :
+          <ng-template [ngIf]="flat.SdBWC" [ngIfElse]="wc">
+            <fa-icon [icon]="faCheckCircle"></fa-icon>
+          </ng-template>
+          <ng-template #wc>
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </ng-template>
+        </mat-card-subtitle>
     </mat-card-header>
     <div>
-      <ngb-carousel *ngIf="flat.images">
+      <ngb-carousel *ngIf="flat.images" >
         <ng-template *ngFor="let images of flat.images" ngbSlide>
-          <img
-            class="carousel-img"
-            [src]="images"
-            alt="{{flat.title}}"
-            width="256"
-            height="256"
-          />
+          <img class="carousel-img" [src]="images" alt={{flat.title}} width="256" height="256">
         </ng-template>
       </ngb-carousel>
-      <mat-card-content>
-        <p class="p-3 text-flat">{{flat.description}}</p>
-      </mat-card-content>
+        <mat-card-content>
+            <p class="p-3 text-flat">
+                {{flat.description}}
+            </p>
+        </mat-card-content>
     </div>
     <mat-card-actions>
-      <div class="flex-row justify-content-between">
-        <p class="text-black-50">Cout : {{flat.prix}}€</p>
-        <button class="btn btn-primary" (click)="addFlatToCart(flat)">
-          <fa-icon [icon]="faPlus"></fa-icon> Ajouter au panier
-        </button>
-      </div>
+        <div class="flex-row justify-content-between">
+          <p class="text-black-50">Cout : {{flat.prix}}€</p>
+          <button class="btn btn-primary" (click)="addFlatToCart(flat)"><fa-icon [icon]="faPlus"></fa-icon> Ajouter au panier </button>
+        </div>
     </mat-card-actions>
-  </mat-card>
+</mat-card>
 </div>
 <div *ngIf="getFlatsLength() === 0">
-  <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
-    Il n'y a pas de flat à voir.
-  </p>
+  <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">Il n'y a pas de flat à voir.</p>
 </div>
