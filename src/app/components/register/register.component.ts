@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, ApiService } from '../services';
+import { AlertService, ApiService } from '../../services';
 
 @Component({
   selector: 'register',

@@ -1,4 +1,4 @@
-export * from './Cart';
+export * from './CartModel';
 export * from './Ecole';
 export * from './FlagImage';
 export * from './LoaderState';

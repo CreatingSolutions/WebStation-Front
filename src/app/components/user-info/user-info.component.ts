@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ApiService, UserService} from '../services';
+import {ApiService, UserService} from '../../services';
 
 @Component({
     selector: 'user-bar-info',
@@ -27,11 +27,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-      this.userService.carts.subscribe(cart => {
-        this.visible = !!(cart);
-      }, error => {
-        console.log(error);
-      });
+      this.visible = !!(this.userService.getCart());
     }
 
     logout() {
@@ -44,6 +40,6 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     }
 
   ngOnDestroy(): void {
-      this.userService.removeCurrentCart();
+      this.userService.getCart().clear();
   }
 }
