@@ -9,7 +9,6 @@ env:
   - REGISTRY_PASS=miagelille
 
 before_script:
-- mvn install dockerfile:build
 - docker pull "$IMAGE_NAME" || true
 
 script:
