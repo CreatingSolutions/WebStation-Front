@@ -9,6 +9,7 @@
     "pet": true,
     "wifi": false,
     "orientation": "sud",
+    "prix": 300.21,
     "images": [
       "https://picsum.photos/256/256/?image=1029",
       "https://picsum.photos/256/256/?image=650",
@@ -24,6 +25,7 @@
     "pet": true,
     "wifi": false,
     "orientation": "nord",
+    "prix": 300.21,
     "images": [
       "https://picsum.photos/256/256/?image=500",
       "https://picsum.photos/256/256/?image=501",
@@ -41,6 +43,7 @@
     "pet": false,
     "wifi": true,
     "orientation": "sud",
+    "prix": 300.21,
     "images": [
       "https://picsum.photos/256/256/?image=100",
       "https://picsum.photos/256/256/?image=101"
@@ -55,6 +58,7 @@
       "pet": true,
       "wifi": true,
       "orientation": "sud",
+      "prix": 300.21,
       "images": [
         "https://picsum.photos/256/256/?image=100",
         "https://picsum.photos/256/256/?image=101"
@@ -69,6 +73,7 @@
       "pet": false,
       "wifi": true,
       "orientation": "sud",
+      "prix": 300.21,
       "images": [
         "https://picsum.photos/256/256/?image=100",
         "https://picsum.photos/256/256/?image=101"
@@ -83,6 +88,7 @@
       "pet": false,
       "wifi": false,
       "orientation": "sud",
+      "prix": 300.21,
       "images": [
         "https://picsum.photos/256/256/?image=100",
         "https://picsum.photos/256/256/?image=101"
@@ -97,6 +103,7 @@
       "pet": false,
       "wifi": false,
       "orientation": "sud",
+      "prix": 300.21,
       "images": [
         "https://picsum.photos/256/256/?image=100",
         "https://picsum.photos/256/256/?image=101"
@@ -111,6 +118,7 @@
       "pet": true,
       "wifi": false,
       "orientation": "sud",
+      "prix": 300.21,
       "images": [
         "https://picsum.photos/256/256/?image=100",
         "https://picsum.photos/256/256/?image=101"

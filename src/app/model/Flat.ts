@@ -7,5 +7,7 @@ export interface Flat {
     pet: boolean;
     wifi: boolean;
     orientation: string;
+    periode: string;
+    prix: number;
     images: string[];
 }

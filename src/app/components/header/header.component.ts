@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlagImage } from '../model';
+import { FlagImage } from '../../model';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

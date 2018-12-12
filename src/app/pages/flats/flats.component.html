@@ -67,7 +67,10 @@
         </mat-card-content>
     </div>
     <mat-card-actions>
-        <button class="btn btn-primary"><fa-icon [icon]="faPlus"></fa-icon> Ajouter au panier </button>
+        <div class="flex-row justify-content-between">
+          <p class="text-black-50">Cout : {{flat.prix}}€</p>
+          <button class="btn btn-primary" (click)="addFlatToCart(flat)"><fa-icon [icon]="faPlus"></fa-icon> Ajouter au panier </button>
+        </div>
     </mat-card-actions>
 </mat-card>
 </div>
