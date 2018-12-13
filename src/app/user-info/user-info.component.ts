@@ -3,6 +3,7 @@ import {faShoppingCart, faUserCircle} from '@fortawesome/free-solid-svg-icons';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ApiService, UserService} from '../services';
 import {LoginComponent} from '../login';
+import {RegisterComponent} from '../register';
 
 @Component({
   selector: 'user-bar-info',
@@ -29,7 +30,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   }
 
   register(content) {
-    this.modalService.open(content, {
+    this.modalService.open(RegisterComponent, {
       centered: true,
       backdropClass: 'light-backdrop',
       windowClass: 'dark-modal',

@@ -94,7 +94,7 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  entryComponents: [LoginComponent],
+  entryComponents: [LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

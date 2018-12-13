@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, ApiService } from '../services';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'register',
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private apiService: ApiService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    public modal: NgbActiveModal
   ) {}
 
   ngOnInit() {
