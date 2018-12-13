@@ -43,4 +43,12 @@ export class CartModel implements ICart {
 
     return sum;
   }
+
+  NotNullAndIsNotEmpty(): boolean {
+    return (
+      (!!this.flats && this.flats.length > 0) ||
+      (!!this.materiels && this.materiels.length > 0) ||
+      (!!this.mecas && this.mecas.length > 0) ||
+      (!!this.ecoles && this.ecoles.length > 0));
+  }
 }
