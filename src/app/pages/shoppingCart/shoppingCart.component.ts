@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService, MockService, LoadingService, UserService} from '../../services';
 import { ICart } from '../../model/Interface';
+import {Ecole, Flat, Materiel, Meca} from '../../model';
 
 @Component({
     selector: 'shopping',
@@ -39,11 +40,6 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     public shoppingCartExist() {
-      return this.shoppingCart && (
-        (Array.isArray(this.shoppingCart.flats) && this.shoppingCart.flats.length) ||
-        (Array.isArray(this.shoppingCart.materiels) && this.shoppingCart.materiels.length) ||
-        (Array.isArray(this.shoppingCart.mecas) && this.shoppingCart.mecas.length) ||
-        (Array.isArray(this.shoppingCart.ecoles) && this.shoppingCart.ecoles.length)
-      );
+      return this.shoppingCart && this.shoppingCart.NotNullAndIsNotEmpty();
     }
 }
