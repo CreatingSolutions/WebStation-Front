@@ -6,9 +6,6 @@ import {
   UserService
 } from '../../services';
 import { ICart } from '../../model/Interface';
-import { Ecole, Flat, Materiel, Meca } from '../../model';
-import { MatTableDataSource } from '@angular/material';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'shopping',
