@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
 
     this.translate.onLangChange.subscribe(() => {
       this.translate.get('HEADER.SEASON').subscribe((res: string) => {
-        console.log(res);
         this.season = res;
       });
     });
