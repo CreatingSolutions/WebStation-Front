@@ -8,9 +8,9 @@ import {
 import { ICart } from '../../model/Interface';
 
 @Component({
-  selector: 'shopping',
-  templateUrl: './shoppingCart.component.html',
-  styleUrls: ['./shoppingCart.component.css']
+    selector: 'shopping',
+    templateUrl: './shoppingCart.component.html',
+    styleUrls: ['./shoppingCart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
   shoppingCart: ICart;
