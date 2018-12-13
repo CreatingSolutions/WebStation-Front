@@ -37,6 +37,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {MatListModule} from '@angular/material/list';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
+import {PaymentComponent} from './components/payment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -85,7 +86,8 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     FlatsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PaymentComponent
   ],
   providers: [
     AlertService,

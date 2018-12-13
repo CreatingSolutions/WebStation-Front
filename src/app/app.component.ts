@@ -31,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loading = status.show;
       },
       error => {
+        this.loading = false;
         console.log(error);
       }
     );

@@ -63,13 +63,15 @@ export class FlatsComponent implements OnInit {
   }
 
   public getFlatsLength(): number {
-    return this.flats.length;
+    if (!!this.flats) {
+      return this.flats.length;
+    }
+    return 0.0;
   }
 
   public addFlatToCart(flat: Flat) {
     this.userSerivce.getCart().addFlat(flat);
     if(this.userSerivce.getCart().flats && this.userSerivce.getCart().flats.includes(flat)) {
-      console.log(this.userSerivce.getCart());
       this.router.navigate(['/shoppingCart'])
     }
   }

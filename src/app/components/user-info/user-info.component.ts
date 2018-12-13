@@ -8,7 +8,7 @@ import { ApiService, UserService } from '../../services';
   styleUrls: ['user-info.component.css']
 })
 export class UserInfoComponent implements OnInit, OnDestroy {
-  public status: String;
+  status: String;
 
   constructor(
     private modalService: NgbModal,
@@ -16,7 +16,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     private apiService: ApiService
   ) {}
 
-  public login(content) {
+  login(content) {
     this.modalService.open(content, {
       centered: true,
       backdropClass: 'light-backdrop',
@@ -33,7 +33,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     return !this.userService.getCart().notNullAndIsNotEmpty();
   }
 
-  public logout() {
+  logout() {
     this.apiService.logout().subscribe(res => {
       if (res.ok) {
         this.userService.setUser(null);
