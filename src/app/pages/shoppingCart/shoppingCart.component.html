@@ -17,7 +17,7 @@
                   <div *ngIf="shoppingCart && shoppingCart.flats ; else flat_no_found" class="card-content">
                     <mat-selection-list #selectedFlats>
                       <mat-list-option *ngFor="let flat of shoppingCart.flats"> 
-                        {{flat.title}}  
+                        <h4 mat-line>{{flat.title}}</h4>
                       </mat-list-option>
                      </mat-selection-list>
                   </div>
@@ -25,7 +25,7 @@
                   <section class="example-section">
                   </section>
                   <mat-action-row>
-                    <button class="mr-lg-3 btn btn-danger" (click)="clear('flats')" [disabled]="selectedFlats.length < 1">{{selectedFlats}} Tout supprimer</button>
+                    <button class="mr-lg-3 btn btn-danger" (click)="clear('flats')">Tout supprimer</button>
                   </mat-action-row>
                 </mat-expansion-panel>
               </mat-accordion>
