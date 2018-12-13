@@ -49,7 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     FontAwesomeModule,
     MatSelectModule,
-    NgbModule,
+    NgbModule.forRoot(),
     MatTabsModule,
     MatCardModule,
     MatProgressBarModule,
@@ -94,6 +94,7 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
+  entryComponents: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
