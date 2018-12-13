@@ -12,8 +12,7 @@ import {ApiService, UserService} from '../../services';
 export class UserInfoComponent implements OnInit, OnDestroy {
     shoppingCart = faShoppingCart;
     userCircle = faUserCircle;
-    visible: Boolean = false;
-    status: String = 'Se connecter';
+    status: String;
 
     constructor(private modalService: NgbModal, private userService: UserService, private apiService: ApiService) {}
 
@@ -27,7 +26,11 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-      this.visible = !!(this.userService.getCart());
+      this.status = 'Se connecter';
+    }
+
+    public hasCart(): Boolean  {
+      return !this.userService.getCart().notNullAndIsNotEmpty();
     }
 
     logout() {

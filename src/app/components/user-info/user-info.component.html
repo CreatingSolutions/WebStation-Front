@@ -20,6 +20,6 @@
             <fa-icon [icon]="userCircle"></fa-icon> USER-INFO.LOGIN
         </a></div>
   <div class="pr-3" >
-    <a class="mb-0 h4 text-dark" href="#/shoppingCart" [matBadgeHidden]="!visible" matBadge="0" translate>USER-INFO.SHIPCART <fa-icon [icon]="shoppingCart"></fa-icon></a>
+    <a class="mb-0 h4 text-dark" href="#/shoppingCart" [matBadgeHidden]="hasCart()" matBadge="1" translate>USER-INFO.SHIPCART <fa-icon [icon]="shoppingCart"></fa-icon></a>
   </div>
 </nav>
