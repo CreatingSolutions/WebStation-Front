@@ -9,4 +9,5 @@ export interface ICart {
 
   addFlat(...flats: Flat[]): void;
   clear(): void;
+  NotNullAndIsNotEmpty(): boolean;
 }
