@@ -1,83 +1,91 @@
 <div class="jumbotron jumbotron-fluid bg-white border-bottom">
-    <div class="container">
-        <h1 class="display-7 text-dark">Vos vacances tranquilles dans un petit coin de paradis</h1>
-    </div>
+  <div class="container">
+    <h1 class="display-7 text-dark">
+      Vos vacances tranquilles dans un petit coin de paradis
+    </h1>
+  </div>
 </div>
 <h1 class="text-dark">Packs {{selectedPack}}</h1>
 <mat-tab-group mat-align-tabs="center" headerPosition="below">
-    <mat-tab label="Famille">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[0]" alt="Random first slide">
-                <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[1]" alt="Random second slide">
-                <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[2]" alt="Random third slide">
-                <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </mat-tab>
-    <mat-tab label="Amis">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[0]" alt="Random first slide">
-                <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[1]" alt="Random second slide">
-                <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[2]" alt="Random third slide">
-                <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </mat-tab>
-    <mat-tab label="Détente">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[0]" alt="Random first slide">
-                <div class="carousel-caption">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[1]" alt="Random second slide">
-                <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <img class="carousel-img" [src]="images[2]" alt="Random third slide">
-                <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </mat-tab>
+  <mat-tab label="Famille">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[0]" alt="Random first slide" />
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[1]" alt="Random second slide" />
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[2]" alt="Random third slide" />
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </mat-tab>
+  <mat-tab label="Amis">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[0]" alt="Random first slide" />
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[1]" alt="Random second slide" />
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[2]" alt="Random third slide" />
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </mat-tab>
+  <mat-tab label="Détente">
+    <ngb-carousel *ngIf="images">
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[0]" alt="Random first slide" />
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[1]" alt="Random second slide" />
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <img class="carousel-img" [src]="images[2]" alt="Random third slide" />
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </mat-tab>
 </mat-tab-group>

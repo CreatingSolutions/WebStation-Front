@@ -1,4 +1,4 @@
-import { Materiel, Meca, Ecole, Flat } from "..";
+import { Materiel, Meca, Ecole, Flat } from '..';
 
 export interface ICart {
   cartId: number;
