@@ -8,12 +8,11 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Flat, User } from '../model';
-import { catchError, map, retry } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
-import { UserService } from './user.service';
 import { ICart } from '../model/Interface';
 
-const api = 'http://localhost:8081';
+const api = 'http://51.75.140.39:8081';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,6 @@ export class ApiService {
   constructor(
     private httpClient: HttpClient,
     private loader: LoadingService,
-    private userService: UserService
   ) {}
 
   private handleError(error: HttpErrorResponse) {
@@ -40,32 +38,26 @@ export class ApiService {
   public getAllFlat(): Observable<HttpResponse<Flat[]>> {
     this.loader.show();
     return this.httpClient.get<HttpResponse<Flat[]>>(
-      `${api}/flats`,
+      `${api}/flat`,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
-      });
+      }).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
-  public login(username: string, password: string): Observable<HttpResponse<any>> {
+  public login(email: string, password: string): Observable<HttpResponse<any>> {
     this.loader.show();
     return this.httpClient
       .post<HttpResponse<any>>(`${api}/login`, {
-        email: username,
+        email: email,
         password: password
       })
       .pipe(
         retry(3),
-        map(user => {
-          console.log(user);
-          if (user && user.body.user && user.body.applicationToken) {
-            this.userService.setUser(<User>user.body.user);
-            localStorage.setItem('token', user.body.applicationToken);
-          }
-
-          return user;
-        }),
         catchError(this.handleError)
       );
   }

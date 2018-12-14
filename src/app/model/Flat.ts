@@ -1,5 +1,5 @@
 export interface Flat {
-  flatId: number;
+  idFlat: number;
   title: string;
   description: string;
   nbPersonnes: string;
@@ -11,3 +11,4 @@ export interface Flat {
   prix: number;
   images: string[];
 }
+

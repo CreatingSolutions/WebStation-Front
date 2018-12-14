@@ -93,10 +93,11 @@ export class FlatsComponent implements OnInit {
 
   public getFlat() {
     this.loadingService.show();
-    this.mockService.getFlatsMock().subscribe(
-      flats => {
+    this.apiService.getAllFlat().subscribe(
+      (flats: any) => {
+        console.log(flats);
         if (flats) {
-          this.flats = flats.Flats as Flat[];
+          this.flats = flats as Flat[];
           this.flatsListed = this.flats;
           this.loadingService.hide();
         }

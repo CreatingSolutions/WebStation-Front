@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -16,6 +16,7 @@ import {AlertService, ApiService, LoadingService} from '../../services';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  @Output() result = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,14 +28,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [
+      email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+      password: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(6)
-      ])
+      ]))
     });
   }
 
@@ -57,6 +55,7 @@ export class RegisterComponent implements OnInit {
           this.loadingService.hide();
           if (data.ok) {
             this.alertService.success('Registration successful', true);
+            this.result.emit();
             this.router.navigate(['/']);
           }
         },

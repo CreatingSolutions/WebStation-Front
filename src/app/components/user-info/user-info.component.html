@@ -12,8 +12,8 @@
   </div>
   <div class="modal-body">
     <mat-tab-group>
-      <mat-tab [label]="'USER-INFO.LOGIN' | translate"><login></login></mat-tab>
-      <mat-tab [label]="'USER-INFO.SIGNIN' | translate"><register></register></mat-tab>
+      <mat-tab [label]="'USER-INFO.LOGIN' | translate"><login (result)="closeModal($event)"></login></mat-tab>
+      <mat-tab [label]="'USER-INFO.SIGNIN' | translate"><register (result)="closeModal($event)"></register></mat-tab>
     </mat-tab-group>
   </div>
   <div class="modal-footer">
@@ -29,9 +29,14 @@
 </ng-template>
 <nav class="navbar navbar-light bg-light border-bottom">
   <div class="navbar-brand mb-0 h1">
-    <a class="navbar-brand" (click)="login(content)" translate>
-      <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> USER-INFO.LOGIN
-    </a>
+    <div *ngIf="loggedIn(); else loggedOut">
+      Bonjour, votre token est {{getToken()}}.
+    </div>
+    <ng-template #loggedOut>
+      <a class="navbar-brand" (click)="login(content)" translate>
+        <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> USER-INFO.LOGIN
+      </a>
+    </ng-template>
   </div>
   <div class="pr-3">
     <a
