@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -51,7 +51,9 @@ export class RegisterComponent implements OnInit {
         data => {
           if (data.ok) {
             this.alertService.success('Registration successful', true);
+
             this.router.navigate(['/']);
+            this.modal.close();
           }
         },
         error => {

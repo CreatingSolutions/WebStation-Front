@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
+          this.modal.close();
         },
         error => {
           this.alertService.error(error);
