@@ -18,8 +18,8 @@
   flex-wrap: wrap;
 }
 
-.card-content>img {
-    margin: 1em;
+.card-content > img {
+  margin: 1em;
 }
 
 .text-flat {
@@ -48,4 +48,3 @@ mat-card-header {
 .carousel-img {
   min-width: 100%;
 }
-

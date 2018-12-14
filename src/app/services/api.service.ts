@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpHeaders, HttpClient, HttpErrorResponse, HttpParams, HttpResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {Flat, User} from '../model';
-import {catchError, map, retry} from 'rxjs/operators';
-import {LoadingService} from './loading.service';
-import {UserService} from './user.service';
+import {
+  HttpHeaders,
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+  HttpResponse
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { Flat, User } from '../model';
+import { catchError, map, retry } from 'rxjs/operators';
+import { LoadingService } from './loading.service';
+import { UserService } from './user.service';
 import { ICart } from '../model/Interface';
 
 const httpOptions = {
@@ -19,7 +25,11 @@ const api = 'http://localhost:8081/api';
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient, private loader: LoadingService, private userService: UserService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private loader: LoadingService,
+    private userService: UserService
+  ) {}
 
   private handleError(error: HttpErrorResponse) {
     this.loader.hide();
@@ -27,12 +37,10 @@ export class ApiService {
       console.error('An error occurred:', error.error.message);
     } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
-    return throwError(
-      'Something bad happened; please try again later.'
-    );
+    return throwError('Something bad happened; please try again later.');
   }
 
   public getAllFlat(): Observable<Flat[]> {
@@ -51,7 +59,7 @@ export class ApiService {
         map(user => {
           this.loader.hide();
           if (user && user.user && user.applicationToken) {
-            this.userService.setUser(<User> user.user);
+            this.userService.setUser(<User>user.user);
             localStorage.setItem('token', user.applicationToken);
           }
 
@@ -64,9 +72,13 @@ export class ApiService {
   public register(user: User): Observable<HttpResponse<any>> {
     this.loader.show();
     return this.httpClient
-      .post<HttpResponse<any>>(`${api}/register`, {
-        user: user
-      }, {observe: 'response'})
+      .post<HttpResponse<any>>(
+        `${api}/register`,
+        {
+          user: user
+        },
+        { observe: 'response' }
+      )
       .pipe(
         retry(3),
         catchError(this.handleError)
@@ -75,24 +87,33 @@ export class ApiService {
 
   public logout(): Observable<HttpResponse<any>> {
     this.loader.show();
-    return this.httpClient.get(`${api}/register`,
-      {
+    return this.httpClient
+      .get(`${api}/register`, {
         observe: 'response',
-        params: new HttpParams().set('applicationToken', localStorage.getItem('token'))
-      }).pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
+        params: new HttpParams().set(
+          'applicationToken',
+          localStorage.getItem('token')
+        )
+      })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
   public getCartOf(userId: number): Observable<ICart> {
     this.loader.show();
-    return this.httpClient.get<ICart>(`${api}/cart`, {
-      headers:  new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Basic ${localStorage.getItem('token')}`
-      }),
-      params: new HttpParams().set('userId', `${userId}`)
-    }).pipe(retry(3), catchError(this.handleError));
+    return this.httpClient
+      .get<ICart>(`${api}/cart`, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${localStorage.getItem('token')}`
+        }),
+        params: new HttpParams().set('userId', `${userId}`)
+      })
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 }

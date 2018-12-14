@@ -5,9 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'WebStation-Header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.css']
 })
-
 export class HeaderComponent implements OnInit {
   public navTitle: string;
   public season: string;

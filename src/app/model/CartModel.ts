@@ -1,12 +1,12 @@
-import { ICart } from "./Interface";
-import { Flat, Ecole, Materiel, Meca } from ".";
+import { ICart } from './Interface';
+import { Flat, Ecole, Materiel, Meca } from '.';
 
 export class CartModel implements ICart {
-    cartId: number;
-    flats: Flat[];
-    ecoles: Ecole[];
-    materiels: Materiel[];
-    mecas: Meca[];
+  cartId: number;
+  flats: Flat[];
+  ecoles: Ecole[];
+  materiels: Materiel[];
+  mecas: Meca[];
 
   public addFlat(...flats: Flat[]) {
     if (!this.flats) {
@@ -19,11 +19,11 @@ export class CartModel implements ICart {
   }
 
   public clear() {
-      this.cartId = -1;
-      this.flats = [];
-      this.ecoles = [];
-      this.materiels = [];
-      this.mecas = [];
+    this.cartId = -1;
+    this.flats = [];
+    this.ecoles = [];
+    this.materiels = [];
+    this.mecas = [];
   }
 
   public notNullAndIsNotEmpty(): boolean {
@@ -31,7 +31,8 @@ export class CartModel implements ICart {
       (!!this.flats && this.flats.length > 0) ||
       (!!this.materiels && this.materiels.length > 0) ||
       (!!this.mecas && this.mecas.length > 0) ||
-      (!!this.ecoles && this.ecoles.length > 0));
+      (!!this.ecoles && this.ecoles.length > 0)
+    );
   }
 
   public getTotalPrice(): number {

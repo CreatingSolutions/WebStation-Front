@@ -1,3 +1,3 @@
 export interface Materiel {
-    materielId: number;
+  materielId: number;
 }
