@@ -12,7 +12,10 @@ const httpOptions = {
   })
 };
 
-const api = 'http://localhost:8081';
+const api = 'http://51.75.140.39:8081';
+
+// Change si besoin, pour le local
+// const api = 'http://51.75.140.39:8081';
 
 @Injectable({
   providedIn: 'root'
