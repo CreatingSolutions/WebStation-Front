@@ -1,16 +1,18 @@
-import {FooterComponent} from './footer.component';
-import {ComponentFixture, ComponentFixtureAutoDetect, TestBed} from '@angular/core/testing';
+import { FooterComponent } from './footer.component';
+import {
+  ComponentFixture,
+  ComponentFixtureAutoDetect,
+  TestBed
+} from '@angular/core/testing';
 
 describe('HomeComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach( () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [FooterComponent],
-      providers: [
-        { provide: ComponentFixtureAutoDetect, useValue: true }
-      ]
+      providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }]
     });
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;

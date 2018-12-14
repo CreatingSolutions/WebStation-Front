@@ -1,8 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {Flat} from '../../model';
-import {ApiService, LoadingService, AlertService, MockService, UserService} from '../../services';
-import {faPlus, faCheckCircle, faTimes} from '@fortawesome/free-solid-svg-icons';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Flat } from '../../model';
+import {
+  ApiService,
+  LoadingService,
+  AlertService,
+  MockService,
+  UserService
+} from '../../services';
+import {
+  faPlus,
+  faCheckCircle,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,8 +39,7 @@ export class FlatsComponent implements OnInit {
     private mockService: MockService,
     private userSerivce: UserService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getFlat();
@@ -38,13 +47,16 @@ export class FlatsComponent implements OnInit {
 
   public makeFilter() {
     let flatsValues: Flat[] = [];
-    if (this.personnesControl.value === '' || this.personnesControl.value.length === 0) {
+    if (
+      this.personnesControl.value === '' ||
+      this.personnesControl.value.length === 0
+    ) {
       flatsValues = this.flatsListed;
     } else {
       const values: string[] = this.personnesControl.value;
-      flatsValues = this.flatsListed.filter(flat => values.find(
-        value => value === flat.nbPersonnes
-      ));
+      flatsValues = this.flatsListed.filter(flat =>
+        values.find(value => value === flat.nbPersonnes)
+      );
     }
 
     if (this.selectedAnimals) {
@@ -71,8 +83,11 @@ export class FlatsComponent implements OnInit {
 
   public addFlatToCart(flat: Flat) {
     this.userSerivce.getCart().addFlat(flat);
-    if(this.userSerivce.getCart().flats && this.userSerivce.getCart().flats.includes(flat)) {
-      this.router.navigate(['/shoppingCart'])
+    if (
+      this.userSerivce.getCart().flats &&
+      this.userSerivce.getCart().flats.includes(flat)
+    ) {
+      this.router.navigate(['/shoppingCart']);
     }
   }
 
@@ -85,7 +100,8 @@ export class FlatsComponent implements OnInit {
           this.flatsListed = this.flats;
           this.loadingService.hide();
         }
-      }, error => {
+      },
+      error => {
         this.alertService.error(error);
         this.loadingService.hide();
       }

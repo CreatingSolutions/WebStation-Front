@@ -1,14 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './components/footer';
 import { HeaderComponent } from './components/header';
-import { AlertService, ApiService, LoadingService, MockService, UserService } from './services';
+import {
+  AlertService,
+  ApiService,
+  LoadingService,
+  MockService,
+  UserService
+} from './services';
 import { AlertComponent } from './components/alert';
 import { HomeComponent } from './pages/home';
 import { PresentationComponent } from './pages/presentation';
@@ -34,10 +44,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
-import {PaymentComponent} from './components/payment';
+import { PaymentComponent } from './components/payment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -96,7 +106,7 @@ export function createTranslateLoader(http: HttpClient) {
     MockService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   entryComponents: [LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]

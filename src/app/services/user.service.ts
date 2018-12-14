@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ICart } from '../model/Interface';
 import { User, CartModel } from '../model';
 
