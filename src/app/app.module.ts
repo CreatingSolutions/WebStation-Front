@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './footer';
-import { HeaderComponent } from './header';
-import { AlertService, ApiService, LoadingService, MockService, UserService } from './services';
-import { AlertComponent } from './alert';
-import { HomeComponent } from './home';
-import { PresentationComponent } from './presentation';
-import { UserInfoComponent } from './user-info';
-import { UserNavComponent } from './user-nav';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { FlatsComponent } from './Flats';
+import { FooterComponent } from './components/footer';
+import { HeaderComponent } from './components/header';
+import {
+  AlertService,
+  ApiService,
+  LoadingService,
+  MockService,
+  UserService
+} from './services';
+import { AlertComponent } from './components/alert';
+import { CarouselComponent } from './components/carousel';
+import { HomeComponent } from './pages/home';
+import { PresentationComponent } from './pages/presentation';
+import { UserInfoComponent } from './components/user-info';
+import { UserNavComponent } from './components/user-nav';
+import { LoginComponent } from './components/login';
+import { RegisterComponent } from './components/register';
+import { FlatsComponent } from './pages/flats';
 
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -31,11 +43,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material';
+import {MatNativeDateModule, MatPaginatorModule} from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
-import { ShoppingCartComponent } from './shoppingCart';
+import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
+import { PaymentComponent } from './components/payment';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -49,7 +67,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     FontAwesomeModule,
     MatSelectModule,
-    NgbModule.forRoot(),
+    NgbModule,
     MatTabsModule,
     MatCardModule,
     MatProgressBarModule,
@@ -63,6 +81,10 @@ export function createTranslateLoader(http: HttpClient) {
     MatPaginatorModule,
     MatBadgeModule,
     MatStepperModule,
+    MatListModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -83,7 +105,9 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     FlatsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PaymentComponent,
+    CarouselComponent
   ],
   providers: [
     AlertService,
@@ -91,10 +115,16 @@ export function createTranslateLoader(http: HttpClient) {
     LoadingService,
     MockService,
     UserService,
+    MatDatepickerModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  entryComponents: [LoginComponent, RegisterComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    library.add(fas, fab);
+  }
+
+}

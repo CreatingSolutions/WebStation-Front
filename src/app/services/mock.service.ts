@@ -10,11 +10,12 @@ const httpOptions = {
 
 @Injectable()
 export class MockService {
-
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   public getFlatsMock(): Observable<any> {
-    return this.httpClient.get<any>('../../assets/mock/expFlatsbis.json', httpOptions);
+    return this.httpClient.get<any>(
+      '../../assets/mock/expFlatsbis.json',
+      httpOptions
+    );
   }
 }

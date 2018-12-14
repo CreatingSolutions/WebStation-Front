@@ -1,6 +1,6 @@
-import {Component, OnInit, OnDestroy, EventEmitter} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoadingService } from './services';
-import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { LoaderState } from './model';
 
@@ -31,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.loading = status.show;
       },
       error => {
+        this.loading = false;
         console.log(error);
       }
     );

@@ -1,7 +1,5 @@
-<div class="loader-overlay">
-    <div>
-<!--        <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
-    </div>
+<div *ngIf="loading" class="loader-overlay">
+  <div><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
 </div>
 <WebStation-Header></WebStation-Header>
 <alert></alert>
