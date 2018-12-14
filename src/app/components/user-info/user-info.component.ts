@@ -1,29 +1,36 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  faShoppingCart,
-  faUserCircle
-} from '@fortawesome/free-solid-svg-icons';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService, UserService } from '../../services';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {faShoppingCart, faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ApiService, UserService} from '../../services';
+import {LoginComponent} from '../login';
+import {RegisterComponent} from '../register';
 
 @Component({
   selector: 'user-bar-info',
   templateUrl: 'user-info.component.html',
   styleUrls: ['user-info.component.css']
 })
-export class UserInfoComponent implements OnInit, OnDestroy {
+
+export class UserInfoComponent implements OnInit {
   shoppingCart = faShoppingCart;
   userCircle = faUserCircle;
-  status: String;
+  visible: Boolean = false;
+  status: String = 'Se connecter';
 
-  constructor(
-    private modalService: NgbModal,
-    private userService: UserService,
-    private apiService: ApiService
-  ) {}
+  constructor(private modalService: NgbModal, private userService: UserService, private apiService: ApiService) {
+  }
 
-  login(content) {
-    this.modalService.open(content, {
+  login() {
+    const modalRef = this.modalService.open(LoginComponent, {
+      centered: true,
+      backdropClass: 'light-backdrop',
+      windowClass: 'dark-modal',
+      size: 'lg'
+    });
+  }
+
+  register() {
+    this.modalService.open(RegisterComponent, {
       centered: true,
       backdropClass: 'light-backdrop',
       windowClass: 'dark-modal',
@@ -32,11 +39,12 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.status = 'Se connecter';
-  }
-
-  public hasCart(): Boolean {
-    return !this.userService.getCart().notNullAndIsNotEmpty();
+    /*this.userService.carts.subscribe(cart => {
+      this.visible = !!(cart);
+    }, error => {
+      console.log(error);
+    });
+    */
   }
 
   logout() {
@@ -46,9 +54,5 @@ export class UserInfoComponent implements OnInit, OnDestroy {
         localStorage.removeItem('token');
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    this.userService.getCart().clear();
   }
 }

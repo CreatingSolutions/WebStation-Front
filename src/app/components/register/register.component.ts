@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, ApiService } from '../../services';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'register',
@@ -22,7 +18,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private apiService: ApiService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    public modal: NgbActiveModal
   ) {}
 
   ngOnInit() {
@@ -31,10 +28,7 @@ export class RegisterComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', Validators.required),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 

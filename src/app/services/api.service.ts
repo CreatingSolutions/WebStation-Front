@@ -19,7 +19,7 @@ const httpOptions = {
   })
 };
 
-const api = 'http://localhost:8081/api';
+const api = 'http://localhost:8081';
 
 @Injectable({
   providedIn: 'root'
@@ -50,13 +50,14 @@ export class ApiService {
   public login(username: string, password: string): Observable<string> {
     this.loader.show();
     return this.httpClient
-      .post<any>(`${api}/authenticate`, {
-        username: username,
+      .post<any>(`${api}/login`, {
+        email: username,
         password: password
       })
       .pipe(
         retry(3),
         map(user => {
+          console.log(user);
           this.loader.hide();
           if (user && user.user && user.applicationToken) {
             this.userService.setUser(<User>user.user);
@@ -75,7 +76,8 @@ export class ApiService {
       .post<HttpResponse<any>>(
         `${api}/register`,
         {
-          user: user
+          email: user.email,
+          password: user.password
         },
         { observe: 'response' }
       )
@@ -88,7 +90,7 @@ export class ApiService {
   public logout(): Observable<HttpResponse<any>> {
     this.loader.show();
     return this.httpClient
-      .get(`${api}/register`, {
+      .get(`${api}/logout`, {
         observe: 'response',
         params: new HttpParams().set(
           'applicationToken',
