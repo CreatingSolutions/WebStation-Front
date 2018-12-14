@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { AlertService, ApiService } from '../../services';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {AlertService, ApiService, LoadingService} from '../../services';
 
 @Component({
   selector: 'register',
@@ -11,7 +15,6 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  loading = false;
   submitted = false;
 
   constructor(
@@ -19,7 +22,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private alertService: AlertService,
-    public modal: NgbActiveModal
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit() {
@@ -28,7 +31,10 @@ export class RegisterComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
+      ])
     });
   }
 
@@ -43,20 +49,20 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.apiService
       .register(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
+          this.loadingService.hide();
           if (data.ok) {
             this.alertService.success('Registration successful', true);
             this.router.navigate(['/']);
           }
         },
         error => {
+          this.loadingService.hide();
           this.alertService.error(error);
-          this.loading = false;
         }
       );
   }

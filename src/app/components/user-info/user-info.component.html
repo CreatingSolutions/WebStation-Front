@@ -1,15 +1,46 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" translate>USER-INFO.USERSETTINGS</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <mat-tab-group>
+      <mat-tab [label]="'USER-INFO.LOGIN' | translate"><login></login></mat-tab>
+      <mat-tab [label]="'USER-INFO.SIGNIN' | translate"><register></register></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('Close click')"
+      translate
+    >
+      USER-INFO.CLOSE
+    </button>
+  </div>
+</ng-template>
 <nav class="navbar navbar-light bg-light border-bottom">
-  <div class="navbar-brand mb-0 h1"><a class="navbar-brand" (click)="login()" translate>
-    <fa-icon [icon]="userCircle"></fa-icon>
-    USER-INFO.LOGIN
-  </a></div>
-  <div class="navbar-brand mb-0 h1"><a class="navbar-brand" (click)="register()" translate>
-    <fa-icon [icon]="userCircle"></fa-icon>
-    ENREGISTREMENT
-  </a></div>
+  <div class="navbar-brand mb-0 h1">
+    <a class="navbar-brand" (click)="login(content)" translate>
+      <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> USER-INFO.LOGIN
+    </a>
+  </div>
   <div class="pr-3">
-    <a class="mb-0 h4 text-dark" href="#/shoppingCart" [matBadgeHidden]="!visible" matBadge="0" translate>USER-INFO.SHIPCART
-      <fa-icon [icon]="shoppingCart"></fa-icon>
+    <a
+      class="mb-0 h4 text-dark"
+      href="#/shoppingCart"
+      [matBadgeHidden]="hasCart()"
+      matBadge="1"
+      translate
+    >USER-INFO.SHIPCART <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
     </a>
   </div>
 </nav>

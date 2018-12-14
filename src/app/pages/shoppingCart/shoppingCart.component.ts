@@ -44,4 +44,8 @@ export class ShoppingCartComponent implements OnInit {
   public update(value: any) {
     this.flatDisabled = value.source.selectedOptions.selected.length > 0;
   }
+
+  public stepClick(value: any) {
+    console.log(value);
+  }
 }

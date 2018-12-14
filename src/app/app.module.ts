@@ -7,6 +7,7 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import {
   UserService
 } from './services';
 import { AlertComponent } from './components/alert';
+import { CarouselComponent } from './components/carousel';
 import { HomeComponent } from './pages/home';
 import { PresentationComponent } from './pages/presentation';
 import { UserInfoComponent } from './components/user-info';
@@ -41,13 +43,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material';
+import {MatNativeDateModule, MatPaginatorModule} from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 import { PaymentComponent } from './components/payment';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -76,6 +82,9 @@ export function createTranslateLoader(http: HttpClient) {
     MatBadgeModule,
     MatStepperModule,
     MatListModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -97,7 +106,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterComponent,
     FlatsComponent,
     ShoppingCartComponent,
-    PaymentComponent
+    PaymentComponent,
+    CarouselComponent
   ],
   providers: [
     AlertService,
@@ -105,10 +115,16 @@ export function createTranslateLoader(http: HttpClient) {
     LoadingService,
     MockService,
     UserService,
+    MatDatepickerModule,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  entryComponents: [LoginComponent, RegisterComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    library.add(fas, fab);
+  }
+
+}

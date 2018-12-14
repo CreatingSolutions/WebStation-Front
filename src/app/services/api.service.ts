@@ -13,12 +13,6 @@ import { LoadingService } from './loading.service';
 import { UserService } from './user.service';
 import { ICart } from '../model/Interface';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
-
 const api = 'http://localhost:8081';
 
 @Injectable({
@@ -43,14 +37,21 @@ export class ApiService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  public getAllFlat(): Observable<Flat[]> {
-    return this.httpClient.get<Flat[]>(`${api}/flats`, httpOptions);
+  public getAllFlat(): Observable<HttpResponse<Flat[]>> {
+    this.loader.show();
+    return this.httpClient.get<HttpResponse<Flat[]>>(
+      `${api}/flats`,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      });
   }
 
-  public login(username: string, password: string): Observable<string> {
+  public login(username: string, password: string): Observable<HttpResponse<any>> {
     this.loader.show();
     return this.httpClient
-      .post<any>(`${api}/login`, {
+      .post<HttpResponse<any>>(`${api}/login`, {
         email: username,
         password: password
       })
@@ -58,10 +59,9 @@ export class ApiService {
         retry(3),
         map(user => {
           console.log(user);
-          this.loader.hide();
-          if (user && user.user && user.applicationToken) {
-            this.userService.setUser(<User>user.user);
-            localStorage.setItem('token', user.applicationToken);
+          if (user && user.body.user && user.body.applicationToken) {
+            this.userService.setUser(<User>user.body.user);
+            localStorage.setItem('token', user.body.applicationToken);
           }
 
           return user;
@@ -90,7 +90,7 @@ export class ApiService {
   public logout(): Observable<HttpResponse<any>> {
     this.loader.show();
     return this.httpClient
-      .get(`${api}/logout`, {
+      .get<HttpResponse<any>>(`${api}/logout`, {
         observe: 'response',
         params: new HttpParams().set(
           'applicationToken',
@@ -103,19 +103,15 @@ export class ApiService {
       );
   }
 
-  public getCartOf(userId: number): Observable<ICart> {
+  public getCartOf(userId: number): Observable<HttpResponse<ICart>> {
     this.loader.show();
     return this.httpClient
-      .get<ICart>(`${api}/cart`, {
+      .get<HttpResponse<ICart>>(`${api}/cart`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: `Basic ${localStorage.getItem('token')}`
         }),
         params: new HttpParams().set('userId', `${userId}`)
-      })
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+      });
   }
 }
