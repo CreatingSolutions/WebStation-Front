@@ -20,7 +20,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   constructor(private modalService: NgbModal, private userService: UserService, private apiService: ApiService) {
   }
 
-  login(content) {
+  login() {
     const modalRef = this.modalService.open(LoginComponent, {
       centered: true,
       backdropClass: 'light-backdrop',
@@ -29,7 +29,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     });
   }
 
-  register(content) {
+  register() {
     this.modalService.open(RegisterComponent, {
       centered: true,
       backdropClass: 'light-backdrop',
