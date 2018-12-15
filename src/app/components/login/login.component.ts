@@ -3,7 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
 import { first } from 'rxjs/operators';
-import {User} from '../../model';
+import {CartModel, Flat, User} from '../../model';
+import {ICart} from '../../model/Interface';
 
 @Component({
   selector: 'login',
@@ -55,25 +56,51 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data: any) => {
-          this.loader.hide();
           if (data && data.applicationToken) {
               if (data.user) {
-                this.userService.setUser(<User> {
+                localStorage.setItem('user', JSON.stringify(<User> {
                   email : data.user.emailAddress,
                   id: data.user.id
+                }));
+              }
+            localStorage.setItem('token', data.applicationToken);
+              if (this.userService.getCart().notNullAndIsNotEmpty()) {
+                this.apiService.sendCartWith(this.userService.getUser().id, this.userService.getCart().flats).subscribe(res => {
+                  if (res.ok) {
+                    this.logged();
+                  }
+                }, error =>  {
+                  this.error(error);
+                });
+              } else {
+                this.apiService.getCartOf(this.userService.getUser().id).subscribe((cart: any) => {
+                  this.loader.hide();
+                  if (cart) {
+                    this.userService.setCart(<CartModel> {
+                      flats: <Flat[]> cart.flats
+                    });
+                    this.logged();
+                  }
+                }, error => {
+                  this.error(error);
                 });
               }
-              localStorage.setItem('token', data.applicationToken);
-              console.log(localStorage.getItem('token'));
-              this.alertService.success('Login successful', true);
-              this.result.emit();
-              this.router.navigate([this.returnUrl]);
           }
         },
         error => {
-          this.loader.hide();
-          this.alertService.error(error);
+          this.error(error);
         }
       );
+  }
+
+  public logged() {
+    this.alertService.success('Login successful', true);
+    this.result.emit();
+    this.router.navigate([this.returnUrl]);
+  }
+
+  public error(error) {
+    this.loader.hide();
+    this.alertService.error(error);
   }
 }

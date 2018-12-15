@@ -7,7 +7,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Flat, User } from '../model';
+import {CartModel, Flat, User} from '../model';
 import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
 import { ICart } from '../model/Interface';
@@ -95,15 +95,34 @@ export class ApiService {
       );
   }
 
-  public getCartOf(userId: number): Observable<HttpResponse<ICart>> {
+  public getCartOf(userId: number): Observable<HttpResponse<CartModel>> {
     this.loader.show();
     return this.httpClient
-      .get<HttpResponse<ICart>>(`${api}/cart`, {
+      .get<HttpResponse<CartModel>>(`${api}/cart`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: `Basic ${localStorage.getItem('token')}`
         }),
         params: new HttpParams().set('userId', `${userId}`)
       });
+  }
+
+  public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
+    const flatsIds: number[] = flats.map(x => x.idFlat);
+
+    this.loader.show();
+    return this.httpClient
+      .post<HttpResponse<any>>(
+        `${api}/cart/addElements`,
+        {
+          flatId: flatsIds,
+          userId: userId
+        },
+        { observe: 'response' }
+      )
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 }

@@ -23,14 +23,14 @@ import { Router } from '@angular/router';
 export class FlatsComponent implements OnInit {
   flats: Flat[];
   flatsListed: Flat[];
-  faPlus = faPlus;
-  faCheckCircle = faCheckCircle;
-  faTimes = faTimes;
   personnesControl = new FormControl('');
   personnes: String[] = ['1-4', '4-5', '6-8'];
   selectedAnimals = false;
   selectedWifi = false;
   selectedWC = false;
+  images = [1, 2, 3].map(
+    () => `https://picsum.photos/1024/1024?random&t=${Math.random()}`
+  );
 
   constructor(
     private apiService: ApiService,
@@ -95,7 +95,6 @@ export class FlatsComponent implements OnInit {
     this.loadingService.show();
     this.apiService.getAllFlat().subscribe(
       (flats: any) => {
-        console.log(flats);
         if (flats) {
           this.flats = flats as Flat[];
           this.flatsListed = this.flats;
