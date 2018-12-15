@@ -50,10 +50,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
-import { PaymentComponent } from './components/payment';
+import { PaymentComponent } from './pages/payment';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import {AuthGuard} from './guard';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -116,6 +117,7 @@ export function createTranslateLoader(http: HttpClient) {
     MockService,
     UserService,
     MatDatepickerModule,
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

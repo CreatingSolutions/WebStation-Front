@@ -1,3 +1,6 @@
+<div class="jumbotron jumbotron-fluid bg-white border-bottom">
+  <div class="container"><h1 class="display-7 text-dark">Validez vos informations</h1></div>
+</div>
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -48,7 +51,7 @@
             <input type="text" id="cvv" name="cvv" placeholder="352">
           </div>
         </div>
-        <input type="submit" value="Continue to checkout" class="btn">
+        <input type="submit" value="Validez vos achats" class="btn">
       </form>
     </div>
   </div>
@@ -58,15 +61,14 @@
       <h4>Votre panier
         <span class="price" style="color:black">
           <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-          <b>4</b>
+          <b>{{getShoppingCart().flats.length}}</b>
         </span>
       </h4>
-      <p><a href="#">Product 1</a> <span class="price">15€</span></p>
-      <p><a href="#">Product 2</a> <span class="price">5€</span></p>
-      <p><a href="#">Product 3</a> <span class="price">8€</span></p>
-      <p><a href="#">Product 4</a> <span class="price">2€</span></p>
+      <p *ngFor="let flat of getShoppingCart().flats">
+        <a href="/flat/{{flat.idFlat}}">{{flat.title}}</a> <span class="price">90€</span>
+      </p>
       <hr>
-      <p style="color: black">Total <span class="price" style="color:black"><b>$30</b></span></p>
+      <p style="color: black">Total <span class="price" style="color:black"><b>{{getShoppingCart().getTotalPrice()}}€</b></span></p>
     </div>
   </div>
 </div>

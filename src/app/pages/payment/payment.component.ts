@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
+import {ICart} from '../../model/Interface';
 
 @Component({
   selector: 'payment',
@@ -23,7 +24,15 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.email, Validators.required])]
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      fname: ['', Validators.required],
+      adr: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required],
+      cname: ['', Validators.required],
+      ccnum: ['', Validators.required],
+      cvv: ['', Validators.required],
     });
   }
 
@@ -35,6 +44,10 @@ export class PaymentComponent implements OnInit, OnDestroy {
     if (this.paymentForm.invalid) {
       return;
     }
+  }
+
+  public getShoppingCart(): ICart {
+    return this.userService.getCart();
   }
 
   ngOnDestroy(): void {

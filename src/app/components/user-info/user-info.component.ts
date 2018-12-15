@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ApiService, UserService } from '../../services';
+import {ApiService, LoadingService, UserService} from '../../services';
 
 @Component({
   selector: 'user-bar-info',
@@ -13,10 +13,11 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   constructor(
     private modalService: NgbModal,
     private userService: UserService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private loader: LoadingService
   ) {}
 
-  login(content) {
+  public login(content) {
     this.modalService.open(content, {
       centered: true,
       backdropClass: 'light-backdrop',
@@ -33,12 +34,17 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     return !this.userService.getCart().notNullAndIsNotEmpty();
   }
 
-  logout() {
+  public logout() {
     this.apiService.logout().subscribe(res => {
+      console.log(res);
+      this.loader.hide();
       if (res.ok) {
         this.userService.setUser(null);
         localStorage.removeItem('token');
       }
+    }, error => {
+      console.log(error);
+      this.loader.hide();
     });
   }
 

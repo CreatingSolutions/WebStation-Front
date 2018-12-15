@@ -49,31 +49,31 @@
         >Nombre de personne : {{flat.nbPersonnes}} <br />
         Animaux :
         <ng-template [ngIf]="flat.pet" [ngIfElse]="animaux">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
+          <fa-icon [icon]="['fas', 'ckeck-circle']"></fa-icon>
         </ng-template>
         <ng-template #animaux>
-          <fa-icon [icon]="faTimes"></fa-icon>
+          <fa-icon [icon]="['fas', 'times']"></fa-icon>
         </ng-template>
         <br />
         WIFI :
         <ng-template [ngIf]="flat.wifi" [ngIfElse]="wifi">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
+          <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
         </ng-template>
-        <ng-template #wifi> <fa-icon [icon]="faTimes"></fa-icon> </ng-template>
+        <ng-template #wifi> <fa-icon [icon]="['fas', 'times']"></fa-icon> </ng-template>
         <br />
         Toilette/Salle de bain :
         <ng-template [ngIf]="flat.SdBWC" [ngIfElse]="wc">
-          <fa-icon [icon]="faCheckCircle"></fa-icon>
+          <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
         </ng-template>
-        <ng-template #wc> <fa-icon [icon]="faTimes"></fa-icon> </ng-template>
+        <ng-template #wc> <fa-icon [icon]="['fas', 'times']"></fa-icon> </ng-template>
       </mat-card-subtitle>
     </mat-card-header>
     <div>
-      <ngb-carousel *ngIf="flat.images">
-        <ng-template *ngFor="let images of flat.images" ngbSlide>
+      <ngb-carousel *ngIf="images">
+        <ng-template *ngFor="let image of images" ngbSlide>
           <img
             class="carousel-img"
-            [src]="images"
+            [src]="image"
             alt="{{flat.title}}"
             width="256"
             height="256"
@@ -86,9 +86,9 @@
     </div>
     <mat-card-actions>
       <div class="flex-row justify-content-between">
-        <p class="text-black-50">Cout : {{flat.prix}}€</p>
+        <p class="text-black-50">Cout : 90€/nuit</p>
         <button class="btn btn-primary" (click)="addFlatToCart(flat)">
-          <fa-icon [icon]="faPlus"></fa-icon> Ajouter au panier
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
         </button>
       </div>
     </mat-card-actions>

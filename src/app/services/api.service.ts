@@ -106,4 +106,23 @@ export class ApiService {
         params: new HttpParams().set('userId', `${userId}`)
       });
   }
+
+  public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
+    const flatsIds: number[] = flats.map(x => x.idFlat);
+
+    this.loader.show();
+    return this.httpClient
+      .post<HttpResponse<any>>(
+        `${api}/cart/addElements`,
+        {
+          idflat: flatsIds,
+          userid: userId
+        },
+        { observe: 'response' }
+      )
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
+  }
 }
