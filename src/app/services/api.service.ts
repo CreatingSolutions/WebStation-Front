@@ -115,8 +115,8 @@ export class ApiService {
       .post<HttpResponse<any>>(
         `${api}/cart/addElements`,
         {
-          idflat: flatsIds,
-          userid: userId
+          flatId: flatsIds,
+          userId: userId
         },
         { observe: 'response' }
       )

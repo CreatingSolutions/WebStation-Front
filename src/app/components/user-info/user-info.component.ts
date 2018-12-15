@@ -39,7 +39,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
       console.log(res);
       this.loader.hide();
       if (res.ok) {
-        this.userService.setUser(null);
+        localStorage.removeItem('user');
         localStorage.removeItem('token');
       }
     }, error => {

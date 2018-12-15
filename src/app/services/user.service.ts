@@ -22,8 +22,4 @@ export class UserService {
   public getUser(): User {
     return <User>JSON.parse(localStorage.getItem('user'));
   }
-
-  public setUser(user: User) {
-    this.user = user;
-  }
 }
