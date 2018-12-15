@@ -23,9 +23,6 @@ export class CartModel implements ICart {
   }
 
   public notNullAndIsNotEmpty(): boolean {
-    if (!this.flats) {
-      return false;
-    }
     return (!!this.flats && this.flats.length > 0);
   }
 

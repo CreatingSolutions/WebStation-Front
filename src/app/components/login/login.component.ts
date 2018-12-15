@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
 import { first } from 'rxjs/operators';
-import {Flat, User} from '../../model';
+import {CartModel, Flat, User} from '../../model';
 import {ICart} from '../../model/Interface';
 
 @Component({
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
                 this.apiService.getCartOf(this.userService.getUser().id).subscribe((cart: any) => {
                   this.loader.hide();
                   if (cart) {
-                    this.userService.setCart(<ICart> {
+                    this.userService.setCart(<CartModel> {
                       flats: <Flat[]> cart.flats
                     });
                     this.logged();

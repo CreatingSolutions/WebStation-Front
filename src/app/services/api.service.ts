@@ -7,7 +7,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Flat, User } from '../model';
+import {CartModel, Flat, User} from '../model';
 import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
 import { ICart } from '../model/Interface';
@@ -95,10 +95,10 @@ export class ApiService {
       );
   }
 
-  public getCartOf(userId: number): Observable<HttpResponse<ICart>> {
+  public getCartOf(userId: number): Observable<HttpResponse<CartModel>> {
     this.loader.show();
     return this.httpClient
-      .get<HttpResponse<ICart>>(`${api}/cart`, {
+      .get<HttpResponse<CartModel>>(`${api}/cart`, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           Authorization: `Basic ${localStorage.getItem('token')}`

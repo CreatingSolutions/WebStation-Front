@@ -49,7 +49,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   public validateCart() {
-    if (!!this.userService.getUser()) {
+    if (localStorage.getItem('user')) {
       this.apiService.sendCartWith(this.userService.getUser().id, this.userService.getCart().flats).subscribe(res => {
         console.log(res);
         if (res.ok) {
