@@ -30,7 +30,9 @@
 <nav class="navbar navbar-light bg-light border-bottom">
   <div class="navbar-brand mb-0 h1">
     <div *ngIf="loggedIn(); else loggedOut">
-      Bonjour, votre token est {{getToken()}}.
+      <a class="navbar-brand" (click)="logout()">
+        <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> Se deconnecter
+      </a>
     </div>
     <ng-template #loggedOut>
       <a class="navbar-brand" (click)="login(content)" translate>

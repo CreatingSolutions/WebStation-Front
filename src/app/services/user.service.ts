@@ -5,25 +5,21 @@ import { User, CartModel } from '../model';
 @Injectable()
 export class UserService {
   private user: User;
-  private cart: ICart;
+  private cart: CartModel;
 
   constructor() {
     this.cart = new CartModel();
   }
 
-  public setCart(cart: ICart) {
+  public setCart(cart: CartModel) {
     this.cart = cart;
   }
 
-  public getCart(): ICart {
+  public getCart(): CartModel {
     return this.cart;
   }
 
   public getUser(): User {
-    return this.user;
-  }
-
-  public setUser(user: User) {
-    this.user = user;
+    return <User>JSON.parse(localStorage.getItem('user'));
   }
 }
