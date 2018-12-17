@@ -65,7 +65,7 @@
         </span>
       </h4>
       <p *ngFor="let flat of getShoppingCart().flats">
-        <a href="/flat/{{flat.idFlat}}">{{flat.title}}</a> <span class="price">90€</span>
+        <a href="/flat/{{flat.flatId}}">{{flat.title}}</a> <span class="price">90€</span>
       </p>
       <hr>
       <p style="color: black">Total <span class="price" style="color:black"><b>{{getShoppingCart().getTotalPrice()}}€</b></span></p>

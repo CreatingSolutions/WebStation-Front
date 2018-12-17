@@ -9,7 +9,7 @@ import {AuthGuard} from './guard';
 const routes: Routes = [
   { path: '', component: PresentationComponent, pathMatch: 'full' },
   { path: 'flats', component: FlatsComponent },
-  { path: 'shoppingCart', component: ShoppingCartComponent },
+  { path: 'shoppingCart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];

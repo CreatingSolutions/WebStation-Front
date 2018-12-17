@@ -1,25 +1,20 @@
 import { Injectable } from '@angular/core';
-import { ICart } from '../model/Interface';
 import { User, CartModel } from '../model';
 
 @Injectable()
 export class UserService {
-  private user: User;
-  private cart: CartModel;
 
-  constructor() {
-    this.cart = new CartModel();
-  }
-
-  public setCart(cart: CartModel) {
-    this.cart = cart;
-  }
+  constructor() {}
 
   public getCart(): CartModel {
-    return this.cart;
+    return <CartModel>JSON.parse(localStorage.getItem('cart'));
   }
 
   public getUser(): User {
     return <User>JSON.parse(localStorage.getItem('user'));
+  }
+
+  public userLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 }

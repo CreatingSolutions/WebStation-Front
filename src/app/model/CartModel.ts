@@ -1,8 +1,7 @@
-import { ICart } from './Interface';
 import { Flat } from '.';
 
-export class CartModel implements ICart {
-  cartId: number;
+export class CartModel {
+  userId: number;
   flats: Flat[];
 
   public addFlat(...flats: Flat[]) {
@@ -15,15 +14,14 @@ export class CartModel implements ICart {
         this.flats.push(flat);
       }
     });
+
+    localStorage.setItem('cart', JSON.stringify(this));
   }
 
   public clear() {
-    this.cartId = -1;
+    this.userId = -1;
     this.flats = [];
-  }
-
-  public notNullAndIsNotEmpty(): boolean {
-    return (!!this.flats && this.flats.length > 0);
+    localStorage.removeItem('cart');
   }
 
   public getTotalPrice(): number {

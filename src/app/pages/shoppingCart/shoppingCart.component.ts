@@ -5,8 +5,8 @@ import {
   LoadingService,
   UserService
 } from '../../services';
-import { ICart } from '../../model/Interface';
 import {Router} from '@angular/router';
+import {CartModel} from '../../model';
 
 @Component({
   selector: 'shopping',
@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./shoppingCart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  public shoppingCart: ICart;
+  public shoppingCart: CartModel;
   public noCartsMessage: string;
   public flatDisabled = false;
 
@@ -26,10 +26,20 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router
   ) {
     this.noCartsMessage = 'Votre panier est vide';
+    this.shoppingCart = new CartModel();
   }
 
   ngOnInit(): void {
-    this.shoppingCart = this.userService.getCart();
+    const user = this.userService.getUser();
+    this.apiService.getCartOf(user.id).subscribe((res: any) => {
+      console.log(res);
+      if (res && res.flats) {
+        this.shoppingCart = <CartModel>res;
+        localStorage.setItem('cart', JSON.stringify(<CartModel>res));
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   public clear(value: string = '') {
@@ -40,33 +50,19 @@ export class ShoppingCartComponent implements OnInit {
     }
   }
 
-  public shoppingCartExist() {
-    return this.shoppingCart && this.shoppingCart.notNullAndIsNotEmpty();
-  }
-
   public update(value: any) {
     this.flatDisabled = value.source.selectedOptions.selected.length > 0;
   }
 
   public validateCart() {
-    if (localStorage.getItem('user')) {
-      this.apiService.sendCartWith(this.userService.getUser().id, this.userService.getCart().flats).subscribe(res => {
-        console.log(res);
-        if (res.ok) {
-          this.addCart();
-        }
-      }, error =>  {
-        this.error(error);
-      });
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.alertService.success('Votre panier a bien été enregistré', true);
+      this.router.navigate(['/payment']);
     } else {
       this.router.navigate(['/']);
       this.alertService.error('Vous n\'etes pas connecté');
     }
-  }
-
-  public addCart() {
-    this.alertService.success('Votre panier a bien été enregistré', true);
-    this.router.navigate(['/payment']);
   }
 
   public error(error) {
