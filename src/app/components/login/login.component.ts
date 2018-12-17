@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
 import { first } from 'rxjs/operators';
 import {CartModel, Flat, User} from '../../model';
-import {ICart} from '../../model/Interface';
 
 @Component({
   selector: 'login',
@@ -22,8 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private alertService: AlertService,
-    private loader: LoadingService,
-    private userService: UserService
+    private loader: LoadingService
   ) {}
 
   ngOnInit() {
@@ -63,28 +61,8 @@ export class LoginComponent implements OnInit {
                   id: data.user.id
                 }));
               }
-            localStorage.setItem('token', data.applicationToken);
-              if (this.userService.getCart().notNullAndIsNotEmpty()) {
-                this.apiService.sendCartWith(this.userService.getUser().id, this.userService.getCart().flats).subscribe(res => {
-                  if (res.ok) {
-                    this.logged();
-                  }
-                }, error =>  {
-                  this.error(error);
-                });
-              } else {
-                this.apiService.getCartOf(this.userService.getUser().id).subscribe((cart: any) => {
-                  this.loader.hide();
-                  if (cart) {
-                    this.userService.setCart(<CartModel> {
-                      flats: <Flat[]> cart.flats
-                    });
-                    this.logged();
-                  }
-                }, error => {
-                  this.error(error);
-                });
-              }
+              localStorage.setItem('token', data.applicationToken);
+              this.logged();
           }
         },
         error => {

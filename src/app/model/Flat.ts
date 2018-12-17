@@ -1,5 +1,5 @@
 export interface Flat {
-  idFlat: number;
+  flatId: number;
   title: string;
   description: string;
   nbPersonnes: string;

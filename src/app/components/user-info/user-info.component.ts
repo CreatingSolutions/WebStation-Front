@@ -30,13 +30,20 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     this.status = 'Se connecter';
   }
 
-  public hasCart(): Boolean {
-    return !this.userService.getCart().notNullAndIsNotEmpty();
+  public hasCart(): boolean {
+    const cart = this.userService.getCart();
+    if (!!cart) {
+      if (!cart.flats) {
+        cart.flats = [];
+      } else {
+        return (!!cart.flats && cart.flats.length > 0);
+      }
+    }
+    return true;
   }
 
   public logout() {
     this.apiService.logout().subscribe(res => {
-      console.log(res);
       this.loader.hide();
       if (res.ok) {
         localStorage.removeItem('user');
@@ -53,11 +60,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   }
 
   public loggedIn(): boolean {
-    return !!this.getToken();
-  }
-
-  public getToken(): string {
-    return localStorage.getItem('token');
+    return !!this.userService.userLoggedIn();
   }
 
   ngOnDestroy(): void {

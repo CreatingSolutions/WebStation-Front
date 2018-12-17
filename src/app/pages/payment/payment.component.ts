@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
-import {ICart} from '../../model/Interface';
+import {CartModel} from '../../model';
 
 @Component({
   selector: 'payment',
@@ -44,9 +44,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
     if (this.paymentForm.invalid) {
       return;
     }
+
+    this.alertService.success('Paiement du panier validé');
   }
 
-  public getShoppingCart(): ICart {
+  public getShoppingCart(): CartModel {
     return this.userService.getCart();
   }
 

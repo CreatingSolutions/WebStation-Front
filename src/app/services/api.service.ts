@@ -10,7 +10,6 @@ import { Observable, throwError } from 'rxjs';
 import {CartModel, Flat, User} from '../model';
 import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
-import { ICart } from '../model/Interface';
 
 const api = 'http://51.75.140.39:8081';
 
@@ -108,21 +107,29 @@ export class ApiService {
   }
 
   public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
-    const flatsIds: number[] = flats.map(x => x.idFlat);
-
+    const flatsIds: number[] = flats.map(x => x.flatId);
     this.loader.show();
+
     return this.httpClient
       .post<HttpResponse<any>>(
-        `${api}/cart/addElements`,
-        {
-          flatId: flatsIds,
-          userId: userId
-        },
-        { observe: 'response' }
+        `${api}/cart/addElements?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatsIds)}`,
+        { observe: 'response'}
       )
       .pipe(
         retry(3),
         catchError(this.handleError)
       );
+  }
+
+  public addElementToCart(userId: number, flatId: number): Observable<HttpResponse<any>> {
+    this.loader.show();
+
+    return this.httpClient.post<HttpResponse<any>>(
+      `${api}/cart/addOne?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatId)}`,
+      { observe: 'response'}
+      ).pipe(
+        retry(3),
+        catchError(this.handleError)
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Flat } from '../../model';
+import {CartModel, Flat} from '../../model';
 import {
   ApiService,
   LoadingService,
@@ -7,11 +7,6 @@ import {
   MockService,
   UserService
 } from '../../services';
-import {
-  faPlus,
-  faCheckCircle,
-  faTimes
-} from '@fortawesome/free-solid-svg-icons';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -82,12 +77,20 @@ export class FlatsComponent implements OnInit {
   }
 
   public addFlatToCart(flat: Flat) {
-    this.userSerivce.getCart().addFlat(flat);
-    if (
-      this.userSerivce.getCart().flats &&
-      this.userSerivce.getCart().flats.includes(flat)
-    ) {
-      this.router.navigate(['/shoppingCart']);
+    if (this.userSerivce.userLoggedIn()) {
+      const user = this.userSerivce.getUser();
+      this.apiService.addElementToCart(user.id, flat.flatId).subscribe(res => {
+          this.router.navigate(['/shoppingCart']);
+      });
+    } else {
+      let cart = this.userSerivce.getCart();
+      if (!!cart && cart.flats) {
+        cart.addFlat(flat);
+      } else {
+        cart = new CartModel();
+        cart.flats = [];
+        cart.addFlat(flat);
+      }
     }
   }
 
