@@ -5,8 +5,8 @@ export namespace FlatModule {
   export enum ActionTypes {
     LOAD_INIT_FLATS = '[flatList] Load Init Flats',
     SUCCESS_INIT_FLATS = '[flatList] Success Init Flats',
-    LOAD_DELETE_FLAT = '[todoList] Load Delete Flat',
-    SUCCESS_DELETE_FLAT = '[todoList] Success Delete Flat',
+    LOAD_DELETE_FLAT = '[flatList] Load Delete Flat',
+    SUCCESS_DELETE_FLAT = '[flatList] Success Delete Flat',
     LOAD_CREATE_FLAT = '[flatList] Load Create Flat',
     SUCCESS_CREATE_FLAT = '[flatList] Success Create Flat',
     ERROR_LOAD_ACTION = '[flatList] Error Load Action'

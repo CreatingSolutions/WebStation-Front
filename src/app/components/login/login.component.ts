@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {AlertService, ApiService, LoadingService, UserService} from '../../services';
 import { first } from 'rxjs/operators';
 import {CartModel, Flat, User} from '../../model';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store';
 
 @Component({
   selector: 'login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private alertService: AlertService,
-    private loader: LoadingService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -32,10 +34,6 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])]
     });
-
-    this.apiService.logout();
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get f() {

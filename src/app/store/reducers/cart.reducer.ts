@@ -1,6 +1,6 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {Cart} from '../models';
-import {CartModule} from '../actions/cart.action';
+import {CartModule} from '../actions';
 
 export interface CartStateEntity extends EntityState<Cart> {
   loading: boolean;

@@ -1,7 +1,7 @@
 import * as fromFlats from '../reducers/flat.reducer';
 import {AppState} from '../index';
 import {createSelector} from '@ngrx/store';
-export {selectFlatsIds, selectFlatsEntities, selectFlats, selectTotalFlats} from '../reducers/flat.reducer';
+export {selectFlatsIds, selectFlatsEntities, selectFlats, selectTotalFlats} from '../reducers';
 
 export const selectFlatState$ = (state: AppState) =>  state.flats;
 

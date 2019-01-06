@@ -1,7 +1,7 @@
 import * as fromCarts from '../reducers/cart.reducer';
 import {AppState} from '../index';
 import {createSelector} from '@ngrx/store';
-export {selectCartsIds, selectCartsEntities, selectCarts, selectTotalCarts} from '../reducers/cart.reducer';
+export {selectCartsIds, selectCartsEntities, selectCarts, selectTotalCarts} from '../reducers';
 
 export const selectCartState$ = (state: AppState) =>  state.carts;
 

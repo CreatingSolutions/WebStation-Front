@@ -1,7 +1,7 @@
 import * as fromUsers from '../reducers/user.reducer';
 import {AppState} from '../index';
 import {createSelector} from '@ngrx/store';
-export {selectUsersIds, selectUsersEntities, selectUsers, selectTotalUsers} from '../reducers/user.reducer';
+export {selectUsersIds, selectUsersEntities, selectUsers, selectTotalUsers} from '../reducers';
 
 export const selectUserState$ = (state: AppState) =>  state.users;
 

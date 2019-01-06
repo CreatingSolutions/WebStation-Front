@@ -1,14 +1,15 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {User} from '../models';
-import {UserModule} from '../actions/user.action';
+import {UserModule} from '../actions';
+import ActionTypes = UserModule.ActionTypes;
 
 export interface UserStateEntity extends EntityState<User> {
-  loading: boolean;
-  selectUser: User;
+  isAuthenticated: boolean;
+  user: User | null;
   logs: {
     type: string,
     message: string
-  };
+  } | null;
 }
 
 export const UserAdapter: EntityAdapter<User> = createEntityAdapter<User>({
@@ -16,9 +17,9 @@ export const UserAdapter: EntityAdapter<User> = createEntityAdapter<User>({
 });
 
 export const initialState: UserStateEntity = UserAdapter.getInitialState({
-  loading: false,
-  selectUser: undefined,
-  logs: undefined
+  isAuthenticated: false,
+  user: null,
+  logs: null
 });
 
 export const {
@@ -33,43 +34,17 @@ export function usersReducer(
   action: UserModule.Actions
 ): UserStateEntity {
   switch (action.type) {
-    case UserModule.ActionTypes.LOAD_INIT_USERS:
+    case ActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
-        loading: true
+        isAuthenticated: true,
+        user: {
+          token: action.payload.token,
+          email: action.payload.user.email
+        },
+        logs: null
       };
-    case UserModule.ActionTypes.SUCCESS_INIT_USERS:
-      return {
-        ...UserAdapter.addMany(action.payload, state),
-        loading: false
-      };
-    case UserModule.ActionTypes.LOAD_DELETE_USER:
-      return {
-        ...state,
-        loading: true
-      };
-    case UserModule.ActionTypes.SUCCESS_DELETE_USER:
-      return {
-        ...UserAdapter.removeOne(action.payload, state),
-        logs: {type: 'SUCCESS', message: 'L\'user a été supprimée avec succès'}
-      };
-    case UserModule.ActionTypes.LOAD_CREATE_USER:
-      return {
-        ...state,
-        loading: true
-      };
-    case UserModule.ActionTypes.SUCCESS_CREATE_USER:
-      return {
-        ...UserAdapter.addOne(action.payload, state),
-        loading: false,
-        logs: {type: 'SUCCESS', message: 'L\'user a été créée avec succès'},
-      };
-    case UserModule.ActionTypes.ERROR_LOAD_ACTION:
-      return {
-        ...state,
-        logs: {type: 'ERROR', message: action.payload.message},
-        loading: false
-      };
+    }
     default:
       return state;
   }

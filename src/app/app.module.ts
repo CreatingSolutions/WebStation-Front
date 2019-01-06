@@ -55,6 +55,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {AuthGuard} from './guard';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {appEffects, getReducers, REDUCER_TOKEN} from './store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,6 +91,13 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    StoreModule.forRoot(REDUCER_TOKEN),
+    EffectsModule.forRoot(appEffects),
+    StoreDevtoolsModule.instrument({
+      name: '[WEBSTATION]',
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -119,7 +131,8 @@ export function createTranslateLoader(http: HttpClient) {
     MatDatepickerModule,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: REDUCER_TOKEN, useFactory: getReducers }
   ],
   entryComponents: [LoginComponent, RegisterComponent, PaymentComponent],
   bootstrap: [AppComponent]

@@ -7,7 +7,8 @@
       class="form-control"
       id="email"
       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-    />
+      placeholder="Entrer votre email"
+      required />
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
       <div *ngIf="f.email.errors.required">Adresse email requis</div>
     </div>
@@ -20,7 +21,8 @@
       class="form-control"
       id="password"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-    />
+      placeholder="Entrer votre mot de passe"
+      required />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Mot de passe requis</div>
     </div>

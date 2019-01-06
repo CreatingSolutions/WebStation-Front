@@ -1,6 +1,6 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {Flat} from '../models';
-import {FlatModule} from '../actions/flat.action';
+import {FlatModule} from '../actions';
 
 export interface FlatStateEntity extends EntityState<Flat> {
   loading: boolean;

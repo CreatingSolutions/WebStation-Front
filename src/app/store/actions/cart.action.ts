@@ -5,8 +5,8 @@ export namespace CartModule {
   export enum ActionTypes {
     LOAD_INIT_CARTS = '[cartList] Load Init Carts',
     SUCCESS_INIT_CARTS = '[cartList] Success Init Carts',
-    LOAD_DELETE_CART = '[todoList] Load Delete Cart',
-    SUCCESS_DELETE_CART = '[todoList] Success Delete Cart',
+    LOAD_DELETE_CART = '[cartList] Load Delete Cart',
+    SUCCESS_DELETE_CART = '[cartList] Success Delete Cart',
     LOAD_CREATE_CART = '[cartList] Load Create Cart',
     SUCCESS_CREATE_CART = '[cartList] Success Create Cart',
     ERROR_LOAD_ACTION = '[cartList] Error Load Action'
