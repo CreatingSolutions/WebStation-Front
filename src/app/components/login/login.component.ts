@@ -6,18 +6,14 @@ import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserModule} from '../../store/actions';
 import LogIn = UserModule.LogIn;
-import {Observable} from 'rxjs';
-import {selectUsers} from '../../store/selectors';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  submitted = false;
+  public loginForm: FormGroup;
   @Output() result = new EventEmitter<any>();
-  getState: Observable<any>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,9 +22,7 @@ export class LoginComponent implements OnInit {
     private apiService: ApiService,
     private alertService: AlertService,
     private store: Store<AppState>
-  ) {
-    this.getState = this.store.select(selectUsers);
-  }
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -45,8 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-
     if (this.loginForm.invalid) {
       return;
     }

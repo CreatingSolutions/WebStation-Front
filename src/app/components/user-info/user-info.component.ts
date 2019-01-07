@@ -1,22 +1,28 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserModule} from '../../store/actions';
 import LogOut = UserModule.LogOut;
+import {selectAuthenticated$} from '../../store/selectors';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'user-bar-info',
   templateUrl: 'user-info.component.html',
   styleUrls: ['user-info.component.css']
 })
-export class UserInfoComponent implements OnInit, OnDestroy {
-  status: String;
+export class UserInfoComponent implements OnInit {
+  public status: String;
+  public userLogged$: Observable<Boolean>;
+  public loggedIn: Boolean;
 
   constructor(
     private modalService: NgbModal,
     private store: Store<AppState>
-  ) {}
+  ) {
+    this.userLogged$ = this.store.pipe(select(selectAuthenticated$));
+  }
 
   public login(content) {
     this.modalService.open(content, {
@@ -29,6 +35,10 @@ export class UserInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.status = 'Se connecter';
+
+    this.userLogged$.subscribe(isAuthenticated => {
+      this.loggedIn = isAuthenticated;
+    });
   }
 
   public hasCart(): boolean {
@@ -43,19 +53,11 @@ export class UserInfoComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  public loggedIn(): boolean {
-    return false;
-  }
-
   public logout() {
     this.store.dispatch(new LogOut());
   }
 
   public closeModal(value: any) {
     this.modalService.dismissAll();
-  }
-
-  ngOnDestroy(): void {
-
   }
 }

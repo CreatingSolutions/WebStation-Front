@@ -29,7 +29,7 @@
 </ng-template>
 <nav class="navbar navbar-light bg-light border-bottom">
   <div class="navbar-brand mb-0 h1">
-    <div *ngIf="loggedIn(); else loggedOut">
+    <div *ngIf="loggedIn; else loggedOut">
       <a class="navbar-brand" (click)="logout()">
         <fa-icon [icon]="['fas', 'user-circle']"></fa-icon> Se deconnecter
       </a>
