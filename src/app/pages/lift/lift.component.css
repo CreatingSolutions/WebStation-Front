@@ -1,0 +1,13 @@
+.example-header-image {
+    background-image: url("https://image.freepik.com/icones-gratuites/flocon-de-neige-apercu-dans-un-cercle_318-73499.jpg");
+    background-size: cover;
+  }
+
+.lift-card {
+  transition: box-shadow 0.3s;
+  margin: 20px;
+  width: 25%;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+

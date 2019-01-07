@@ -1,0 +1,32 @@
+<div class="jumbotron jumbotron-fluid bg-white border-bottom">
+  <div class="container">
+    <h1 class="display-7 text-dark">Réserver un forfait mécanique</h1>
+    <img src="https://www.chamonix.net/sites/all/themes/adaptive-v5/images/ski_lifts/tc_b.png" alt="..." class="img-thumbnail"
+      style="width:8%">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm" *ngFor="let lift of lifts">
+      <mat-card >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Formule {{lift.title}}</mat-card-title>
+          <mat-card-subtitle>{{lift.more}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="http://www.bestofsnow.ch/media/photos/lesattelasvusdumontgelecopie.jpg?x=194&y=6&pw=371&ph=520&w=371&h=520"
+          alt="blabla">
+        <mat-card-content>
+          <p>
+            {{lift.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn btn-primary">Ajouter au panier</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+{
+  "Lift":[
+  {
+    "id_lift": 1,
+    "title": "Essentiel",
+    "more": "pour le week-end", 
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
+  },
+  {
+    "id_lift": 2,
+    "title": "Serein",
+    "more": "hors week-end", 
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
+  },
+  {
+    "id_lift": 3,
+    "title": "VIP",
+    "more": "toute la semaine", 
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
+  }
+]
+}

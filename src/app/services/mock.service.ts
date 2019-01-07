@@ -18,4 +18,9 @@ export class MockService {
       httpOptions
     );
   }
+
+  public getLiftMock():Observable<any> {
+    return this.httpClient.get<any>("../../assets/mock/expLift.json", httpOptions);
+  }
+  
 }

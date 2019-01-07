@@ -29,6 +29,7 @@ import { UserNavComponent } from './components/user-nav';
 import { LoginComponent } from './components/login';
 import { RegisterComponent } from './components/register';
 import { FlatsComponent } from './pages/flats';
+import { LiftComponent } from './pages/lift';
 
 import { MatSelectModule } from '@angular/material/select';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -106,6 +107,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     FlatsComponent,
+    LiftComponent,
     ShoppingCartComponent,
     PaymentComponent,
     CarouselComponent
