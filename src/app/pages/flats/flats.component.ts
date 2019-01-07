@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {CartModel, Flat} from '../../model';
 import {
   ApiService,
   LoadingService,
   AlertService,
-  MockService,
-  UserService
 } from '../../services';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import {Flat} from '../../store/models';
 
 @Component({
   selector: 'flats',
@@ -31,8 +29,6 @@ export class FlatsComponent implements OnInit {
     private apiService: ApiService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-    private mockService: MockService,
-    private userSerivce: UserService,
     private router: Router
   ) {}
 
@@ -50,7 +46,7 @@ export class FlatsComponent implements OnInit {
     } else {
       const values: string[] = this.personnesControl.value;
       flatsValues = this.flatsListed.filter(flat =>
-        values.find(value => value === flat.nbPersonnes)
+        values.find(value => value === flat.nbPersons)
       );
     }
 
@@ -63,7 +59,7 @@ export class FlatsComponent implements OnInit {
     }
 
     if (this.selectedWC) {
-      flatsValues = flatsValues.filter(flat => flat.SdBWC);
+      flatsValues = flatsValues.filter(flat => flat.sdBWC);
     }
 
     this.flats = flatsValues;
@@ -77,7 +73,7 @@ export class FlatsComponent implements OnInit {
   }
 
   public addFlatToCart(flat: Flat) {
-    if (this.userSerivce.userLoggedIn()) {
+    /*if (this.userSerivce.userLoggedIn()) {
       const user = this.userSerivce.getUser();
       this.apiService.addElementToCart(user.id, flat.flatId).subscribe(res => {
           this.router.navigate(['/shoppingCart']);
@@ -91,7 +87,7 @@ export class FlatsComponent implements OnInit {
         cart.flats = [];
         cart.addFlat(flat);
       }
-    }
+    }*/
   }
 
   public getFlat() {

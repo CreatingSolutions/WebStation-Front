@@ -2,7 +2,9 @@ import { ActionReducerMap } from '@ngrx/store';
 import { InjectionToken } from '@angular/core';
 
 import {CartEffects, FlatEffects, UserEffects} from './effects';
-import {CartStateEntity, FlatStateEntity, UserStateEntity, cartsReducer, flatsReducer, usersReducer} from './reducers';
+import {CartStateEntity, cartsReducer} from './reducers/cart.reducer';
+import {UserStateEntity, usersReducer} from './reducers/user.reducer';
+import {FlatStateEntity, flatsReducer} from './reducers/flat.reducer';
 
 const reducers = {
   carts: cartsReducer,

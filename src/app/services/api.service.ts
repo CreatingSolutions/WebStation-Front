@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   HttpHeaders,
   HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-  HttpResponse
+  HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {Cart, Flat, User} from '../store/models';
+import {Flat} from '../store/models';
 import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
 import {environment} from '../../environments/environment';
@@ -19,18 +17,6 @@ export class ApiService {
     private loader: LoadingService,
   ) {}
 
-  private handleError(error: HttpErrorResponse) {
-    this.loader.hide();
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
-    return throwError('Something bad happened; please try again later.');
-  }
-
   public getToken(): string {
     return localStorage.getItem('token');
   }
@@ -40,21 +26,18 @@ export class ApiService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         })
-      }).pipe(retry(3), catchError(this.handleError)
-    );
+      });
   }
 
   public login(email: string, password: string): Observable<any> {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/login`, {email: email, password: password})
-      .pipe(retry(3), catchError(this.handleError));
+      .post<any>(`${environment.apiUrl}/login`, {email: email, password: password});
   }
 
   public register(email: string, password: string): Observable<any> {
     this.loader.show();
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/register`, {email: email, password: password})
-      .pipe(retry(3), catchError(this.handleError));
+      .post<any>(`${environment.apiUrl}/register`, {email: email, password: password});
   }
 
   /*public logout(): Observable<HttpResponse<any>> {

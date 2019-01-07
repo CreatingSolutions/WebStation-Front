@@ -39,11 +39,49 @@ export function usersReducer(
         ...state,
         isAuthenticated: true,
         user: {
-          token: action.payload.token,
-          email: action.payload.user.email
+          id: action.payload.id,
+          email: action.payload.email
         },
-        logs: null
+        logs: {
+          message: 'Connection réussi',
+          type: '[SUCCESS]'
+        }
       };
+    }
+    case ActionTypes.SIGNUP_SUCCESS: {
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {
+          id: action.payload.id,
+          email: action.payload.email
+        },
+        logs: {
+          message: 'Enregistrement réussi',
+          type: '[SUCCESS]'
+        }
+      };
+    }
+    case ActionTypes.LOGIN_FAILURE: {
+      return {
+        ...state,
+        logs: {
+          message: 'Impossible de se connecter',
+          type: '[ERROR]'
+        }
+      };
+    }
+    case ActionTypes.SIGNUP_FAILURE: {
+      return {
+        ...state,
+        logs: {
+          message: 'Impossible de s\'enregistrer',
+          type: '[ERROR]'
+        }
+      };
+    }
+    case ActionTypes.LOGOUT: {
+      return initialState;
     }
     default:
       return state;

@@ -6,6 +6,8 @@
       formControlName="email"
       class="form-control"
       id="email"
+      name="email"
+      placeholder="Entrer votre email"
       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
     />
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -19,6 +21,8 @@
       formControlName="password"
       class="form-control"
       id="password"
+      name="password"
+      placeholder="Entrer votre mot de passe"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
     />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">

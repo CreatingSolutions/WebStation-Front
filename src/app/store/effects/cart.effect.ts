@@ -8,13 +8,13 @@ import {ApiService} from '../../services';
 
 @Injectable()
 export class CartEffects {
-  @Effect() LoadCarts$: Observable<CartModule.Actions> = this.actions$
+  /*@Effect() LoadCarts$: Observable<CartModule.Actions> = this.actions$
     .pipe(
       ofType(CartModule.ActionTypes.LOAD_INIT_CARTS),
       switchMap(action => this.apiService.getAllCart()),
       map(carts => new CartModule.SuccessInitCarts(carts)),
       catchError((err) => of(new CartModule.ErrorLoadAction(err)))
-    );
+    );*/
 
   /*@Effect() LoadCreateCart$: Observable<CartModule.Actions> = this.actions$
     .pipe(

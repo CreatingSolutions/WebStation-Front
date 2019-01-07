@@ -17,8 +17,6 @@ import {
   AlertService,
   ApiService,
   LoadingService,
-  MockService,
-  UserService
 } from './services';
 import { AlertComponent } from './components/alert';
 import { CarouselComponent } from './components/carousel';
@@ -48,6 +46,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 import { PaymentComponent } from './pages/payment';
@@ -91,6 +90,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({
@@ -126,8 +126,6 @@ export function createTranslateLoader(http: HttpClient) {
     AlertService,
     ApiService,
     LoadingService,
-    MockService,
-    UserService,
     MatDatepickerModule,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

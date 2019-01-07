@@ -20,7 +20,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(err => {
         if (err.status === 401) {
-          this.api.logout();
           location.reload(true);
         }
 

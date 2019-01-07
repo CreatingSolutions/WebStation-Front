@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ApiService, LoadingService, UserService} from '../../services';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {UserModule} from '../../store/actions';
+import LogOut = UserModule.LogOut;
 
 @Component({
   selector: 'user-bar-info',
@@ -12,9 +15,7 @@ export class UserInfoComponent implements OnInit, OnDestroy {
 
   constructor(
     private modalService: NgbModal,
-    private userService: UserService,
-    private apiService: ApiService,
-    private loader: LoadingService
+    private store: Store<AppState>
   ) {}
 
   public login(content) {
@@ -31,39 +32,30 @@ export class UserInfoComponent implements OnInit, OnDestroy {
   }
 
   public hasCart(): boolean {
-    const cart = this.userService.getCart();
+    /*const cart = this.userService.getCart();
     if (!!cart) {
       if (!cart.flats) {
         cart.flats = [];
       } else {
         return (!!cart.flats && cart.flats.length > 0);
       }
-    }
+    }*/
     return true;
   }
 
+  public loggedIn(): boolean {
+    return false;
+  }
+
   public logout() {
-    this.apiService.logout().subscribe(res => {
-      this.loader.hide();
-      if (res.ok) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-      }
-    }, error => {
-      console.log(error);
-      this.loader.hide();
-    });
+    this.store.dispatch(new LogOut());
   }
 
   public closeModal(value: any) {
     this.modalService.dismissAll();
   }
 
-  public loggedIn(): boolean {
-    return !!this.userService.userLoggedIn();
-  }
-
   ngOnDestroy(): void {
-    this.userService.getCart().clear();
+
   }
 }

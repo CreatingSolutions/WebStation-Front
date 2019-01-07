@@ -1,0 +1,9 @@
+.snackbar-success {
+  background-color: limegreen;
+  color: white;
+}
+
+.snackbar-failed {
+  background-color: indianred;
+  color: white;
+}

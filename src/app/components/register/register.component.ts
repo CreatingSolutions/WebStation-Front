@@ -8,6 +8,10 @@ import {
 } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import {AlertService, ApiService, LoadingService} from '../../services';
+import {AppState} from '../../store';
+import {Store} from '@ngrx/store';
+import {UserModule} from '../../store/actions';
+import SignUp = UserModule.SignUp;
 
 @Component({
   selector: 'register',
@@ -20,10 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-    private apiService: ApiService,
-    private alertService: AlertService,
-    private loadingService: LoadingService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -47,22 +48,11 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.apiService
-      .register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.loadingService.hide();
-          if (data.ok) {
-            this.alertService.success('Registration successful', true);
-            this.result.emit();
-            this.router.navigate(['/']);
-          }
-        },
-        error => {
-          this.loadingService.hide();
-          this.alertService.error(error);
-        }
-      );
+    const payload = {
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password
+    };
+
+    this.store.dispatch(new SignUp(payload));
   }
 }
