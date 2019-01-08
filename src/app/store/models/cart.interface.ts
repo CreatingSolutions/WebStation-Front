@@ -1,6 +1,6 @@
 import { Flat } from '.';
 
 export interface Cart {
-  id: number;
-  flats: Flat[];
+  id?: number;
+  flats?: Flat[];
 }

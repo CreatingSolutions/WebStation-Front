@@ -18,7 +18,7 @@ export namespace CartModule {
 
   export class SuccessInitCarts {
     readonly type = ActionTypes.SUCCESS_INIT_CARTS;
-    constructor(public payload: Cart[]) {}
+    constructor(public payload: Cart) {}
   }
 
   export class LoadDeleteCart {

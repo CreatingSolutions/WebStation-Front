@@ -4,8 +4,9 @@ import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserModule} from '../../store/actions';
 import LogOut = UserModule.LogOut;
-import {selectAuthenticated$} from '../../store/selectors';
+import {selectAuthenticated$, selectUsersLogs$} from '../../store/selectors';
 import {Observable} from 'rxjs';
+import {AlertService} from '../../services';
 
 @Component({
   selector: 'user-bar-info',
@@ -16,12 +17,15 @@ export class UserInfoComponent implements OnInit {
   public status: String;
   public userLogged$: Observable<Boolean>;
   public loggedIn: Boolean;
+  public userLogs$: Observable<any>;
 
   constructor(
     private modalService: NgbModal,
+    private alertService: AlertService,
     private store: Store<AppState>
   ) {
     this.userLogged$ = this.store.pipe(select(selectAuthenticated$));
+    this.userLogs$ = this.store.pipe(select(selectUsersLogs$));
   }
 
   public login(content) {
@@ -38,6 +42,18 @@ export class UserInfoComponent implements OnInit {
 
     this.userLogged$.subscribe(isAuthenticated => {
       this.loggedIn = isAuthenticated;
+
+      if (isAuthenticated) {
+        this.modalService.dismissAll();
+
+        this.userLogs$.subscribe(logs => {
+          if (logs.type === 'ERROR') {
+            this.alertService.error(logs.message);
+          } else if (logs.type === 'SUCCESS') {
+            this.alertService.success(logs.message);
+          }
+        });
+      }
     });
   }
 

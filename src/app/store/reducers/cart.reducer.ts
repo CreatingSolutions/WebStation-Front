@@ -40,7 +40,7 @@ export function cartsReducer(
       };
     case CartModule.ActionTypes.SUCCESS_INIT_CARTS:
       return {
-        ...CartAdapter.addMany(action.payload, state),
+        ...CartAdapter.addOne(action.payload, state),
         loading: false
       };
     case CartModule.ActionTypes.LOAD_DELETE_CART:

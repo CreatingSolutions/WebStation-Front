@@ -44,7 +44,7 @@ export function usersReducer(
         },
         logs: {
           message: 'Connection réussi',
-          type: '[SUCCESS]'
+          type: 'SUCCESS'
         }
       };
     }
@@ -58,7 +58,7 @@ export function usersReducer(
         },
         logs: {
           message: 'Enregistrement réussi',
-          type: '[SUCCESS]'
+          type: 'SUCCESS'
         }
       };
     }
@@ -67,7 +67,7 @@ export function usersReducer(
         ...state,
         logs: {
           message: 'Impossible de se connecter',
-          type: '[ERROR]'
+          type: 'ERROR'
         }
       };
     }
@@ -76,7 +76,7 @@ export function usersReducer(
         ...state,
         logs: {
           message: 'Impossible de s\'enregistrer',
-          type: '[ERROR]'
+          type: 'ERROR'
         }
       };
     }

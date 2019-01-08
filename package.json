@@ -37,6 +37,7 @@
     "bootstrap": "^4.2.1",
     "core-js": "^2.6.1",
     "flag-icon-css": "^3.2.1",
+    "hammerjs": "^2.0.8",
     "jsonwebtoken": "^8.4.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",

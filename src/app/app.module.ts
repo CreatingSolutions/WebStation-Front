@@ -18,7 +18,6 @@ import {
   ApiService,
   LoadingService,
 } from './services';
-import { AlertComponent } from './components/alert';
 import { CarouselComponent } from './components/carousel';
 import { HomeComponent } from './pages/home';
 import { PresentationComponent } from './pages/presentation';
@@ -59,6 +58,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {appEffects, getReducers, REDUCER_TOKEN} from './store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
+import {SnackbarComponent} from './components/snackbar/snackbar.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -111,7 +111,6 @@ export function createTranslateLoader(http: HttpClient) {
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    AlertComponent,
     PresentationComponent,
     UserInfoComponent,
     UserNavComponent,
@@ -120,7 +119,8 @@ export function createTranslateLoader(http: HttpClient) {
     FlatsComponent,
     ShoppingCartComponent,
     PaymentComponent,
-    CarouselComponent
+    CarouselComponent,
+    SnackbarComponent
   ],
   providers: [
     AlertService,

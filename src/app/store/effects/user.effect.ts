@@ -52,13 +52,8 @@ export class UserEffects {
   );
 
   @Effect({ dispatch: false })
-  LogInFailure: Observable<any> = this.actions.pipe(
-    ofType(ActionTypes.LOGIN_FAILURE)
-  );
-
-  @Effect({ dispatch: false })
-  SignUpFailure: Observable<any> = this.actions.pipe(
-    ofType(ActionTypes.SIGNUP_FAILURE)
+  ActionFailure: Observable<any> = this.actions.pipe(
+    ofType(ActionTypes.LOGIN_FAILURE, ActionTypes.SIGNUP_FAILURE)
   );
 
   @Effect({ dispatch: false })
