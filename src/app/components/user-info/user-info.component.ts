@@ -45,14 +45,16 @@ export class UserInfoComponent implements OnInit {
 
       if (isAuthenticated) {
         this.modalService.dismissAll();
+      }
+    });
 
-        this.userLogs$.subscribe(logs => {
-          if (logs.type === 'ERROR') {
-            this.alertService.error(logs.message);
-          } else if (logs.type === 'SUCCESS') {
-            this.alertService.success(logs.message);
-          }
-        });
+    this.userLogs$.subscribe(logs => {
+      if (logs) {
+        if (logs.type === 'ERROR') {
+          this.alertService.error(logs.message);
+        } else if (logs.type === 'SUCCESS') {
+          this.alertService.success(logs.message);
+        }
       }
     });
   }

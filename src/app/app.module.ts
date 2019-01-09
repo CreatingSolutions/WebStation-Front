@@ -59,6 +59,7 @@ import {appEffects, getReducers, REDUCER_TOKEN} from './store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {SnackbarComponent} from './components/snackbar/snackbar.component';
+import {AlertComponent} from './components/alert';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -109,6 +110,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
+    AlertComponent,
     FooterComponent,
     HeaderComponent,
     PresentationComponent,
@@ -132,7 +134,7 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: REDUCER_TOKEN, useFactory: getReducers }
   ],
-  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

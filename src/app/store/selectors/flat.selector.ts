@@ -11,4 +11,6 @@ export const selectFlatEntitiesConverted$ = createSelector(selectFlatState$, fro
 
 export const selectFlatsLoading$ = createSelector(selectFlatState$, (flats) =>  flats.loading);
 
+export const selectFlatsLoaded$ = createSelector(selectFlatState$, (flats) =>  flats.loaded);
+
 export const selectFlatsErrors$ = createSelector(selectFlatState$, (flats) => flats.logs);

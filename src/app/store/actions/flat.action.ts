@@ -3,13 +3,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export namespace FlatModule {
   export enum ActionTypes {
-    LOAD_INIT_FLATS = '[flatList] Load Init Flats',
-    SUCCESS_INIT_FLATS = '[flatList] Success Init Flats',
-    LOAD_DELETE_FLAT = '[flatList] Load Delete Flat',
-    SUCCESS_DELETE_FLAT = '[flatList] Success Delete Flat',
-    LOAD_CREATE_FLAT = '[flatList] Load Create Flat',
-    SUCCESS_CREATE_FLAT = '[flatList] Success Create Flat',
-    ERROR_LOAD_ACTION = '[flatList] Error Load Action'
+    LOAD_INIT_FLATS = '[Flat] Load Init Flats',
+    SUCCESS_INIT_FLATS = '[Flat] Success Init Flats',
+    LOAD_DELETE_FLAT = '[Flat] Load Delete Flat',
+    SUCCESS_DELETE_FLAT = '[Flat] Success Delete Flat',
+    LOAD_CREATE_FLAT = '[Flat] Load Create Flat',
+    SUCCESS_CREATE_FLAT = '[Flat] Success Create Flat',
+    ERROR_LOAD_ACTION = '[Flat] Error Load Action'
   }
 
   export class LoadInitFlats {
@@ -43,7 +43,7 @@ export namespace FlatModule {
 
   export class ErrorLoadAction {
     readonly type = ActionTypes.ERROR_LOAD_ACTION;
-    constructor(public payload: HttpErrorResponse) {}
+    constructor(public payload: any) {}
   }
 
   export type Actions = LoadInitFlats | ErrorLoadAction | SuccessInitFlats | LoadCreateFlat

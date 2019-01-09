@@ -16,3 +16,9 @@ a { cursor: pointer }
 label, fa-icon, h1, h2, h3, h4 {
   color: black;
 }
+
+.mat-snack-bar-container {
+  background: rgba(255,255,255,0);
+  color: rgba(255,255,255,0);
+  box-shadow: none;
+}

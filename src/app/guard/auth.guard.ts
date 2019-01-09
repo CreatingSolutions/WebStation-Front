@@ -15,15 +15,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const token = localStorage.getItem('token');
-    console.log(token);
     if (token) {
       return true;
     } else {
       this.router
         .navigate(['/'], { queryParams: { returnUrl: state.url, modal: true } })
-        .then(success => {
-          return true;
-        })
         .catch(error => {
           console.log(error);
           return false;
