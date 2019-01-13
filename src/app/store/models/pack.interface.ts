@@ -2,7 +2,10 @@ import {Flat} from './flat.interface';
 
 export interface Pack {
   id?: number;
-  order?: number;
+  title?: string;
+  description?: string;
+  images?: string[];
   categoryName?: string;
-  flats?: Flat[];
+  order?: number;
+  flat?: Flat;
 }

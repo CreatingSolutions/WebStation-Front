@@ -43,8 +43,9 @@ export function flatsReducer(
     case FlatModule.ActionTypes.SUCCESS_INIT_FLATS:
       return {
         ...FlatAdapter.addMany(action.payload, state),
+        logs: {type: 'SUCCESS', message: 'Les appartements ont bien étés récupérés avec succès'},
         loading: false,
-        loaded: false
+        loaded: true
       };
     case FlatModule.ActionTypes.LOAD_DELETE_FLAT:
       return {
@@ -54,7 +55,7 @@ export function flatsReducer(
     case FlatModule.ActionTypes.SUCCESS_DELETE_FLAT:
       return {
         ...FlatAdapter.removeOne(action.payload, state),
-        logs: {type: 'SUCCESS', message: 'L\'flat a été supprimée avec succès'}
+        logs: {type: 'SUCCESS', message: 'L\'appartement a été supprimé avec succès'}
       };
     case FlatModule.ActionTypes.LOAD_CREATE_FLAT:
       return {
@@ -65,12 +66,12 @@ export function flatsReducer(
       return {
         ...FlatAdapter.addOne(action.payload, state),
         loading: false,
-        logs: {type: 'SUCCESS', message: 'L\'flat a été créée avec succès'},
+        logs: {type: 'SUCCESS', message: 'L\'appartement a été ajouté avec succès'},
       };
     case FlatModule.ActionTypes.ERROR_LOAD_ACTION:
       return {
         ...state,
-        logs: {type: 'ERROR', message: action.payload.message},
+        logs: {type: 'ERROR', message: 'Impossible de récupérer les appartements'},
         loading: false
       };
     default:
