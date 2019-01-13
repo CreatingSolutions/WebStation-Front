@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -6,20 +6,23 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {ApiService} from '../services';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');
-    if (token) {
-      request = request.clone({
-        setHeaders: { Authorization: `Basic ${token}` }
-      });
-    }
+  private authService: ApiService;
 
+  constructor(private injector: Injector) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.authService = this.injector.get(ApiService);
+    const token: string = this.authService.getToken();
+    request = request.clone({
+      setHeaders: {
+        'Authorization': `Basic ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
     return next.handle(request);
   }
 }
