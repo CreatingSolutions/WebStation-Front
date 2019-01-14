@@ -16,16 +16,10 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-<<<<<<< HEAD
-      catchError(err => {
-        if (err.status === 401) {
-          location.reload();
-=======
       catchError((response: any) => {
         if (response instanceof HttpErrorResponse && response.status === 401) {
           localStorage.removeItem('token');
           this.router.navigateByUrl('/').catch(err => console.log(err));
->>>>>>> af6a31aaba866b353475149f9f38c9761e6ae43a
         }
         return throwError(response);
       })

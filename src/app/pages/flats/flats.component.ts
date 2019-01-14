@@ -79,15 +79,15 @@ export class FlatsComponent implements OnInit {
     }
 
     if (this.selectedAnimals) {
-      flatsValues = flatsValues.filter(flat => flat.pet);
+      flatsValues = flatsValues.filter(flat => flat.hasPet);
     }
 
     if (this.selectedWifi) {
-      flatsValues = flatsValues.filter(flat => flat.wifi);
+      flatsValues = flatsValues.filter(flat => flat.hasWifi);
     }
 
     if (this.selectedWC) {
-      flatsValues = flatsValues.filter(flat => flat.sdBWC);
+      flatsValues = flatsValues.filter(flat => flat.hasSdBWC);
     }
 
     this.flats = flatsValues;

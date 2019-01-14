@@ -13,6 +13,7 @@ import LogIn = UserModule.LogIn;
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public submitted = false;
   @Output() result = new EventEmitter<any>();
 
   constructor(
@@ -39,6 +40,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+
     if (this.loginForm.invalid) {
       return;
     }
