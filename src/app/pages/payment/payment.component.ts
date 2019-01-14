@@ -3,8 +3,8 @@ import {
   OnDestroy, OnInit
 } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AlertService, ApiService, LoadingService, UserService} from '../../services';
-import {CartModel} from '../../model';
+import {AlertService, ApiService, LoadingService} from '../../services';
+import {Cart} from '../../store/models';
 
 @Component({
   selector: 'payment',
@@ -18,7 +18,6 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private loader: LoadingService,
-    private userService: UserService,
     private alertService: AlertService
   ) {}
 
@@ -48,8 +47,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.alertService.success('Paiement du panier validé');
   }
 
-  public getShoppingCart(): CartModel {
-    return this.userService.getCart();
+  public getShoppingCart(): Cart {
+    return null;
   }
 
   ngOnDestroy(): void {

@@ -1,21 +1,35 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, Directive} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AlertService } from '../../services';
+import {MatSnackBar} from '@angular/material';
+import {SnackbarComponent} from '../snackbar/snackbar.component';
 
 @Component({
-  selector: 'alert',
-  templateUrl: 'alert.component.html'
+  selector: 'Webstation-Alert',
+  template: ''
 })
 export class AlertComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  message: any;
 
-  constructor(private alertService: AlertService) {}
+  constructor(private alertService: AlertService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.subscription = this.alertService
       .getMessage()
-      .subscribe(message => (this.message = message));
+      .subscribe(message => {
+          if (message) {
+            console.log(message);
+            this.snackBar.openFromComponent(SnackbarComponent,
+              {
+                direction: 'ltr',
+                data: message,
+                duration: 3000,
+                horizontalPosition: 'center',
+                verticalPosition: 'top'
+              });
+          }
+        }
+      );
   }
 
   ngOnDestroy() {
