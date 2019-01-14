@@ -40,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatNativeDateModule, MatPaginatorModule} from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -92,6 +93,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot(appEffects),
     StoreDevtoolsModule.instrument({

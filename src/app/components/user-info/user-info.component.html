@@ -40,6 +40,9 @@
       </a>
     </ng-template>
   </div>
+  <div *ngIf="user" class="pr-3">
+    <p class="text-dark m-0"><b>Bienvenue {{user.email}} !</b></p>
+  </div>
   <div class="pr-3">
     <a
       class="mb-0 h4 text-dark"

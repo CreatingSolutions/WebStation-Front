@@ -7,6 +7,12 @@ import {
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import {Flat} from '../../store/models';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {Observable} from 'rxjs';
+import {FlatModule} from '../../store/actions';
+import LoadInitFlats = FlatModule.LoadInitFlats;
+import {selectFlatsData$, selectFlatsLogs$} from '../../store/selectors/flat.selector';
 
 @Component({
   selector: 'flats',
@@ -14,26 +20,48 @@ import {Flat} from '../../store/models';
   styleUrls: ['./flats.component.css']
 })
 export class FlatsComponent implements OnInit {
-  flats: Flat[];
-  flatsListed: Flat[];
-  personnesControl = new FormControl('');
-  personnes: String[] = ['1-4', '4-5', '6-8'];
-  selectedAnimals = false;
-  selectedWifi = false;
-  selectedWC = false;
-  images = [1, 2, 3].map(
+  public flats: Flat[];
+  public flatsListed: Flat[];
+  public personnesControl = new FormControl('');
+  public personnes: String[] = ['1-4', '4-5', '6-8'];
+  public selectedAnimals = false;
+  public selectedWifi = false;
+  public selectedWC = false;
+  public images = [1, 2, 3].map(
     () => `https://picsum.photos/1024/1024?random&t=${Math.random()}`
   );
+  public flats$: Observable<Flat[]>;
+  public flatsLogs$: Observable<any>;
 
   constructor(
     private apiService: ApiService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private store: Store<AppState>
+  ) {
+    this.flats$ = store.pipe(select(selectFlatsData$));
+    this.flatsLogs$ = this.store.pipe(select(selectFlatsLogs$));
+  }
 
   ngOnInit(): void {
-    this.getFlat();
+    this.store.dispatch(new LoadInitFlats());
+
+    this.flats$.subscribe(flats => {
+      if (flats) {
+        this.flats = flats;
+      }
+    });
+
+    this.flatsLogs$.subscribe(logs => {
+      if (logs) {
+        if (logs.type === 'ERROR') {
+          this.alertService.error(logs.message);
+        } else if (logs.type === 'SUCCESS') {
+          this.alertService.success(logs.message);
+        }
+      }
+    });
   }
 
   public makeFilter() {
@@ -88,22 +116,5 @@ export class FlatsComponent implements OnInit {
         cart.addFlat(flat);
       }
     }*/
-  }
-
-  public getFlat() {
-    this.loadingService.show();
-    this.apiService.getAllFlat().subscribe(
-      (flats: any) => {
-        if (flats) {
-          this.flats = flats as Flat[];
-          this.flatsListed = this.flats;
-          this.loadingService.hide();
-        }
-      },
-      error => {
-        this.alertService.error(error);
-        this.loadingService.hide();
-      }
-    );
   }
 }

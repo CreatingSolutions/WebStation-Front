@@ -13,4 +13,6 @@ export const selectFlatsLoading$ = createSelector(selectFlatState$, (flats) =>  
 
 export const selectFlatsLoaded$ = createSelector(selectFlatState$, (flats) =>  flats.loaded);
 
-export const selectFlatsErrors$ = createSelector(selectFlatState$, (flats) => flats.logs);
+export const selectFlatsData$ = createSelector(selectFlatState$, (flats) =>  flats.selectFlat);
+
+export const selectFlatsLogs$ = createSelector(selectFlatState$, (flats) => flats.logs);

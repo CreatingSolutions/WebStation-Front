@@ -1,13 +1,15 @@
 export interface Flat {
   id?: number;
+  reference?: string;
   title?: string;
   description?: string;
   nbPersons?: string;
-  sdBWC?: boolean;
-  pet?: boolean;
-  wifi?: boolean;
+  hasSdBWC?: boolean;
+  hasPet?: boolean;
+  hasWifi?: boolean;
   orientation?: string;
-  period?: string;
+  startDate?: Date;
+  endDate?: Date;
   prices?: number;
   images?: string[];
 }

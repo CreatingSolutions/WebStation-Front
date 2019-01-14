@@ -4,9 +4,10 @@ import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserModule} from '../../store/actions';
 import LogOut = UserModule.LogOut;
-import {selectAuthenticated$, selectUsersLogs$} from '../../store/selectors';
+import {selectAuthenticated$, selectUsers$, selectUsersLogs$} from '../../store/selectors';
 import {Observable} from 'rxjs';
 import {AlertService} from '../../services';
+import {User} from '../../store/models';
 
 @Component({
   selector: 'user-bar-info',
@@ -18,6 +19,8 @@ export class UserInfoComponent implements OnInit {
   public userLogged$: Observable<Boolean>;
   public loggedIn: Boolean;
   public userLogs$: Observable<any>;
+  public user$: Observable<User>;
+  public user: User;
 
   constructor(
     private modalService: NgbModal,
@@ -26,6 +29,7 @@ export class UserInfoComponent implements OnInit {
   ) {
     this.userLogged$ = this.store.pipe(select(selectAuthenticated$));
     this.userLogs$ = this.store.pipe(select(selectUsersLogs$));
+    this.user$ = this.store.pipe(select(selectUsers$));
   }
 
   public login(content) {
@@ -56,6 +60,10 @@ export class UserInfoComponent implements OnInit {
           this.alertService.success(logs.message);
         }
       }
+    });
+
+    this.user$.subscribe(user => {
+        this.user = user;
     });
   }
 

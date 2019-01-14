@@ -5,7 +5,7 @@ import {FlatModule} from '../actions';
 export interface FlatStateEntity extends EntityState<Flat> {
   loading: boolean;
   loaded: boolean;
-  selectFlat: Flat | null;
+  selectFlat: Flat[] | null;
   logs: {
     type: string,
     message: string
@@ -19,8 +19,8 @@ export const FlatAdapter: EntityAdapter<Flat> = createEntityAdapter<Flat>({
 export const initialState: FlatStateEntity = FlatAdapter.getInitialState({
   loading: false,
   loaded: false,
-  selectFlat: undefined,
-  logs: undefined
+  selectFlat:  null,
+  logs: null
 });
 
 export const {
@@ -42,7 +42,8 @@ export function flatsReducer(
       };
     case FlatModule.ActionTypes.SUCCESS_INIT_FLATS:
       return {
-        ...FlatAdapter.addMany(action.payload, state),
+        ...state,
+        selectFlat: action.payload,
         logs: {type: 'SUCCESS', message: 'Les appartements ont bien étés récupérés avec succès'},
         loading: false,
         loaded: true

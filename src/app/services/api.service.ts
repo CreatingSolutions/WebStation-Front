@@ -22,11 +22,7 @@ export class ApiService {
   }
 
   public getAllFlat(): Observable<Flat[]> {
-    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flat`, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json'
-        })
-      });
+    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flat`);
   }
 
   public login(email: string, password: string): Observable<any> {
