@@ -1,6 +1,5 @@
 export interface Flat {
   id?: number;
-  reference?: string;
   title?: string;
   description?: string;
   nbPersons?: string;
