@@ -17,10 +17,7 @@ import {
   AlertService,
   ApiService,
   LoadingService,
-  MockService,
-  UserService
 } from './services';
-import { AlertComponent } from './components/alert';
 import { CarouselComponent } from './components/carousel';
 import { HomeComponent } from './pages/home';
 import { PresentationComponent } from './pages/presentation';
@@ -43,11 +40,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatNativeDateModule, MatPaginatorModule} from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShoppingCartComponent } from './pages/shoppingCart';
 import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 import { PaymentComponent } from './pages/payment';
@@ -55,6 +54,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {AuthGuard} from './guard';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {appEffects, getReducers, REDUCER_TOKEN} from './store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {SnackbarComponent} from './components/snackbar/snackbar.component';
+import {AlertComponent} from './components/alert';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,6 +92,15 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    StoreModule.forRoot(REDUCER_TOKEN),
+    EffectsModule.forRoot(appEffects),
+    StoreDevtoolsModule.instrument({
+      name: '[WEBSTATION]',
+      maxAge: 25,
+      logOnly: environment.production
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -97,9 +112,9 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
+    AlertComponent,
     FooterComponent,
     HeaderComponent,
-    AlertComponent,
     PresentationComponent,
     UserInfoComponent,
     UserNavComponent,
@@ -108,20 +123,20 @@ export function createTranslateLoader(http: HttpClient) {
     FlatsComponent,
     ShoppingCartComponent,
     PaymentComponent,
-    CarouselComponent
+    CarouselComponent,
+    SnackbarComponent
   ],
   providers: [
     AlertService,
     ApiService,
     LoadingService,
-    MockService,
-    UserService,
     MatDatepickerModule,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: REDUCER_TOKEN, useFactory: getReducers }
   ],
-  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

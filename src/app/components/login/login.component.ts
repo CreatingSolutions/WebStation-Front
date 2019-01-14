@@ -1,18 +1,19 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {AlertService, ApiService, LoadingService, UserService} from '../../services';
-import { first } from 'rxjs/operators';
-import {CartModel, Flat, User} from '../../model';
+import {AlertService, ApiService} from '../../services';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {UserModule} from '../../store/actions';
+import LogIn = UserModule.LogIn;
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  submitted = false;
-  returnUrl: string;
+  public loginForm: FormGroup;
+  public submitted = false;
   @Output() result = new EventEmitter<any>();
 
   constructor(
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private alertService: AlertService,
-    private loader: LoadingService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -32,10 +33,6 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])]
     });
-
-    this.apiService.logout();
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get f() {
@@ -49,36 +46,11 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.apiService
-      .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        (data: any) => {
-          if (data && data.applicationToken) {
-              if (data.user) {
-                localStorage.setItem('user', JSON.stringify(<User> {
-                  email : data.user.emailAddress,
-                  id: data.user.id
-                }));
-              }
-              localStorage.setItem('token', data.applicationToken);
-              this.logged();
-          }
-        },
-        error => {
-          this.error(error);
-        }
-      );
-  }
+    const payload = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
 
-  public logged() {
-    this.alertService.success('Login successful', true);
-    this.result.emit();
-    this.router.navigate([this.returnUrl]);
-  }
-
-  public error(error) {
-    this.loader.hide();
-    this.alertService.error(error);
+    this.store.dispatch(new LogIn(payload));
   }
 }

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {
   AlertService,
   ApiService,
-  LoadingService,
-  UserService
+  LoadingService
 } from '../../services';
 import {Router} from '@angular/router';
-import {CartModel} from '../../model';
+import {Cart} from '../../store/models';
 
 @Component({
   selector: 'shopping',
@@ -14,23 +13,21 @@ import {CartModel} from '../../model';
   styleUrls: ['./shoppingCart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  public shoppingCart: CartModel;
+  public shoppingCart: Cart;
   public noCartsMessage: string;
   public flatDisabled = false;
 
   constructor(
     private apiService: ApiService,
     private loader: LoadingService,
-    private userService: UserService,
     private alertService: AlertService,
     private router: Router
   ) {
     this.noCartsMessage = 'Votre panier est vide';
-    this.shoppingCart = new CartModel();
   }
 
   ngOnInit(): void {
-    const user = this.userService.getUser();
+    /*const user = this.userService.getUser();
     this.apiService.getCartOf(user.id).subscribe((res: any) => {
       console.log(res);
       if (res && res.flats) {
@@ -39,15 +36,15 @@ export class ShoppingCartComponent implements OnInit {
       }
     }, error => {
       console.log(error);
-    });
+    });*/
   }
 
   public clear(value: string = '') {
-    if (value === 'flats') {
+    /*if (value === 'flats') {
       this.shoppingCart.clear();
     } else if (value === '') {
       this.shoppingCart.clear();
-    }
+    }*/
   }
 
   public update(value: any) {
