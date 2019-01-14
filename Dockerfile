@@ -18,7 +18,6 @@ FROM nginx:1.15.7-alpine
 
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
-COPY nginx/compression.conf /etc/nginx/compression.conf
 
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
