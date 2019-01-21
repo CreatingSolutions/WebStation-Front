@@ -1,0 +1,87 @@
+{
+  "Skialpin":[
+  {
+    "id_lift": 1,
+    "title": "Jeune",
+    "more": [
+      {
+        "id" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "id" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "id" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ]
+  },
+  {
+    "id_lift": 2,
+    "title": "Adulte",
+    "more": [
+      {
+        "id" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "2" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "3" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ]
+  },
+  {
+    "id_lift": 3,
+    "title": "Senior",
+    "more": [
+      {
+        "id" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "id" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "id" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ]
+  },
+  {
+    "id_lift": 3,
+    "title": "Age d'or",
+    "more": [
+      {
+        "id" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "id" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "id" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ]
+  }
+]}

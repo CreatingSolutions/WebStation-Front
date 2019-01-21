@@ -56,6 +56,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {AuthGuard} from './guard';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -87,6 +88,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTooltipModule, //infos bulle front
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

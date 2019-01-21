@@ -20,7 +20,7 @@ export class MockService {
   }
 
   public getLiftMock():Observable<any> {
-    return this.httpClient.get<any>("../../assets/mock/expLift.json", httpOptions);
+    return this.httpClient.get<any>("../../assets/mock/expLift.1.json", httpOptions);
   }
   
 }

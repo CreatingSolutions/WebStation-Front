@@ -6,6 +6,52 @@
   </div>
 </div>
 
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong>Filter les forfaits</strong>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <section class="example-section">
+      <mat-form-field class="example-margin">
+        <mat-select
+          placeholder="Catégories"
+        >
+          <mat-option *ngFor="let forfait of SkiAlpin" [value]="forfait.title">
+              {{forfait.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <section>
+        <mat-checkbox class="example-margin" [(ngModel)]="selectedToutShuss" matTooltip="70 km de pistes"
+        >ToutShuss</mat-checkbox
+      >
+    </section>
+    <section>
+        <mat-checkbox class="example-margin" [(ngModel)]="selectedToutShussDiamant" matTooltip="185 km de pistes"
+        >ToutShuss Diamant</mat-checkbox
+      >
+    </section>
+    <section>
+        <mat-checkbox class="example-margin" [(ngModel)]="selectedAlpin" matTooltip="Accès à toute la piste"
+        >Ski alpin</mat-checkbox
+      >
+    </section>
+    <section>
+        <mat-checkbox class="example-margin" [(ngModel)]="selectedNordique" matTooltip="Accès à toute la piste"
+        >Ski nordique</mat-checkbox
+      >
+    </section>
+    <mat-action-row>
+      <button (click)="makeFilter()" class="mr-lg-3 btn btn-primary">
+        Filtrer
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+
 <div class="container">
   <div class="row">
     <div class="col-sm" *ngFor="let lift of lifts">

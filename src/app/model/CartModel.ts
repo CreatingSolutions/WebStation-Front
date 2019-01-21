@@ -3,6 +3,7 @@ import { Flat } from '.';
 export class CartModel {
   userId: number;
   flats: Flat[];
+  
 
   public addFlat(...flats: Flat[]) {
     if (!this.flats) {

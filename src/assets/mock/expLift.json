@@ -2,21 +2,117 @@
   "Lift":[
   {
     "id_lift": 1,
-    "title": "Essentiel",
-    "more": "pour le week-end", 
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
+    "title": "Essentiel debutant",
+    "more": "piste 1 - 3", 
+    "description": "Lis a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
   },
   {
     "id_lift": 2,
     "title": "Serein",
-    "more": "hors week-end", 
+    "more": "piste 1 - 5", 
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
   },
   {
     "id_lift": 3,
-    "title": "VIP",
-    "more": "toute la semaine", 
+    "title": "Expert",
+    "more": "piste 1 - 10", 
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend sit amet ante et rhoncus. Phasellus a massa quis ipsum pharetra ultricies. Fusce nec turpis sed mauris feugiat eleifend id sed justo. Praesent semper, ex non maximus suscipit, ligula enim eleifend neque, eu lobortis arcu diam sed nisi. Morbi volutpat, mauris a hendrerit tristique, enim tortor gravida erat, at tristique lectus enim vitae ipsum. Sed ornare neque nisl, vel porta odio pretium vel. Ut euismod cursus sem id dignissim. Vivamus molestie, urna ut lobortis imperdiet, risus sem tincidunt turpis, et fermentum dolor felis id nisl. Donec commodo convallis malesuada. Aenean iaculis mollis fringilla. Nulla porta arcu vel ultricies congue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget dolor ut orci pulvinar sollicitudin. Vestibulum dignissim, leo non pretium lobortis, ligula nisl viverra ex, interdum maximus ligula eros a dolor."
+  }
+],
+"Skialpin":[
+  {
+    "Je": [ 
+      {
+        "title": "Jeune",
+        "1" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "2" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "3" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ], 
+    "Ad": [
+      {
+        "title": "Adulte",
+        "1" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "2" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "3" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ],
+    "Se": [
+      {
+        "title": "Sénior",
+        "1" : 1,
+        "ToutShus": 20,
+        "ToutShussD": 23
+      },
+      {
+        "2" : 2,
+        "ToutShus": 26,
+        "ToutShussD": 26
+      },
+      {
+        "3" : 3,
+        "ToutShus": 30,
+        "ToutShussD": 33
+      }
+    ] 
+  }
+],
+
+"Skinordique":[
+  {
+    "Je": [
+      {
+        "1" : 10
+      },
+      {
+        "2" : 22
+      },
+      {
+        "3" : 31
+      }
+    ], 
+    "Ad": [
+      {
+        "1" : 19
+      },
+      {
+        "2" : 22
+      },
+      {
+        "3" : 36
+      }
+    ],
+    "Se": [
+      {
+        "1" : 13
+      },
+      {
+        "2" : 25
+      },
+      {
+        "3" : 38
+      }
+    ] 
   }
 ]
 }
