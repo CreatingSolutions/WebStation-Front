@@ -11,14 +11,14 @@ import ActionTypes = FlatModule.ActionTypes;
 export class FlatEffects {
   @Effect() LoadFlats$: Observable<FlatModule.Actions> = this.actions
     .pipe(
-      ofType(FlatModule.ActionTypes.LOAD_INIT_FLATS),
+      ofType(ActionTypes.LOAD_INIT_FLATS),
       switchMap(() => this.apiService.getAllFlat()),
       map(flats => new FlatModule.SuccessInitFlats(flats)),
       catchError((err) => of(new FlatModule.ErrorLoadAction(err)))
     );
 
   @Effect({ dispatch: false })
-  ActionFailure: Observable<any> = this.actions.pipe(
+  ActionFailure: Observable<FlatModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.ERROR_LOAD_ACTION)
   );
 

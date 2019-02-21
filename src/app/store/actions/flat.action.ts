@@ -1,5 +1,6 @@
 import { Flat } from '../models';
 import { HttpErrorResponse } from '@angular/common/http';
+import {Action} from '@ngrx/store';
 
 export namespace FlatModule {
   export enum ActionTypes {
@@ -12,36 +13,36 @@ export namespace FlatModule {
     ERROR_LOAD_ACTION = '[Flat] Error Load Action'
   }
 
-  export class LoadInitFlats {
+  export class LoadInitFlats implements Action {
     readonly  type = ActionTypes.LOAD_INIT_FLATS;
   }
 
-  export class SuccessInitFlats {
+  export class SuccessInitFlats implements Action {
     readonly type = ActionTypes.SUCCESS_INIT_FLATS;
     constructor(public payload: Flat[]) {}
   }
 
-  export class LoadDeleteFlat {
+  export class LoadDeleteFlat implements Action {
     readonly type = ActionTypes.LOAD_DELETE_FLAT;
     constructor(public payload: number) {}
   }
 
-  export class SuccessDeleteFlat {
+  export class SuccessDeleteFlat implements Action {
     readonly type = ActionTypes.SUCCESS_DELETE_FLAT;
     constructor(public payload: number) {}
   }
 
-  export class LoadCreateFlat {
+  export class LoadCreateFlat implements Action {
     readonly type = ActionTypes.LOAD_CREATE_FLAT;
     constructor(public payload: Flat) {}
   }
 
-  export class SuccessCreateFlat {
+  export class SuccessCreateFlat implements Action {
     readonly type = ActionTypes.SUCCESS_CREATE_FLAT;
     constructor(public payload: Flat) {}
   }
 
-  export class ErrorLoadAction {
+  export class ErrorLoadAction implements Action {
     readonly type = ActionTypes.ERROR_LOAD_ACTION;
     constructor(public payload: any) {}
   }

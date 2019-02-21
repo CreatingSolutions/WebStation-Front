@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {
   HttpHeaders,
   HttpClient,
-  HttpErrorResponse
+  HttpErrorResponse, HttpParams
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import {Flat} from '../store/models';
+import {Cart, Flat, User} from '../store/models';
 import { catchError, retry } from 'rxjs/operators';
 import { LoadingService } from './loading.service';
 import {environment} from '../../environments/environment';
@@ -51,20 +51,15 @@ export class ApiService {
         catchError(this.handleError)
       );
   }
+  */
 
-  public getCartOf(userId: number): Observable<HttpResponse<Cart>> {
-    this.loader.show();
-    return this.httpClient
-      .get<HttpResponse<Cart>>(`${environment.apiUrl}/cart`, {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${localStorage.getItem('token')}`
-        }),
-        params: new HttpParams().set('userId', `${userId}`)
+  public getCartOf(user: User): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/cart`, {
+        params: new HttpParams().set('userId', `${user.id}`)
       });
   }
 
-  public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
+  /*public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
     const flatsIds: number[] = flats.map(x => x.flatId);
     this.loader.show();
 
