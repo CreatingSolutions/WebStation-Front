@@ -4,11 +4,12 @@ import {CartModule} from '../actions';
 
 export interface CartStateEntity extends EntityState<Cart> {
   loading: boolean;
-  selectCart: Cart;
+  loaded: boolean;
+  selectCart: Cart | null;
   logs: {
     type: string,
     message: string
-  };
+  } | null;
 }
 
 export const CartAdapter: EntityAdapter<Cart> = createEntityAdapter<Cart>({
@@ -17,8 +18,9 @@ export const CartAdapter: EntityAdapter<Cart> = createEntityAdapter<Cart>({
 
 export const initialState: CartStateEntity = CartAdapter.getInitialState({
   loading: false,
-  selectCart: undefined,
-  logs: undefined
+  loaded: false,
+  selectCart: null,
+  logs: null
 });
 
 export const {
@@ -40,8 +42,11 @@ export function cartsReducer(
       };
     case CartModule.ActionTypes.SUCCESS_INIT_CARTS:
       return {
-        ...CartAdapter.addOne(action.payload, state),
-        loading: false
+        ...state,
+        selectCart: action.payload,
+        loading: false,
+        loaded: true,
+        logs: {type: 'SUCCESS', message: 'Le panié a été récupéré avec succès'}
       };
     case CartModule.ActionTypes.LOAD_DELETE_CART:
       return {
@@ -50,24 +55,29 @@ export function cartsReducer(
       };
     case CartModule.ActionTypes.SUCCESS_DELETE_CART:
       return {
-        ...CartAdapter.removeOne(action.payload, state),
+        ...state,
+        loading: false,
+        selectCart: null,
         logs: {type: 'SUCCESS', message: 'Le panié a été supprimée avec succès'}
       };
     case CartModule.ActionTypes.LOAD_CREATE_CART:
       return {
         ...state,
-        loading: true
+        loading: true,
+        loaded: true
       };
     case CartModule.ActionTypes.SUCCESS_CREATE_CART:
       return {
-        ...CartAdapter.addOne(action.payload, state),
+        ...state,
+        selectCart: action.payload,
         loading: false,
-        logs: {type: 'SUCCESS', message: 'Le pannié a été créée avec succès'},
+        loaded: true,
+        logs: {type: 'SUCCESS', message: 'Le panié a été crée avec succès'}
       };
     case CartModule.ActionTypes.ERROR_LOAD_ACTION:
       return {
         ...state,
-        logs: {type: 'ERROR', message: action.payload.message},
+        logs: {type: 'ERROR', message: 'Impossible de recuperer le panier'},
         loading: false
       };
     default:

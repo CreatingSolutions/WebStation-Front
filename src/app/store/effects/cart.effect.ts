@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import { CartModule } from '../actions';
+import {CartModule} from '../actions';
+import ActionTypes = CartModule.ActionTypes;
+import LoadInitCarts = CartModule.LoadInitCarts;
 import {ApiService} from '../../services';
 
 @Injectable()
 export class CartEffects {
-  /*@Effect() LoadCarts$: Observable<CartModule.Actions> = this.actions$
+
+  @Effect() LoadCarts$: Observable<CartModule.Actions> = this.actions$
     .pipe(
-      ofType(CartModule.ActionTypes.LOAD_INIT_CARTS),
-      switchMap(action => this.apiService.getAllCart()),
-      map(carts => new CartModule.SuccessInitCarts(carts)),
+      ofType(ActionTypes.LOAD_INIT_CARTS),
+      switchMap((action: LoadInitCarts) => this.apiService.getCartOf(action.payload)),
+      map(cart => new CartModule.SuccessInitCarts(cart)),
       catchError((err) => of(new CartModule.ErrorLoadAction(err)))
-    );*/
+    );
 
   /*@Effect() LoadCreateCart$: Observable<CartModule.Actions> = this.actions$
     .pipe(

@@ -17,7 +17,7 @@ import LogInFailure = UserModule.LogInFailure;
 @Injectable()
 export class UserEffects {
   @Effect()
-  LogIn: Observable<any> = this.actions.pipe(
+  LogIn: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGIN),
     switchMap((login: LogIn) => this.apiService.login(login.payload.email, login.payload.password)),
     map(action => new LogInSuccess(action)),
@@ -25,7 +25,7 @@ export class UserEffects {
   );
 
   @Effect()
-  SignUp: Observable<any> = this.actions.pipe(
+  SignUp: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.SIGNUP),
     switchMap((login: SignUp) => this.apiService.register(login.payload.email, login.payload.password)),
     map(action => new SignUpSuccess(action)),
@@ -33,7 +33,7 @@ export class UserEffects {
   );
 
   @Effect({ dispatch: false })
-  LogInSuccess: Observable<any> = this.actions.pipe(
+  LogInSuccess: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGIN_SUCCESS),
     tap((login: LogInSuccess) => {
       localStorage.setItem('token', login.payload.applicationToken);
@@ -43,7 +43,7 @@ export class UserEffects {
   );
 
   @Effect({ dispatch: false })
-  SignUpSuccess: Observable<any> = this.actions.pipe(
+  SignUpSuccess: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.SIGNUP_SUCCESS),
     tap(() => {
       this.router.navigate(['/']).catch(error => console.log(error));
@@ -52,12 +52,12 @@ export class UserEffects {
   );
 
   @Effect({ dispatch: false })
-  ActionFailure: Observable<any> = this.actions.pipe(
+  ActionFailure: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGIN_FAILURE, ActionTypes.SIGNUP_FAILURE)
   );
 
   @Effect({ dispatch: false })
-  public LogOut: Observable<any> = this.actions.pipe(
+  public LogOut: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGOUT),
     tap(() => {
       localStorage.removeItem('token');
