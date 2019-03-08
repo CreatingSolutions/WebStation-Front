@@ -5,7 +5,12 @@ import {
   LoadingService
 } from '../../services';
 import {Router} from '@angular/router';
-import {Cart} from '../../store/models';
+import {Cart, User} from '../../store/models';
+import { Store } from '@ngrx/store';
+import { CartModule } from 'src/app/store/actions';
+import { Observable } from 'rxjs';
+import { selectUsers$, selectCarts$ } from 'src/app/store/selectors';
+import { AppState } from 'src/app/store';
 
 @Component({
   selector: 'shopping',
@@ -14,29 +19,26 @@ import {Cart} from '../../store/models';
 })
 export class ShoppingCartComponent implements OnInit {
   public shoppingCart: Cart;
-  public noCartsMessage: string;
   public flatDisabled = false;
+  private user$: Observable<User>;
+  public shoppingCart$: Observable<Cart>;
 
   constructor(
-    private apiService: ApiService,
     private loader: LoadingService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>,
   ) {
-    this.noCartsMessage = 'Votre panier est vide';
+    this.user$ = store.select(selectUsers$);
+    this.shoppingCart$ = store.select(selectCarts$);
   }
 
   ngOnInit(): void {
-    /*const user = this.userService.getUser();
-    this.apiService.getCartOf(user.id).subscribe((res: any) => {
-      console.log(res);
-      if (res && res.flats) {
-        this.shoppingCart = <CartModel>res;
-        localStorage.setItem('cart', JSON.stringify(<CartModel>res));
+    this.user$.subscribe(user => {
+      if (user) {
+        this.store.dispatch(new CartModule.LoadInitCarts(user));
       }
-    }, error => {
-      console.log(error);
-    });*/
+    });
   }
 
   public clear(value: string = '') {

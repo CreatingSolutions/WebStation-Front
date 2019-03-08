@@ -1,0 +1,49 @@
+<div *ngIf="stuffs$ | async as stuffs ; else not_found">
+  <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">Réserver votre matériel</h1>
+    </div>
+  </div>
+  <webstation-stuffs-filter title="Filtrer les matériels"></webstation-stuffs-filter>
+  <div *ngIf="stuffs.length > 0 ; else empty_stuffs" class="card-content">
+    <mat-card class="stuff-card" *ngFor="let stuff of stuffs">
+      <mat-card-header>
+        <mat-card-title>{{stuff.title}}</mat-card-title>
+      </mat-card-header>
+      <div>
+        <ngb-carousel *ngIf="images">
+          <ng-template *ngFor="let image of images" ngbSlide>
+            <img
+              class="carousel-img"
+              [src]="image"
+              alt="{{stuff.title}}"
+              width="256"
+              height="256"
+            />
+          </ng-template>
+        </ngb-carousel>
+        <mat-card-content>
+          <p class="p-3 text-stuff">{{stuff.description}}</p>
+        </mat-card-content>
+      </div>
+      <mat-card-actions>
+        <div class="flex-row justify-content-between">
+          <p class="text-black-50">Cout : 10€</p>
+          <button class="btn btn-primary" (click)="addFlatToCart(stuff)">
+            <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <ng-template #empty_stuffs>
+    <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+      Il n'y a pas de matériel à voir.
+    </p>
+  </ng-template>
+</div>
+<ng-template #not_found>
+  <div class="p-xl-5 d-inline-block">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

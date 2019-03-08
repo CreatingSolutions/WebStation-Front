@@ -1,0 +1,14 @@
+<div *ngIf="lift$ | async as lift ; else not_found">
+  <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">{{lift.description}}</h1>
+    </div>
+  </div>
+  <div class="card-content">
+    
+  </div>
+<ng-template #not_found>
+    <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+      Il n'y a pas de forfait disponible.
+    </p>
+</ng-template>

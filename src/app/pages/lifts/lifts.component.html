@@ -1,0 +1,47 @@
+  <!--<div *ngIf="lifts$ | async as lifts ; else not_found">-->
+    <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+      <div class="container">
+        <h1 class="display-7 text-dark">Réserver votre remonté mécanique</h1>
+      </div>
+    </div>
+    <div class="card-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Forfait pour le ski alpin</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button class="btn btn-primary" (click)="changeRoute('skialpin')">
+            <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+            Selectionner ce forfait
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Forfait pour le ski nordique</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button class="btn btn-primary" (click)="changeRoute('skinordique')">
+            <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+            Selectionner ce forfait
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Forfait de telesiege</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button class="btn btn-primary" (click)="changeRoute('telesiege')">
+            <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+            Selectionner ce forfait
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  <!--</div>
+  <ng-template #not_found>
+    <div class="p-xl-5 d-inline-block">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>-->
