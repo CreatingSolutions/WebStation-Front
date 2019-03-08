@@ -1,12 +1,12 @@
 export interface Flat {
-  id?: number;
+  flatId?: number;
   title?: string;
   description?: string;
-  nbPersons?: string;
-  hasSdBWC?: boolean;
-  hasPet?: boolean;
-  hasWifi?: boolean;
+  nbPersonsMin?: number;
+  nbPersonsMax?: number;
+  SdBWC?: boolean;
   orientation?: string;
+  saison?: string;
   startDate?: Date;
   endDate?: Date;
   prices?: number;

@@ -1,0 +1,130 @@
+{
+    "flats" : [{
+      "flatId": 1,
+      "title": "Appartement situé plein sud",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein sud",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "sud",
+      "prices": 500,
+      "saison": "hiver",
+      "startDate": "2019-02-25T16:22:46+01:00",
+      "endDate": "2019-02-25T16:22:54+01:00",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    },
+    {
+      "flatId": 2,
+      "title": "Appartement situé plein nord",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein nord, disponible avec le WIFI gratuit.",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "nord",
+      "prices": 300.21,
+      "saison": "hiver",
+      "startDate": "2019-02-25T16:22:46+01:00",
+      "endDate": "2019-02-25T16:22:54+01:00",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    },
+    {
+      "flatId": 3,
+      "title": "Appartement situé plein ouest",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein ouest",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "ouest",
+      "prices": 90,
+      "saison": "hiver",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    }],
+    "lifts" : {
+      "skinordique": {
+        "jeunes": {
+          "description": "Forfait jeune de 5 à 15 ans",
+          "normal" : [
+            {
+              "id": 1,
+              "label": "1/2 J",
+              "prices": 3.4
+            }
+          ]
+        },
+        "description": "Ski Nordique"
+      },
+      "telesiege": {
+          "unitaire": {
+            "label": "1 aller/retour",
+            "prices": 7.5
+          },
+          "groupe": {
+            "label": "6 aller/retour",
+            "prices": 40
+          }
+      }
+    },
+    "stuffs" : [{
+      "stuffId": 1,
+      "title": "Appartement situé plein sud",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein sud",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    }],
+    "schools" : [{
+      "schoolId": 1,
+      "title": "Appartement situé plein sud",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein sud",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    }],
+    "login": {
+      "user": {
+        "id": 48,
+        "emailAddress": "mat@gmail.com",
+        "password": "$2a$10$m5xpvRvGAJOFWs42.UY5Ju6QHUAISfDMARKdMZOdbEHV6rL47dZni"
+      },
+      "applicationToken": "83b2314b7e67c25752865eda72368cee0db44ee33bb25876f9c9243f5859e075"
+    },
+    "register": {
+      "id": 48,
+      "emailAddress": "mat@gmail.com",
+      "password": "$2a$10$m5xpvRvGAJOFWs42.UY5Ju6QHUAISfDMARKdMZOdbEHV6rL47dZni"
+    },
+    "skialpin": {},
+    "jeunes": {
+      "normal": [
+        {
+          "id": 1,
+          "label": "1/2 J",
+          "prices": 20
+        } 
+      ],
+      "diamant": [
+        {
+          "id": 2,
+          "label": "1/2 J",
+          "prices": 23.2
+        }
+      ],
+      "description": "Forfait jeune de 5 à 15 ans"
+    }
+  }

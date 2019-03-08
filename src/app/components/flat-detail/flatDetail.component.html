@@ -1,0 +1,83 @@
+<h1 mat-dialog-title class="flat-detail__title">{{data.title}}</h1>
+<div mat-dialog-content class="flat-detail">
+    <div class="flat-detail-content">
+        <p class="flat-detail-content__title">Description de l'appartement</p>
+        <div class="flat-detail-content__details">
+            <ngb-carousel *ngIf="data.images">
+                <ng-template *ngFor="let image of data.images" ngbSlide>
+                    <img
+                        class="carousel-img"
+                        [src]="image"
+                        alt="{{data.title}}"
+                        width="256"
+                        height="256"
+                    />
+                </ng-template>
+            </ngb-carousel>
+            <p class="flat-detail-content__details-description">{{data.description}}</p>
+        </div>
+    </div>
+    <div class="flat-detail-period" *ngIf="!data.startDate && !data.endDate ; else is_week" >
+        <p class="flat-detail-period__title">Choisir votre date de séjour</p>
+        <div class="flat-detail-period__details">
+                <mat-form-field>
+                    <input 
+                        matInput 
+                        [matDatepicker]="startDate" 
+                        placeholder="Date de début" 
+                        (dateChange)="startDateEvent('change', $event)"
+                        [formControl]="start">
+                    <mat-error *ngIf="!start.valid">Champs non rempli ou date invalide !</mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker touchui #startDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input 
+                        matInput 
+                        [matDatepicker]="endDate" 
+                        placeholder="Date de fin" 
+                        (dateChange)="endDateEvent('change', $event)"
+                        [formControl]="end">
+                    <mat-error *ngIf="!end.valid">Champs non rempli ou date invalide !</mat-error>
+                    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                    <mat-datepicker touchui #endDate></mat-datepicker>
+                </mat-form-field>  
+            
+        </div>
+    </div>
+    <ng-template class="flat-detail-period" #is_week>
+        <p class="flat-detail-period__title">Votre date de séjour</p>
+        <div class="flat-detail-period__details">
+            <span>Du {{data.startDate | localizedDate}} au {{data.endDate | localizedDate}}</span>
+        </div>
+    </ng-template>
+    <div class="flat-detail-options">
+        <p class="flat-detail-options__title">Options de l'appartement</p>
+        <div class="flat-detail-options__details">
+            <span>Vous êtes combien ? (entre {{data.nbPersonsMin}} à {{data.nbPersonsMax}})</span>
+            <mat-slider
+                thumbLabel="true"
+                tickInterval="1"
+                [min]="data.nbPersonsMin"
+                [max]="data.nbPersonsMax"
+                (change)="slide('change', $event)">
+            </mat-slider>
+            <div class="flat-detail-options__details-age">
+                <input matInput *ngFor="let i of nbPersons" type="number" placeholder="Age de la personne {{i}}" min="1" max="100">
+            </div>
+            <mat-checkbox (change)="suppServiette($event)">Supplément serviette ? (10€ par pers.)</mat-checkbox>
+            <mat-checkbox (change)="suppGarage($event)">Location de garage ? (10€ par nuit)</mat-checkbox>
+            <mat-checkbox (change)="suppMenage($event)">Ménage pour le jour de départ ? ({{pricesByFlat()}}€ le ménage)</mat-checkbox>
+            <mat-checkbox (change)="suppBaby($event)">Lit bébé ? (10€ par jour)</mat-checkbox>
+            <p>Options supplémentaire : WI-FI gratuit.</p>
+        </div>
+    </div>
+    <div class="flat-detail-prices">
+        <small>Taxe de séjour de 0.90€ par pers. (au-dessus de 13 ans)</small>
+        <p class="flat-detail-prices__title">Total de : {{prices}}€</p>
+    </div>
+</div>
+<div mat-dialog-actions class="flat-details__actions">
+    <button (click)="cart()" class="btn btn-primary" [disabled]="dateFormatInvalid">Ajouter au panier</button>
+    <button (click)="close()" class="btn btn-danger">Fermer</button>
+</div>

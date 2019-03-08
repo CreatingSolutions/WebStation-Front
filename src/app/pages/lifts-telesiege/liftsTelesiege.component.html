@@ -1,0 +1,52 @@
+
+<div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">Réserver votre forfait de ski alpin</h1>
+    </div>
+  </div>
+  <div class="card-content">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Jeunes (5-15 ans)</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button class="btn btn-primary" (click)="forfait('skialpin', 'jeunes')">
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+          Selectionner ce forfait
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Adultes (15-65 ans)</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button class="btn btn-primary" (click)="forfait('skialpin', 'adultes')">
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+          Selectionner ce forfait
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Senior (65-75 ans)</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button class="btn btn-primary" (click)="forfait('skialpin', 'senior')">
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+          Selectionner ce forfait
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Age d'or (+75 ans)</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button class="btn btn-primary" (click)="forfait('skialpin', 'ageor')">
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> 
+          Selectionner ce forfait
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

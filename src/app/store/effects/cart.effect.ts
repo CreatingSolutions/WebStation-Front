@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {CartModule} from '../actions';
 import ActionTypes = CartModule.ActionTypes;
 import LoadInitCarts = CartModule.LoadInitCarts;
 import {ApiService} from '../../services';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CartEffects {
@@ -19,21 +20,14 @@ export class CartEffects {
       catchError((err) => of(new CartModule.ErrorLoadAction(err)))
     );
 
-  /*@Effect() LoadCreateCart$: Observable<CartModule.Actions> = this.actions$
-    .pipe(
-      ofType<CartModule.LoadCreateCart>(CartModule.ActionTypes.LOAD_CREATE_CART),
-      switchMap(action => this.apiService.createCart(action.payload)),
-      map(cart => new CartModule.SuccessCreateCart(cart)),
-      catchError((err) => of(new CartModule.ErrorLoadAction(err)))
-    );
+  @Effect({dispatch: false})
+    SuccessAddFlat$: Observable<CartModule.Actions> = this.actions$
+      .pipe(
+        ofType(ActionTypes.SUCCESS_ADD_FLAT_CART),
+        tap(() => {
+          this.router.navigate(['shoppingCart']).catch(err => console.error(err));
+        })
+      );
 
-  @Effect() LoadDeleteCart$: Observable<CartModule.Actions> = this.actions$
-    .pipe(
-      ofType<CartModule.LoadDeleteCart>(CartModule.ActionTypes.LOAD_DELETE_CART),
-      switchMap(action => this.apiService.deleteCart(action.payload)),
-      map(id => new CartModule.SuccessDeleteCart(id)),
-      catchError((err) => of(new CartModule.ErrorLoadAction(err)))
-    );*/
-
-  constructor(private apiService: ApiService, private  actions$: Actions) {}
+  constructor(private apiService: ApiService, private  actions$: Actions, private router: Router) {}
 }

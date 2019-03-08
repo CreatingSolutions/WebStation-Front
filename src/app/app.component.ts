@@ -10,8 +10,7 @@ import { LoaderState } from './model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  loading = false;
-
+  public loading = false;
   private subscription: Subscription;
 
   constructor(

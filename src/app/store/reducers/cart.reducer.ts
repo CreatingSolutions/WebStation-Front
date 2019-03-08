@@ -23,13 +23,6 @@ export const initialState: CartStateEntity = CartAdapter.getInitialState({
   logs: null
 });
 
-export const {
-  selectIds: selectCartsIds,
-  selectEntities: selectCartsEntities,
-  selectAll: selectCarts,
-  selectTotal: selectTotalCarts
-} = CartAdapter.getSelectors();
-
 export function cartsReducer(
   state = initialState,
   action: CartModule.Actions
@@ -46,7 +39,7 @@ export function cartsReducer(
         selectCart: action.payload,
         loading: false,
         loaded: true,
-        logs: {type: 'SUCCESS', message: 'Le panié a été récupéré avec succès'}
+        logs: {type: 'SUCCESS', message: 'Le panier a été récupéré avec succès'}
       };
     case CartModule.ActionTypes.LOAD_DELETE_CART:
       return {
@@ -58,7 +51,7 @@ export function cartsReducer(
         ...state,
         loading: false,
         selectCart: null,
-        logs: {type: 'SUCCESS', message: 'Le panié a été supprimée avec succès'}
+        logs: {type: 'SUCCESS', message: 'Le panier a été supprimée avec succès'}
       };
     case CartModule.ActionTypes.LOAD_CREATE_CART:
       return {
@@ -72,7 +65,7 @@ export function cartsReducer(
         selectCart: action.payload,
         loading: false,
         loaded: true,
-        logs: {type: 'SUCCESS', message: 'Le panié a été crée avec succès'}
+        logs: {type: 'SUCCESS', message: 'Le panier a été crée avec succès'}
       };
     case CartModule.ActionTypes.ERROR_LOAD_ACTION:
       return {

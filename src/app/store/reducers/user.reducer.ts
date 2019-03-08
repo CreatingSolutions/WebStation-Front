@@ -22,13 +22,6 @@ export const initialState: UserStateEntity = UserAdapter.getInitialState({
   logs: null
 });
 
-export const {
-  selectIds: selectUsersIds,
-  selectEntities: selectUsersEntities,
-  selectAll: selectUsers,
-  selectTotal: selectTotalUsers
-} = UserAdapter.getSelectors();
-
 export function usersReducer(
   state = initialState,
   action: UserModule.Actions

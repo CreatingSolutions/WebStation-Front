@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpHeaders,
   HttpClient,
-  HttpErrorResponse, HttpParams
+  HttpParams
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import {Cart, Flat, User} from '../store/models';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { LoadingService } from './loading.service';
 import {environment} from '../../environments/environment';
+import { Flat, User, Lift, Stuff, School } from '../store/models';
+import { timeout } from 'q';
 
 @Injectable()
 export class ApiService {
@@ -22,36 +21,35 @@ export class ApiService {
   }
 
   public getAllFlat(): Observable<Flat[]> {
-    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flat`);
+    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flats`);
+  }
+
+  public getLiftForfait({type, forfait}): Observable<Lift> {
+    return this.httpClient.get<Lift>(`${environment.apiUrl}/lifts/${type}/${forfait}`);
+  }
+
+  public getAllStuff(): Observable<Stuff[]> {
+    return this.httpClient.get<Stuff[]>(`${environment.apiUrl}/stuffs`);
+  }
+
+  public getAllSchool(): Observable<School[]> {
+    return this.httpClient.get<School[]>(`${environment.apiUrl}/schools`);
   }
 
   public login(email: string, password: string): Observable<any> {
-    return this.httpClient
-      .post<any>(`${environment.apiUrl}/login`, {email: email, password: password});
+    return this.httpClient.get<any>(`${environment.apiUrl}/login`/*, {email: email, password: password}*/);
   }
 
   public register(email: string, password: string): Observable<any> {
     this.loader.show();
-    return this.httpClient
-      .post<any>(`${environment.apiUrl}/register`, {email: email, password: password});
+    return this.httpClient.get<any>(`${environment.apiUrl}/register`/*, {email: email, password: password}*/);
   }
 
-  /*public logout(): Observable<HttpResponse<any>> {
+  public logout(): Observable<any> {
     this.loader.show();
     return this.httpClient
-      .get<HttpResponse<any>>(`${environment.apiUrl}/logout`, {
-        observe: 'response',
-        params: new HttpParams().set(
-          'applicationToken',
-          localStorage.getItem('token')
-        )
-      })
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+      .get<any>(`${environment.apiUrl}/logout`);
   }
-  */
 
   public getCartOf(user: User): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiUrl}/cart`, {

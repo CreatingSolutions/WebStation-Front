@@ -1,66 +1,73 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  HttpClientModule,
-  HttpClient,
-  HTTP_INTERCEPTORS
-} from '@angular/common/http';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatIconModule } from '@angular/material/icon';
-
-import { AppComponent } from './app.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  MatSelectModule,
+  MatTabsModule,
+  MatCardModule,
+  MatProgressBarModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatBadgeModule,
+  MatStepperModule,
+  MatListModule,
+  MatIconModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSnackBarModule,
+  MatProgressSpinnerModule
+ } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { REDUCER_TOKEN, appEffects, getReducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home';
+import { AlertComponent } from './components/alert';
 import { FooterComponent } from './components/footer';
 import { HeaderComponent } from './components/header';
-import {
-  AlertService,
-  ApiService,
-  LoadingService,
-} from './services';
-import { CarouselComponent } from './components/carousel';
-import { HomeComponent } from './pages/home';
 import { PresentationComponent } from './pages/presentation';
 import { UserInfoComponent } from './components/user-info';
 import { UserNavComponent } from './components/user-nav';
 import { LoginComponent } from './components/login';
 import { RegisterComponent } from './components/register';
 import { FlatsComponent } from './pages/flats';
-
-import { MatSelectModule } from '@angular/material/select';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableModule } from '@angular/material/table';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatNativeDateModule, MatPaginatorModule} from '@angular/material';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatListModule } from '@angular/material/list';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ShoppingCartComponent } from './pages/shoppingCart';
-import { JwtInterceptor, ErrorInterceptor } from './interceptor';
 import { PaymentComponent } from './pages/payment';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import {AuthGuard} from './guard';
-import {StoreModule} from '@ngrx/store';
-import {EffectsModule} from '@ngrx/effects';
-import {appEffects, getReducers, REDUCER_TOKEN} from './store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {environment} from '../environments/environment';
-import {SnackbarComponent} from './components/snackbar/snackbar.component';
-import {AlertComponent} from './components/alert';
+import { CarouselComponent } from './components/carousel';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { AlertService, ApiService, LoadingService } from './services';
+import { AuthGuard } from './guard';
+import { JwtInterceptor, ErrorInterceptor } from './interceptor';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FlatFilterComponent } from './components/flat-filter';
+import { SchoolsComponent } from './pages/schools';
+import { LiftsComponent } from './pages/lifts';
+import { StuffsComponent } from './pages/stuffs';
+import { SchoolFilterComponent } from './components/school-filter';
+import { LiftFilterComponent } from './components/lift-filter';
+import { StuffFilterComponent } from './components/stuff-filter';
+import { LocalizedDatePipe } from './pipes';
+import { FlatDetailComponent } from './components/flat-detail/flatDetail.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { LiftsSkiAlpinComponent } from './pages/lifts-skialpin';
+import { LiftsSkiNordiqueComponent } from './pages/lifts-skinordique';
+import { LiftsTelesiegeComponent } from './pages/lifts-telesiege';
+import { LiftsForfaitComponent } from './pages/lifts-forfait/liftsForfait.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -93,6 +100,7 @@ export function createTranslateLoader(http: HttpClient) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatSliderModule,
     MatProgressSpinnerModule,
     StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot(appEffects),
@@ -121,10 +129,23 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     FlatsComponent,
+    SchoolsComponent,
+    LiftsComponent,
+    StuffsComponent,
+    FlatFilterComponent,
+    SchoolFilterComponent,
+    LiftFilterComponent,
+    StuffFilterComponent,
     ShoppingCartComponent,
     PaymentComponent,
     CarouselComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    FlatDetailComponent,
+    LocalizedDatePipe,
+    LiftsSkiAlpinComponent,
+    LiftsSkiNordiqueComponent,
+    LiftsTelesiegeComponent,
+    LiftsForfaitComponent
   ],
   providers: [
     AlertService,
@@ -132,11 +153,12 @@ export function createTranslateLoader(http: HttpClient) {
     LoadingService,
     MatDatepickerModule,
     AuthGuard,
+    { provide: LOCALE_ID, useValue: 'fr' },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: REDUCER_TOKEN, useFactory: getReducers }
   ],
-  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent, FlatDetailComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
