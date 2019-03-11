@@ -36,6 +36,10 @@ export class ApiService {
     return this.httpClient.get<School[]>(`${environment.apiUrl}/schools`);
   }
 
+  public setForfait(forfait: {id: number, insurance?: boolean, taked?: number}) {
+    return this.httpClient.post(`${environment.apiUrl}/lifts`, forfait);
+  }
+
   public login(email: string, password: string): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiUrl}/login`/*, {email: email, password: password}*/);
   }

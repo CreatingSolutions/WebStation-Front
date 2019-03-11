@@ -7,7 +7,7 @@ import {AppState} from '../../store';
 import {LiftModule} from '../../store/actions';
 
 @Component({
-  selector: 'websation-lifts-telesiege',
+  selector: 'webstation-lifts-telesiege',
   templateUrl: './liftsTelesiege.component.html',
   styleUrls: ['./liftsTelesiege.component.css']
 })

@@ -5,10 +5,45 @@
     </div>
   </div>
   <div class="card-content">
-    
+    <div *ngIf="lift.normals">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Voir les forfaits normals
+            </mat-panel-title>
+            <mat-panel-description>
+              Tous les forfaits correspondant a l'abonnement normal
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normals" (click)="showDetailLift(normal)">
+              <span>Durée : {{normal.label}}</span>
+              <span>Prix : {{normal.prices}}€</span>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="lift.diamants">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Voir les forfaits diamant
+            </mat-panel-title>
+            <mat-panel-description>
+              Tous les forfaits correspondant a l'abonnement diamant
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamants" (click)="showDetailLift(diamant)">
+            <span>Durée : {{diamant.label}}</span>
+            <span>Prix : {{diamant.prices}}€</span>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </div>
-<ng-template #not_found>
+  <ng-template #not_found>
     <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
       Il n'y a pas de forfait disponible.
     </p>
-</ng-template>
+  </ng-template>

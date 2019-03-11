@@ -7,7 +7,7 @@ import {AppState} from '../../store';
 import {LiftModule} from '../../store/actions';
 
 @Component({
-  selector: 'websation-lifts-ski-nordique',
+  selector: 'webstation-lifts-ski-nordique',
   templateUrl: './liftsSkiNordique.component.html',
   styleUrls: ['./liftsSkiNordique.component.css']
 })

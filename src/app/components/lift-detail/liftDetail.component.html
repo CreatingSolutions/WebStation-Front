@@ -1,0 +1,31 @@
+<h1 mat-dialog-title class="lift-detail__title">Un forfait pour : {{data.label}}</h1>
+<div mat-dialog-content class="lift-detail">
+    <div class="lift-detail-options">
+        <p class="lift-detail-options__title">Options du forfait</p>
+        <div class="lift-detail-options__details">
+            <span>Combien de forfait voulez-vous prendre ?</span>
+            <mat-slider
+                thumbLabel="true"
+                tickInterval="1"
+                [min]="1"
+                [max]="20"
+                (change)="slide('change', $event)">
+            </mat-slider>
+            <div *ngIf="data.type !== 'telesiege'">
+              <mat-checkbox *ngIf="data.insurrance" (change)="checkInsurrance($event)">Prendre l'assurance ?</mat-checkbox>
+              <span>Description supplémentaire : </span>
+              <small>Prévoir une caution de 2€ pour une carte main libre.</small>
+              <small>Moins de 5 ans : Gratuit – prévoir une carte mains libres (avec 2 euros de caution).</small>
+              <small>Les étudiants de 18 à moins de 25 ans bénéficient d’une réduction du 10% sur présentation de leur carte étudiant.</small>
+              <small>Une assurance « Neige » de 2,8 euros par jour (adulte et enfant), 2,1 euros pour une 1/2 journée peut être souscrite en sus du forfait alpin ou nordique.</small>
+            </div>
+        </div>
+    </div>
+    <div class="lift-detail-prices">
+        <p class="lift-detail-prices__title">Total de : {{prices}}€</p>
+    </div>
+</div>
+<div mat-dialog-actions class="lift-details__actions">
+    <button (click)="cart()" class="btn btn-primary">Ajouter au panier</button>
+    <button (click)="close()" class="btn btn-danger">Fermer</button>
+</div>

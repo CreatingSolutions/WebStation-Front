@@ -23,7 +23,7 @@ export class LiftEffects {
       .pipe(
         ofType(ActionTypes.SUCCESS_INIT_LIFTS),
         tap(() => {
-          this.router.navigate(['lifts/forfait']).catch(err => console.error(err));
+          this.router.navigate([`lifts/forfait`]).catch(err => console.error(err));
         })
       );
 

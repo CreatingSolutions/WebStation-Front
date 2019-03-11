@@ -24,6 +24,8 @@
     width: 100%;
     padding: 1em;
     border-radius: 0.5em;
+    border: 1px solid lightgray;
+    box-shadow: 5px 5px 20px 0px lightgrey;
 }
 
 .flat-detail-content__details-description {

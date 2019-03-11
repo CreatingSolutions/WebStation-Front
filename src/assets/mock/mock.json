@@ -73,7 +73,8 @@
           "groupe": {
             "label": "6 aller/retour",
             "prices": 40
-          }
+          },
+        "description": "Telesiege"
       }
     },
     "stuffs" : [{
@@ -111,18 +112,48 @@
     },
     "skialpin": {},
     "jeunes": {
-      "normal": [
+      "normals": [
         {
           "id": 1,
-          "label": "1/2 J",
+          "label": "1 J",
           "prices": 20
-        } 
-      ],
-      "diamant": [
+        },
         {
           "id": 2,
+          "label": "2 J",
+          "prices": 30
+        },
+        {
+          "id": 3,
+          "label": "3 J",
+          "prices": 40
+        },
+        {
+          "id": 4,
+          "label": "4 J",
+          "prices": 50
+        },
+        {
+          "id": 5,
+          "label": "5 J",
+          "prices": 60
+        } 
+      ],
+      "diamants": [
+        {
+          "id": 6,
           "label": "1/2 J",
           "prices": 23.2
+        },
+        {
+          "id": 7,
+          "label": "1 J",
+          "prices": 54.2
+        },
+        {
+          "id": 8,
+          "label": "2 J",
+          "prices": 89.2
         }
       ],
       "description": "Forfait jeune de 5 à 15 ans"

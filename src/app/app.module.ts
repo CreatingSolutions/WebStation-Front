@@ -59,7 +59,6 @@ import { SchoolsComponent } from './pages/schools';
 import { LiftsComponent } from './pages/lifts';
 import { StuffsComponent } from './pages/stuffs';
 import { SchoolFilterComponent } from './components/school-filter';
-import { LiftFilterComponent } from './components/lift-filter';
 import { StuffFilterComponent } from './components/stuff-filter';
 import { LocalizedDatePipe } from './pipes';
 import { FlatDetailComponent } from './components/flat-detail/flatDetail.component';
@@ -68,6 +67,7 @@ import { LiftsSkiAlpinComponent } from './pages/lifts-skialpin';
 import { LiftsSkiNordiqueComponent } from './pages/lifts-skinordique';
 import { LiftsTelesiegeComponent } from './pages/lifts-telesiege';
 import { LiftsForfaitComponent } from './pages/lifts-forfait/liftsForfait.component';
+import { LiftDetailComponent } from './components/lift-detail';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -134,13 +134,13 @@ export function createTranslateLoader(http: HttpClient) {
     StuffsComponent,
     FlatFilterComponent,
     SchoolFilterComponent,
-    LiftFilterComponent,
     StuffFilterComponent,
     ShoppingCartComponent,
     PaymentComponent,
     CarouselComponent,
     SnackbarComponent,
     FlatDetailComponent,
+    LiftDetailComponent,
     LocalizedDatePipe,
     LiftsSkiAlpinComponent,
     LiftsSkiNordiqueComponent,
@@ -158,7 +158,7 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: REDUCER_TOKEN, useFactory: getReducers }
   ],
-  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent, FlatDetailComponent],
+  entryComponents: [LoginComponent, RegisterComponent, PaymentComponent, SnackbarComponent, FlatDetailComponent, LiftDetailComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

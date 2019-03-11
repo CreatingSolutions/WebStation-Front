@@ -74,7 +74,6 @@ export class FlatsComponent implements OnInit {
   }
 
   public showDetailFlat(flat: Flat) {
-    console.log(flat);
     this.dialog.open(FlatDetailComponent, {
         role: 'dialog',
         width: '60%',

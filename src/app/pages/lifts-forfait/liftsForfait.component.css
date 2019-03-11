@@ -31,3 +31,18 @@
 .carousel-img {
   min-width: 100%;
 }
+
+.lift-forfait__card {
+  display: flex !important;
+  margin: 1em;
+  justify-content: space-between;
+}
+
+.lift-forfait__card::after {
+  content: '>';
+}
+
+.lift-forfait__card:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}

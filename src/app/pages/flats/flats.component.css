@@ -4,6 +4,9 @@
   background: #fff;
   width: 30em;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .flat-card:hover {
