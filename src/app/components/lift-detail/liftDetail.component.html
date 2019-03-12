@@ -11,8 +11,8 @@
                 [max]="20"
                 (change)="slide('change', $event)">
             </mat-slider>
-            <div *ngIf="data.type !== 'telesiege'">
-              <mat-checkbox *ngIf="data.insurrance" (change)="checkInsurrance($event)">Prendre l'assurance ?</mat-checkbox>
+            <div *ngIf="data.insurrance">
+              <mat-checkbox (change)="checkInsurrance($event)">Prendre l'assurance ?</mat-checkbox>
               <span>Description supplémentaire : </span>
               <small>Prévoir une caution de 2€ pour une carte main libre.</small>
               <small>Moins de 5 ans : Gratuit – prévoir une carte mains libres (avec 2 euros de caution).</small>

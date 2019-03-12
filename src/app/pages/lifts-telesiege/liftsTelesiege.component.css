@@ -31,3 +31,10 @@
 .carousel-img {
   min-width: 100%;
 }
+
+.lift-forfait__card {
+  display: flex !important;
+  margin: 1em;
+  flex-direction: column;
+  justify-content: space-between;
+}

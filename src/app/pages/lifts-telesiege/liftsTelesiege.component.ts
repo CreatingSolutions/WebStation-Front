@@ -4,7 +4,11 @@ import {
 } from '../../services';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
-import {LiftModule} from '../../store/actions';
+import {Observable} from 'rxjs';
+import {Forfait, Lift} from '../../store/models';
+import {selectLiftsData$} from '../../store/selectors/lift.selector';
+import {LiftDetailComponent} from '../../components/lift-detail';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'webstation-lifts-telesiege',
@@ -12,18 +16,25 @@ import {LiftModule} from '../../store/actions';
   styleUrls: ['./liftsTelesiege.component.css']
 })
 export class LiftsTelesiegeComponent {
+  public lift$: Observable<Lift>;
 
   constructor(
     private alertService: AlertService,
     private store: Store<AppState>,
-  ) { }
+    private dialog: MatDialog
+  ) {
+    this.lift$ = store.select(selectLiftsData$);
+  }
 
-  public forfait(type: string, forfait: string) {
-    this.store.dispatch(new LiftModule.LoadInitLifts(
-      {
-        type: type,
-        forfait: forfait,
+  public showDetailLift(forfait: Forfait) {
+    this.dialog.open(LiftDetailComponent, {
+      role: 'dialog',
+      width: '60%',
+      height: '65%',
+      data: {
+        insurrance: false,
+        ...forfait
       }
-    ));
+    });
   }
 }

@@ -22,8 +22,10 @@ export class LiftEffects {
     SuccessLifts$: Observable<LiftModule.Actions> = this.actions
       .pipe(
         ofType(ActionTypes.SUCCESS_INIT_LIFTS),
-        tap(() => {
-          this.router.navigate([`lifts/forfait`]).catch(err => console.error(err));
+        tap(lift => {
+          console.log(lift);
+          const route = (lift.payload.normals && lift.payload.diamants) ? 'forfait' : 'telesiege';
+          this.router.navigate([`lifts/${route}`]).catch(err => console.error(err));
         })
       );
 

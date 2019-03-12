@@ -25,7 +25,8 @@ export class ApiService {
   }
 
   public getLiftForfait({type, forfait}): Observable<Lift> {
-    return this.httpClient.get<Lift>(`${environment.apiUrl}/lifts/${type}/${forfait}`);
+    const link = `lifts/${type}${forfait ? `/${forfait}` : ''}`;
+    return this.httpClient.get<Lift>(`${environment.apiUrl}/${link}`);
   }
 
   public getAllStuff(): Observable<Stuff[]> {
