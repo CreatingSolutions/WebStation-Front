@@ -4,38 +4,31 @@
       <h1 class="display-7 text-dark">Réserver votre matériel</h1>
     </div>
   </div>
-  <webstation-stuffs-filter title="Filtrer les matériels"></webstation-stuffs-filter>
   <div *ngIf="stuffs.length > 0 ; else empty_stuffs" class="card-content">
-    <mat-card class="stuff-card" *ngFor="let stuff of stuffs">
-      <mat-card-header>
-        <mat-card-title>{{stuff.title}}</mat-card-title>
-      </mat-card-header>
-      <div>
-        <ngb-carousel *ngIf="images">
-          <ng-template *ngFor="let image of images" ngbSlide>
-            <img
-              class="carousel-img"
-              [src]="image"
-              alt="{{stuff.title}}"
-              width="256"
-              height="256"
-            />
-          </ng-template>
-        </ngb-carousel>
-        <mat-card-content>
-          <p class="p-3 text-stuff">{{stuff.description}}</p>
-        </mat-card-content>
-      </div>
-      <mat-card-actions>
-        <div class="flex-row justify-content-between">
-          <p class="text-black-50">Cout : 10€</p>
-          <button class="btn btn-primary" (click)="addFlatToCart(stuff)">
+      <div class="stuff-element" *ngFor="let stuff of stuffs">
+        <img
+          [src]="stuff.img"
+          alt="{{stuff.title}}"
+          width="128"
+          height="128"
+        />
+        <div class="stuff-description">
+          <span class="text-dark">{{stuff.title}}</span>
+          <span class="stuff-description__store">{{stuff.store}}</span>
+        </div>
+        <div class="stuff-action">
+          <div>
+            <button class="btn btn-primary"><fa-icon style="color: white" [icon]="['fas', 'minus']" (click)="discrease(stuff.stuffId)"></fa-icon></button>
+            <span class="stuff-action_number" [id]="stuff.stuffId">1</span>
+            <button class="btn btn-primary"><fa-icon style="color: white" [icon]="['fas', 'plus']" (click)="increase(stuff.stuffId)"></fa-icon></button>
+          </div>
+          <button class="btn btn-primary">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
           </button>
+          <p class="text-black-50">Coût de {{stuff.prices}}€</p>
         </div>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+      </div>
+    </div>
   <ng-template #empty_stuffs>
     <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
       Il n'y a pas de matériel à voir.

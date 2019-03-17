@@ -12,8 +12,7 @@
 
 .card-content {
   display: flex;
-  flex-direction: row;
-  text-align: justify;
+  flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -22,18 +21,35 @@
   margin: 1em;
 }
 
-.text-stuff {
-  height: 200px;
-  hyphens: auto;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: justify;
+.stuff-element {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+  border-bottom: 1px solid lightgray;
 }
 
-mat-card-header {
-  margin-left: 20%;
+.stuff-description__store {
+  font-size: smaller;
+  color: lightgray;
 }
 
-.carousel-img {
-  min-width: 100%;
+.stuff-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
+
+.stuff-action {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.stuff-action_number {
+  color: black;
+  margin: 1em;
+}
+

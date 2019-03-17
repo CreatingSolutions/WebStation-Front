@@ -5,28 +5,23 @@ import {
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {Observable} from 'rxjs';
-import {CartModule, StuffModule} from '../../store/actions';
+import {StuffModule} from '../../store/actions';
 import LoadInitStuffs = StuffModule.LoadInitStuffs;
 import {selectStuffsData$, selectStuffsLogs$} from '../../store/selectors/stuff.selector';
-import { MatDialog } from '@angular/material';
 import { Stuff } from 'src/app/store/models/stuff.interface';
 
 @Component({
-  selector: 'stuffs',
+  selector: 'webstation-stuffs',
   templateUrl: './stuffs.component.html',
   styleUrls: ['./stuffs.component.css']
 })
 export class StuffsComponent implements OnInit {
-  public images = [1, 2, 3].map(
-    () => `https://picsum.photos/1024/1024?random&t=${Math.random()}`
-  );
   public stuffs$: Observable<Stuff[]>;
   public stuffsLogs$: Observable<any>;
 
   constructor(
     private alertService: AlertService,
-    private store: Store<AppState>,
-    private dialog: MatDialog
+    private store: Store<AppState>
   ) {
     this.stuffs$ = store.pipe(select(selectStuffsData$));
     this.stuffsLogs$ = this.store.pipe(select(selectStuffsLogs$));
@@ -46,41 +41,20 @@ export class StuffsComponent implements OnInit {
     });
   }
 
-  public makeFilter() {
-    /*let stuffsValues: Stuff[] = [];
-    if (
-      this.personnesControl.value === '' ||
-      this.personnesControl.value.length === 0
-    ) {
-      stuffsValues = this.stuffsListed;
-    } else {
-      const values: string[] = this.personnesControl.value;
-      stuffsValues = this.stuffsListed.filter(stuff =>
-        values.find(value => value === stuff.nbPersons)
-      );
+  public increase(id: number) {
+    console.log(id);
+    const value = +document.getElementById(`${id}`).innerHTML;
+    if (value < 20) {
+      document.getElementById(`${id}`).innerHTML = `${value + 1}`;
     }
-
-    if (this.selectedAnimals) {
-      stuffsValues = stuffsValues.filter(stuff => stuff.hasPet);
-    }
-
-    if (this.selectedWifi) {
-      stuffsValues = stuffsValues.filter(stuff => stuff.hasWifi);
-    }
-
-    if (this.selectedWC) {
-      stuffsValues = stuffsValues.filter(stuff => stuff.hasSdBWC);
-    }
-
-    this.stuffs = stuffsValues;*/
   }
 
-  public showDetailStuff(stuff: Stuff) {
-    console.log(stuff);
-    /*this.dialog.open(StuffDetailsComponent, {
-        role: 'dialog',
-        data: stuff
-    });*/
+  public discrease(id: number) {
+    console.log(id);
+    const value = +document.getElementById(`${id}`).innerHTML;
+    if (value > 1) {
+      document.getElementById(`${id}`).innerHTML = `${value - 1}`;
+    }
   }
 
   public addStuffToCart(stuff: Stuff) {
