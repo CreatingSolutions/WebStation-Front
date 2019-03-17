@@ -4,7 +4,6 @@
       <h1 class="display-7 text-dark">Réserver votre séance de cours</h1>
     </div>
   </div>
-  <webstation-schools-filter title="Filtrer les séances de cours"></webstation-schools-filter>
   <div *ngIf="schools.length > 0 ; else empty_schools" class="card-content">
     <mat-card class="school-card" *ngFor="let school of schools">
       <mat-card-header>

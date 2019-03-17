@@ -72,69 +72,72 @@
         "title": "Skis alpins avec bâtons et chaussuuuuuures (-15 ans)",
         "store": "Vendu par ToutSchuss",
         "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
-        "prices": 56.00,
-        "cosiness": {
-          "label": "Confort :",
-          "note": "3/5"
-        },
-        "security": {
-          "label": "Sécurité :",
-          "note": "4/5"
-        },
-        "quality": {
-          "label": "Qualité :",
-          "note": "4/5"
-        },
-        "performance": {
-          "label": "Performance :",
-          "note": "5/5"
-        }
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
     },
       {
         "stuffId": 2,
         "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
         "store": "Vendu par ToutSchuss",
         "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
-        "prices": 80.00,
-        "cosiness": {
-          "label": "Confort :",
-          "note": "4/5"
-        },
-        "security": {
-          "label": "Sécurité :",
-          "note": "4/5"
-        },
-        "quality": {
-          "label": "Qualité :",
-          "note": "4/5"
-        },
-        "performance": {
-          "label": "Performance :",
-          "note": "4/5"
-        }
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
       },
       {
         "stuffId": 3,
         "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
         "store": "Vendu par ToutSchuss",
         "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
-        "prices": 150.00,
-        "cosiness": {
-          "label": "Confort :",
-          "note": "4/5"
-        },
-        "security": {
-          "label": "Sécurité :",
-          "note": "4/5"
-        },
-        "quality": {
-          "label": "Qualité :",
-          "note": "4/5"
-        },
-        "performance": {
-          "label": "Performance :",
-          "note": "4/5"
-        }
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
       }
     ],
     "schools" : [{

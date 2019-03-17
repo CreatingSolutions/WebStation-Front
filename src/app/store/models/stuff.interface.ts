@@ -3,14 +3,10 @@ export interface Stuff {
   title: string;
   store: string;
   img: string;
-  prices: number,
-  cosiness: Characteristic;
-  security: Characteristic;
-  quality: Characteristic;
-  performance: Characteristic;
+  qualities: Quality[];
 }
 
-export interface Characteristic {
+export interface Quality {
   label: string;
   note: string;
 }

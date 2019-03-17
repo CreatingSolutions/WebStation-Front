@@ -15,6 +15,9 @@
         <div class="stuff-description">
           <span class="text-dark">{{stuff.title}}</span>
           <span class="stuff-description__store">{{stuff.store}}</span>
+          <div class="stuff-description__quality">
+            <p class="text-dark" *ngFor="let quality of stuff.qualities">{{quality.label}} {{quality.note}}</p>
+          </div>
         </div>
         <div class="stuff-action">
           <div>
@@ -25,7 +28,6 @@
           <button class="btn btn-primary">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
           </button>
-          <p class="text-black-50">Coût de {{stuff.prices}}€</p>
         </div>
       </div>
     </div>

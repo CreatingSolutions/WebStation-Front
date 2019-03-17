@@ -33,6 +33,7 @@
 .stuff-description__store {
   font-size: smaller;
   color: lightgray;
+  margin-bottom: 1em;
 }
 
 .stuff-description {
@@ -44,8 +45,13 @@
 
 .stuff-action {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
+}
+
+.stuff-description__quality {
+  width: 100%;
+  text-align: left;
 }
 
 .stuff-action_number {

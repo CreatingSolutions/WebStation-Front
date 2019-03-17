@@ -4,7 +4,6 @@
       <h1 class="display-7 text-dark">Réserver un appartement</h1>
     </div>
   </div>
-  <webstation-flats-filter title="Filtrer les appartements"></webstation-flats-filter>
   <div *ngIf="flats.length > 0 ; else empty_flats" class="card-content">
     <mat-card class="flat-card" *ngFor="let flat of flats">
       <mat-card-header>

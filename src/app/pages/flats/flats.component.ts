@@ -44,35 +44,6 @@ export class FlatsComponent implements OnInit {
     });
   }
 
-  public makeFilter() {
-    /*let flatsValues: Flat[] = [];
-    if (
-      this.personnesControl.value === '' ||
-      this.personnesControl.value.length === 0
-    ) {
-      flatsValues = this.flatsListed;
-    } else {
-      const values: string[] = this.personnesControl.value;
-      flatsValues = this.flatsListed.filter(flat =>
-        values.find(value => value === flat.nbPersons)
-      );
-    }
-
-    if (this.selectedAnimals) {
-      flatsValues = flatsValues.filter(flat => flat.hasPet);
-    }
-
-    if (this.selectedWifi) {
-      flatsValues = flatsValues.filter(flat => flat.hasWifi);
-    }
-
-    if (this.selectedWC) {
-      flatsValues = flatsValues.filter(flat => flat.hasSdBWC);
-    }
-
-    this.flats = flatsValues;*/
-  }
-
   public showDetailFlat(flat: Flat) {
     this.dialog.open(FlatDetailComponent, {
         role: 'dialog',
