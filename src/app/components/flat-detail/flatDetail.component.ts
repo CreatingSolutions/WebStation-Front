@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDatepickerInputEvent, MatSliderChange } from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatDatepickerInputEvent, MatSliderChange, MatCheckboxChange} from '@angular/material';
 import { Flat } from 'src/app/store/models';
 import { AppState } from 'src/app/store';
 import { Store } from '@ngrx/store';
@@ -84,6 +84,22 @@ export class FlatDetailComponent {
                 this.prices = this.data.prices;
             }
         }
+    }
+
+    public suppServiette(event: MatCheckboxChange) {
+      console.log(event.checked);
+    }
+
+    public suppGarage(event: MatCheckboxChange) {
+      console.log(event.checked);
+    }
+
+    public suppMenage(event: MatCheckboxChange) {
+      console.log(event.checked);
+    }
+
+    public suppBaby(event: MatCheckboxChange) {
+      console.log(event.checked);
     }
 
     public cart() {
