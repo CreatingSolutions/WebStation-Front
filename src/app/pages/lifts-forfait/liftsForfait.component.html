@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="card-content">
-    <div *ngIf="lift.normals">
+    <div *ngIf="lift.normal">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -16,14 +16,14 @@
               Tous les forfaits correspondant a l'abonnement normal
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normals" (click)="showDetailLift(normal)">
+          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normal" (click)="showDetailLift(normal)">
               <span>Durée : {{normal.label}}</span>
               <span>Prix : {{normal.prices}}€</span>
           </mat-card>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-    <div *ngIf="lift.diamants">
+    <div *ngIf="lift.diamant">
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -34,7 +34,7 @@
               Tous les forfaits correspondant a l'abonnement diamant
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamants" (click)="showDetailLift(diamant)">
+          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamant" (click)="showDetailLift(diamant)">
             <span>Durée : {{diamant.label}}</span>
             <span>Prix : {{diamant.prices}}€</span>
           </mat-card>

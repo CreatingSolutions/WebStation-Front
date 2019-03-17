@@ -24,7 +24,7 @@ export class LiftEffects {
         ofType(ActionTypes.SUCCESS_INIT_LIFTS),
         tap(lift => {
           console.log(lift);
-          const route = (lift.payload.normals && lift.payload.diamants) ? 'forfait' : 'telesiege';
+          const route = (lift.payload.normal && lift.payload.diamant) ? 'forfait' : 'telesiege';
           this.router.navigate([`lifts/${route}`]).catch(err => console.error(err));
         })
       );
