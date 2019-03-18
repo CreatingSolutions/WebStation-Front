@@ -1,4 +1,5 @@
 export interface Lift {
+    liftId: number;
     description?: string;
     normal?: Forfait[];
     diamant?: Forfait[];

@@ -17,16 +17,12 @@ import { School } from 'src/app/store/models/school.interface';
   styleUrls: ['./schools.component.css']
 })
 export class SchoolsComponent implements OnInit {
-  public images = [1, 2, 3].map(
-    () => `https://picsum.photos/1024/1024?random&t=${Math.random()}`
-  );
   public schools$: Observable<School[]>;
   public schoolsLogs$: Observable<any>;
 
   constructor(
     private alertService: AlertService,
-    private store: Store<AppState>,
-    private dialog: MatDialog
+    private store: Store<AppState>
   ) {
     this.schools$ = store.pipe(select(selectSchoolsData$));
     this.schoolsLogs$ = this.store.pipe(select(selectSchoolsLogs$));
@@ -44,43 +40,6 @@ export class SchoolsComponent implements OnInit {
         }
       }
     });
-  }
-
-  public makeFilter() {
-    /*let schoolsValues: School[] = [];
-    if (
-      this.personnesControl.value === '' ||
-      this.personnesControl.value.length === 0
-    ) {
-      schoolsValues = this.schoolsListed;
-    } else {
-      const values: string[] = this.personnesControl.value;
-      schoolsValues = this.schoolsListed.filter(school =>
-        values.find(value => value === school.nbPersons)
-      );
-    }
-
-    if (this.selectedAnimals) {
-      schoolsValues = schoolsValues.filter(school => school.hasPet);
-    }
-
-    if (this.selectedWifi) {
-      schoolsValues = schoolsValues.filter(school => school.hasWifi);
-    }
-
-    if (this.selectedWC) {
-      schoolsValues = schoolsValues.filter(school => school.hasSdBWC);
-    }
-
-    this.schools = schoolsValues;*/
-  }
-
-  public showDetailSchool(school: School) {
-    console.log(school);
-    /*this.dialog.open(SchoolDetailsComponent, {
-        role: 'dialog',
-        data: school
-    });*/
   }
 
   public addSchoolToCart(school: School) {

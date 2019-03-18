@@ -18,8 +18,8 @@ export class FlatDetailComponent {
     private startDate: Date;
     private endDate: Date;
     public prices: number;
-    private now = moment.now();
-    public dateFormatInvalid = true;
+    private now = moment.now;
+    public dateFormatInvalid = false;
     public nbPersons = [1];
 
     constructor(
@@ -27,7 +27,8 @@ export class FlatDetailComponent {
         @Inject(MAT_DIALOG_DATA) public data: Flat,
         private store: Store<AppState>
     ) {
-        this.prices = data.prices;
+      this.dateFormatInvalid = !data.startDate && !data.endDate;
+      this.prices = data.prices;
     }
 
     public close() {

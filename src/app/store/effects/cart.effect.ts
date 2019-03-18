@@ -20,14 +20,14 @@ export class CartEffects {
       catchError((err) => of(new CartModule.ErrorLoadAction(err)))
     );
 
-  @Effect({dispatch: false})
+  /*@Effect({dispatch: false})
     SuccessAddFlat$: Observable<CartModule.Actions> = this.actions$
       .pipe(
         ofType(ActionTypes.SUCCESS_ADD_FLAT_CART),
         tap(() => {
           this.router.navigate(['shoppingCart']).catch(err => console.error(err));
         })
-      );
+      );*/
 
   constructor(private apiService: ApiService, private  actions$: Actions, private router: Router) {}
 }

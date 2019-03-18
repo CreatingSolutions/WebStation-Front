@@ -3,6 +3,7 @@ export interface Stuff {
   title: string;
   store: string;
   img: string;
+  price: number;
   qualities: Quality[];
 }
 

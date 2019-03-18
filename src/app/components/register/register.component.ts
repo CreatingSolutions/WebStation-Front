@@ -1,13 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
   Validators,
   FormControl
 } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import {AlertService, ApiService, LoadingService} from '../../services';
 import {AppState} from '../../store';
 import {Store} from '@ngrx/store';
 import {UserModule} from '../../store/actions';

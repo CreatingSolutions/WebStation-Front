@@ -18,6 +18,7 @@
           <div class="stuff-description__quality">
             <p class="text-dark" *ngFor="let quality of stuff.qualities">{{quality.label}} {{quality.note}}</p>
           </div>
+          <small style="color: lightgray; text-align: justify;">Une assurance perte de matériel sera proposée en sus de chaque location : équivalent à 3% du prix de la location</small>
         </div>
         <div class="stuff-action">
           <div>
@@ -28,6 +29,7 @@
           <button class="btn btn-primary">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
           </button>
+          <p class="text-dark">Prix unitaire : {{stuff.price}}€</p>
         </div>
       </div>
     </div>

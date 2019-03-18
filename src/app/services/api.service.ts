@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   public getAllSchool(): Observable<School[]> {
-    return this.httpClient.get<School[]>(`${environment.apiUrl}/schools`);
+    return this.httpClient.get<School[]>(`${environment.apiUrl}/packs`);
   }
 
   public setForfait(forfait: {id: number, insurance?: boolean, taked?: number}) {

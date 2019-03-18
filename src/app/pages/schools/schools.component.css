@@ -1,39 +1,42 @@
-.school-card {
-  transition: box-shadow 0.3s;
-  margin: 20px;
-  background: #fff;
-  width: 30em;
-  text-align: center;
-}
-
-.school-card:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
-}
-
 .card-content {
   display: flex;
   flex-direction: row;
   text-align: justify;
-  align-items: center;
   flex-wrap: wrap;
+  color: black;
 }
 
-.card-content > img {
+.pack-content {
+  border: 1px solid lightgray;
+  padding: 1em;
   margin: 1em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px lightgray;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.text-school {
-  height: 200px;
-  hyphens: auto;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: justify;
+.pack-content:hover {
+  box-shadow: 0px 0px 10px 1px lightgray;
 }
 
-mat-card-header {
-  margin-left: 20%;
+.pack-content__period {
+  border-bottom: 1px solid lightgray;
 }
 
-.carousel-img {
-  min-width: 100%;
+.pack-content__tickets {
+  list-style: none;
+  width: 100%;
+  padding-inline-start: 0 !important;
+  padding-left: 1em;
+  margin-left: 10px;
+}
+
+.pack-content__action {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
