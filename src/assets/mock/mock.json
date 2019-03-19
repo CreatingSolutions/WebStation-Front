@@ -251,21 +251,29 @@
       "userId": 48,
       "flats" : [{
         "flatId": 1,
+        "image": "https://picsum.photos/256/256/?image=1029",
         "title": "Appartement situé plein sud",
-        "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein sud",
-        "nbPersonsMin": 1,
-        "nbPersonsMax": 4,
-        "SdBWC": true,
-        "orientation": "sud",
-        "prices": 500,
-        "saison": "hiver",
-        "startDate": "2019-02-25T16:22:46+01:00",
-        "endDate": "2019-02-25T16:22:54+01:00",
-        "images": [
-          "https://picsum.photos/256/256/?image=1029",
-          "https://picsum.photos/256/256/?image=650",
-          "https://picsum.photos/256/256/?image=1031"
-        ]
-      }]
+        "description": "L'appartement situé dans un petit coin de paradis avec cristiano ronaldo criant 'Siiiiiiiiiii'",
+        "price": 200
+      }],
+      "totalFlatPrice": 200,
+      "lift": [{
+        "id": 1,
+        "title": "Forfait 1/2 J",
+        "description": "Forfait jeune",
+        "taked": 3,
+        "insurrance": false,
+        "price": 80
+      }],
+      "totalLiftPrice": 200,
+      "stuff": [{
+        "id": 1,
+        "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
+        "description": "Vendu par ToutSchuss",
+        "taked": 3,
+        "price": 80
+      }],
+      "totalStuffPrice": 200,
+      "totalPrice": 200
     }
   }

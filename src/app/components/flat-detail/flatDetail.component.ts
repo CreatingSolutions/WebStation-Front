@@ -18,7 +18,7 @@ export class FlatDetailComponent {
     private startDate: Date;
     private endDate: Date;
     public prices: number;
-    private now = moment.now;
+    private now = moment.now();
     public dateFormatInvalid = false;
     public nbPersons = [1];
 

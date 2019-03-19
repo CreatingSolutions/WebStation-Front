@@ -18,10 +18,12 @@ export const CartAdapter: EntityAdapter<Cart> = createEntityAdapter<Cart>({
 
 const addFlatToCart = (cart: Cart, flat: Flat) => {
   if (!cart) {
-    cart = {
-      flats: [flat]
-    };
-  } else if (!cart.flats) {
+    cart = <Cart> ({
+      flats: [{...flat}],
+      stuffs: [],
+      lifts: [],
+    });
+  } else if (cart.flats && cart.flats.length === 0) {
     cart.flats = [flat];
   } else {
     if (!cart.flats.find(x => x.flatId === flat.flatId)) {
@@ -33,10 +35,12 @@ const addFlatToCart = (cart: Cart, flat: Flat) => {
 
 const addStuffToCart = (cart: Cart, stuff: Stuff) => {
   if (!cart) {
-    cart = {
-      stuffs: [stuff]
-    };
-  } else if (!cart.stuffs) {
+    cart = <Cart> ({
+      flats: [],
+      stuffs: [{...stuff}],
+      lifts: [],
+    });
+  } else if (cart.stuffs && cart.stuffs.length === 0) {
     cart.stuffs = [stuff];
   } else {
     if (!cart.stuffs.find(x => x.stuffId === stuff.stuffId)) {
@@ -48,16 +52,19 @@ const addStuffToCart = (cart: Cart, stuff: Stuff) => {
 
 const addLiftToCart = (cart: Cart, lift: Lift) => {
   if (!cart) {
-    cart = {
-      lifts: [lift]
-    };
-  } else if (!cart.lifts) {
+    cart = <Cart> ({
+      flats: [],
+      stuffs: [],
+      lifts: [{...lift}]
+    });
+  } else if (cart.lifts && cart.lifts.length === 0) {
     cart.lifts = [lift];
   } else {
-    if (!cart.lifts.find(x => x.liftId === lift.liftId)) {
+    /*if (!cart.lifts.find(x => x.liftId === lift.liftId)) {
       cart.lifts.push(lift);
-    }
+    }*/
   }
+
   return cart;
 };
 
