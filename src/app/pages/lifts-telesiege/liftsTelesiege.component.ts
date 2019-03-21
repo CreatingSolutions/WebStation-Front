@@ -26,13 +26,14 @@ export class LiftsTelesiegeComponent {
     this.lift$ = store.select(selectLiftsData$);
   }
 
-  public showDetailLift(forfait: Forfait) {
+  public showDetailLift(forfait: Forfait, description: string) {
     this.dialog.open(LiftDetailComponent, {
       role: 'dialog',
       width: '60%',
       height: '65%',
       data: {
         insurrance: false,
+        description,
         ...forfait
       }
     });

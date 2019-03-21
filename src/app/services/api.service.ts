@@ -24,21 +24,29 @@ export class ApiService {
     return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flats`);
   }
 
+  public addFlatToCart(flatId: number): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/flats`, { flatId });
+  }
+
   public getLiftForfait({type, forfait}): Observable<Lift> {
     const link = `lifts/${type}${forfait ? `/${forfait}` : ''}`;
     return this.httpClient.get<Lift>(`${environment.apiUrl}/${link}`);
+  }
+
+  public addForfaitToCart(forfait: {id: number, insurance?: boolean, taked?: number}) {
+    return this.httpClient.post(`${environment.apiUrl}/lifts`, forfait);
   }
 
   public getAllStuff(): Observable<Stuff[]> {
     return this.httpClient.get<Stuff[]>(`${environment.apiUrl}/stuffs`);
   }
 
-  public getAllSchool(): Observable<School[]> {
-    return this.httpClient.get<School[]>(`${environment.apiUrl}/packs`);
+  public addStuffToCart(stuff: {stuffId: number, taked?: number}): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/flats`, stuff);
   }
 
-  public setForfait(forfait: {id: number, insurance?: boolean, taked?: number}) {
-    return this.httpClient.post(`${environment.apiUrl}/lifts`, forfait);
+  public getAllSchool(): Observable<School[]> {
+    return this.httpClient.get<School[]>(`${environment.apiUrl}/packs`);
   }
 
   public login(email: string, password: string): Observable<any> {
@@ -61,31 +69,4 @@ export class ApiService {
         params: new HttpParams().set('userId', `${user.id}`)
       });
   }
-
-  /*public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
-    const flatsIds: number[] = flats.map(x => x.flatId);
-    this.loader.show();
-
-    return this.httpClient
-      .post<HttpResponse<any>>(
-        `${environment.apiUrl}/cart/addElements?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatsIds)}`,
-        { observe: 'response'}
-      )
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
-  }
-
-  public addElementToCart(userId: number, flatId: number): Observable<HttpResponse<any>> {
-    this.loader.show();
-
-    return this.httpClient.post<HttpResponse<any>>(
-      `${environment.apiUrl}/cart/addOne?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatId)}`,
-      { observe: 'response'}
-      ).pipe(
-        retry(3),
-        catchError(this.handleError)
-    );
-  }*/
 }

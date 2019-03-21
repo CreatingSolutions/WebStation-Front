@@ -8,10 +8,12 @@ export namespace CartModule {
     SUCCESS_INIT_CARTS = '[cartList] Success Init Carts',
     LOAD_DELETE_CART = '[cartList] Load Delete Cart',
     SUCCESS_DELETE_CART = '[cartList] Success Delete Cart',
-
     LOAD_ADD_FLAT_CART = '[Cart] Load adding flat in cart',
+    LOAD_DELETE_FLAT_CART = '[Cart] Load deleting flat in cart',
     LOAD_ADD_STUFF_CART = '[Cart] Load adding stuff in cart',
+    LOAD_DELETE_STUFF_CART = '[Cart] Load deleting stuff in cart',
     LOAD_ADD_LIFT_CART = '[Cart] Load adding lift in cart',
+    LOAD_DELETE_LIFT_CART = '[Cart] Load deleting lift in cart',
     ERROR_LOAD_ACTION = '[cartList] Error Load Action'
   }
 
@@ -27,7 +29,7 @@ export namespace CartModule {
 
   export class LoadDeleteCart implements Action {
     readonly type = ActionTypes.LOAD_DELETE_CART;
-    constructor(public payload: number) {}
+    constructor() {}
   }
 
   export class SuccessDeleteCart implements Action {
@@ -37,17 +39,32 @@ export namespace CartModule {
 
   export class LoadAddFlatCart implements Action {
     readonly type = ActionTypes.LOAD_ADD_FLAT_CART;
-    constructor(public payload: Flat) {}
+    constructor(public payload: any) {}
+  }
+
+  export class LoadDeleteFlatCart implements Action {
+    readonly type = ActionTypes.LOAD_DELETE_FLAT_CART;
+    constructor(public payload: number) {}
   }
 
   export class LoadAddStuffCart implements Action {
     readonly type = ActionTypes.LOAD_ADD_STUFF_CART;
-    constructor(public payload: Stuff) {}
+    constructor(public payload: any) {}
+  }
+
+  export class LoadDeleteStuffCart implements Action {
+    readonly type = ActionTypes.LOAD_DELETE_STUFF_CART;
+    constructor(public payload: number) {}
   }
 
   export class LoadAddLiftCart implements Action {
     readonly type = ActionTypes.LOAD_ADD_LIFT_CART;
-    constructor(public payload: Lift) {}
+    constructor(public payload: any) {}
+  }
+
+  export class LoadDeleteLiftCart implements Action {
+    readonly type = ActionTypes.LOAD_DELETE_LIFT_CART;
+    constructor(public payload: number) {}
   }
 
   export class ErrorLoadAction implements Action {
@@ -60,8 +77,11 @@ export namespace CartModule {
     | ErrorLoadAction
     | SuccessInitCarts
     | LoadAddFlatCart
+    | LoadDeleteFlatCart
     | LoadAddLiftCart
+    | LoadDeleteLiftCart
     | LoadAddStuffCart
+    | LoadDeleteStuffCart
     | LoadDeleteCart
     | SuccessDeleteCart;
 }

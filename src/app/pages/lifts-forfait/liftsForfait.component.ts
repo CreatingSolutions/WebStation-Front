@@ -32,14 +32,15 @@ export class LiftsForfaitComponent implements OnInit {
     });
   }
 
-  public showDetailLift(forfait: Forfait) {
+  public showDetailLift(forfait: Forfait, description: string) {
     this.dialog.open(LiftDetailComponent, {
-        role: 'dialog',
-        width: '60%',
-        height: '65%',
-        data: {
-        insurrance: true,
-        ...forfait
+          role: 'dialog',
+          width: '60%',
+          height: '65%',
+          data: {
+          insurrance: true,
+          description,
+          ...forfait
       }
     });
   }

@@ -5,7 +5,7 @@ import {
 import {select, Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {Observable} from 'rxjs';
-import {StuffModule} from '../../store/actions';
+import {CartModule, StuffModule} from '../../store/actions';
 import LoadInitStuffs = StuffModule.LoadInitStuffs;
 import {selectStuffsData$, selectStuffsLogs$} from '../../store/selectors/stuff.selector';
 import { Stuff } from 'src/app/store/models/stuff.interface';
@@ -58,6 +58,13 @@ export class StuffsComponent implements OnInit {
   }
 
   public addStuffToCart(stuff: Stuff) {
-    //this.store.dispatch(new CartModule.LoadAddStuffCart(stuff));
+    const value = +document.getElementById(`${stuff.stuffId}`).innerHTML;
+    this.store.dispatch(new CartModule.LoadAddStuffCart({
+      stuffId: stuff.stuffId,
+      title: stuff.title,
+      description: stuff.store,
+      taked: value,
+      price: stuff.price * value,
+    }));
   }
 }

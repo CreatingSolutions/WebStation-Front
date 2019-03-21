@@ -26,7 +26,7 @@
             <span class="stuff-action_number" [id]="stuff.stuffId">1</span>
             <button class="btn btn-primary"><fa-icon style="color: white" [icon]="['fas', 'plus']" (click)="increase(stuff.stuffId)"></fa-icon></button>
           </div>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" (click)="addStuffToCart(stuff)">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
           </button>
           <p class="text-dark">Prix unitaire : {{stuff.price}}€</p>

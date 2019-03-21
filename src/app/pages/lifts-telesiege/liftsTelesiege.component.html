@@ -13,7 +13,7 @@
         <span>Durée : {{unitaire.label}}</span>
         <span>Prix : {{unitaire.prices}}€</span>
         <mat-card-actions>
-          <button class="btn btn-primary" (click)="showDetailLift(unitaire)">
+          <button class="btn btn-primary" (click)="showDetailLift(unitaire, lift.description)">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon>
             Selectionner ce forfait
           </button>
@@ -28,7 +28,7 @@
         <span>Durée : {{groupe.label}}</span>
         <span>Prix : {{groupe.prices}}€</span>
         <mat-card-actions>
-          <button class="btn btn-primary" (click)="showDetailLift(groupe)">
+          <button class="btn btn-primary" (click)="showDetailLift(groupe, lift.description)">
             <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon>
             Selectionner ce forfait
           </button>

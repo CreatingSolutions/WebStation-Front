@@ -1,8 +1,13 @@
-import {Flat, Lift, Stuff} from '.';
-
 export interface Cart {
-  id?: number;
-  flats?: Flat[];
-  stuffs?: Stuff[];
-  lifts?: Lift[];
+  cartId: number;
+  userId: number;
+  flats: any[];
+  stuffs: any[];
+  lifts: any[];
+  validate: boolean;
+  paid: boolean;
+  totalFlatPrice: number;
+  totalLiftPrice: number;
+  totalStuffPrice: number;
+  totalPrice: number;
 }

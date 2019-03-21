@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AlertService,
-  ApiService,
   LoadingService
 } from '../../services';
 import {Router} from '@angular/router';
 import {Cart, User} from '../../store/models';
 import { Store } from '@ngrx/store';
-import { CartModule } from 'src/app/store/actions';
 import { Observable } from 'rxjs';
-import { selectUsers$, selectCarts$ } from 'src/app/store/selectors';
+import {selectCarts$, selectUsers$} from 'src/app/store/selectors';
 import { AppState } from 'src/app/store';
+import {CartModule} from '../../store/actions';
+import LoadInitCarts = CartModule.LoadInitCarts;
+import Constantes from '../../../assets/label';
 
 @Component({
   selector: 'shopping',
   templateUrl: './shoppingCart.component.html',
   styleUrls: ['./shoppingCart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
-  public shoppingCart: Cart;
-  public flatDisabled = false;
-  private user$: Observable<User>;
+export class ShoppingCartComponent {
   public shoppingCart$: Observable<Cart>;
+  public users$: Observable<User>;
 
   constructor(
     private loader: LoadingService,
@@ -29,28 +28,34 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router,
     private store: Store<AppState>,
   ) {
-    this.user$ = store.select(selectUsers$);
     this.shoppingCart$ = store.select(selectCarts$);
-  }
-
-  ngOnInit(): void {
-    this.user$.subscribe(user => {
+    this.users$ = store.select(selectUsers$);
+    this.users$.subscribe(user => {
       if (user) {
-        this.store.dispatch(new CartModule.LoadInitCarts(user));
+        this.store.dispatch(new LoadInitCarts(user));
       }
     });
   }
 
-  public clear(value: string = '') {
-    /*if (value === 'flats') {
-      this.shoppingCart.clear();
-    } else if (value === '') {
-      this.shoppingCart.clear();
-    }*/
-  }
-
-  public update(value: any) {
-    this.flatDisabled = value.source.selectedOptions.selected.length > 0;
+  public delete(type: string = '', id: number = -1) {
+    switch (type) {
+      case 'flat': {
+        this.store.dispatch(new CartModule.LoadDeleteFlatCart(id));
+        break;
+      }
+      case 'stuff': {
+        this.store.dispatch(new CartModule.LoadDeleteStuffCart(id));
+        break;
+      }
+      case 'lift': {
+        this.store.dispatch(new CartModule.LoadDeleteLiftCart(id));
+        break;
+      }
+      default : {
+        this.store.dispatch(new CartModule.LoadDeleteCart());
+        break;
+      }
+    }
   }
 
   public validateCart() {
@@ -62,6 +67,17 @@ export class ShoppingCartComponent implements OnInit {
       this.router.navigate(['/']);
       this.alertService.error('Vous n\'etes pas connecté');
     }
+  }
+
+  public keys(o: any): string[] {
+    const values: string[] = [];
+    const keys = Object.keys(o);
+    const constantes = Object.keys(Constantes);
+    keys.forEach(key => {
+      const value = constantes.find(x => x === key);
+      values.push(Constantes[value]);
+    });
+    return values;
   }
 
   public error(error) {

@@ -16,7 +16,7 @@
               Tous les forfaits correspondant a l'abonnement normal
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normal" (click)="showDetailLift(normal)">
+          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normal" (click)="showDetailLift(normal, lift.description)">
               <span>Durée : {{normal.label}}</span>
               <span>Prix : {{normal.prices}}€</span>
           </mat-card>
@@ -34,7 +34,7 @@
               Tous les forfaits correspondant a l'abonnement diamant
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamant" (click)="showDetailLift(diamant)">
+          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamant" (click)="showDetailLift(diamant, lift.description)">
             <span>Durée : {{diamant.label}}</span>
             <span>Prix : {{diamant.prices}}€</span>
           </mat-card>

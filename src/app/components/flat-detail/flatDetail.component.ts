@@ -104,7 +104,12 @@ export class FlatDetailComponent {
     }
 
     public cart() {
-        this.store.dispatch(new CartModule.LoadAddFlatCart(this.data));
+        this.store.dispatch(new CartModule.LoadAddFlatCart({
+          flatId: this.data.flatId,
+          title: this.data.title,
+          description: this.data.description,
+          price: this.data.prices
+        }));
         this.close();
     }
 }
