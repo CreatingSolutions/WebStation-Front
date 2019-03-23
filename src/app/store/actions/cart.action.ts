@@ -22,7 +22,7 @@ export namespace CartModule {
 
   export class LoadInitCarts implements Action {
     readonly  type = ActionTypes.LOAD_INIT_CARTS;
-    constructor(public payload: User) {}
+    constructor() {}
   }
 
   export class SuccessInitCarts implements Action {

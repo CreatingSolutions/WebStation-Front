@@ -29,12 +29,8 @@ export class ShoppingCartComponent {
     private store: Store<AppState>,
   ) {
     this.shoppingCart$ = store.select(selectCarts$);
-    this.users$ = store.select(selectUsers$);
-    this.users$.subscribe(user => {
-      if (user) {
-        this.store.dispatch(new LoadInitCarts(user));
-      }
-    });
+
+    this.store.dispatch(new LoadInitCarts());
   }
 
   public delete(type: string = '', id: number = -1) {
