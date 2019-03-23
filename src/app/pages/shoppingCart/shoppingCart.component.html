@@ -10,7 +10,7 @@
             <table class="cart-table">
               <tr>
                 <th *ngFor="let key of keys(cart.flats[0])">{{key}}</th>
-                <th>Action</th>
+                <th>Supprimer</th>
               </tr>
               <tr *ngFor="let flat of cart.flats">
                 <td>{{flat.flatId}}</td>
@@ -27,14 +27,14 @@
             <table class="cart-table">
               <tr>
                 <th *ngFor="let key of keys(cart.lifts[0])">{{key}}</th>
-                <th>Action</th>
+                <th>Supprimer</th>
               </tr>
               <tr *ngFor="let lift of cart.lifts">
                 <td>{{lift.liftId}}</td>
                 <td>{{lift.title}}</td>
                 <td>{{lift.description}}</td>
                 <td>{{lift.taked}}</td>
-                <td>{{lift.insurrance}}</td>
+                <td>{{lift.insurance}}</td>
                 <td>{{lift.price}}€</td>
                 <td><button class="btn btn-danger" (click)="delete('lift', lift.liftId)">X</button></td>
               </tr>
@@ -46,7 +46,7 @@
             <table class="cart-table">
               <tr>
                 <th *ngFor="let key of keys(cart.stuffs[0])">{{key}}</th>
-                <th>Action</th>
+                <th>Supprimer</th>
               </tr>
               <tr *ngFor="let stuff of cart.stuffs">
                 <td>{{stuff.stuffId}}</td>

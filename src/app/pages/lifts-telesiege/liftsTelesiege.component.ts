@@ -32,7 +32,7 @@ export class LiftsTelesiegeComponent {
       width: '60%',
       height: '65%',
       data: {
-        insurrance: false,
+        insurance: false,
         description,
         ...forfait
       }

@@ -52,8 +52,4 @@ export class FlatsComponent implements OnInit {
         data: flat
     });
   }
-
-  public addFlatToCart(flat: Flat) {
-    this.store.dispatch(new CartModule.LoadAddFlatCart(flat));
-  }
 }

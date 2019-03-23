@@ -11,7 +11,7 @@ import {CartModule} from '../../store/actions';
 })
 export class LiftDetailComponent {
     public prices: number;
-    public insurrance = false;
+    public insurance = false;
     public taked = 1;
 
     constructor(
@@ -31,18 +31,15 @@ export class LiftDetailComponent {
       this.prices = this.data.prices * this.taked;
     }
 
-    public checkInsurrance(event: MatCheckboxChange) {
-        this.insurrance = event.checked;
+    public checkInsurance(event: MatCheckboxChange) {
+        this.insurance = event.checked;
     }
 
     public cart() {
         this.store.dispatch(new CartModule.LoadAddLiftCart({
           liftId: this.data.id,
-          title: this.data.label,
-          price: this.data.prices,
           taked: this.taked,
-          insurrance: this.insurrance,
-          description: this.data.description
+          insurance: this.insurance
         }));
         this.close();
     }

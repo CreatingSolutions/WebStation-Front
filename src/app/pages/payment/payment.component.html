@@ -56,19 +56,17 @@
     </div>
   </div>
 
-  <div class="col-25">
+  <div *ngIf="cart$ | async as cart" class="col-25">
     <div class="container">
       <h4>Votre panier
         <span class="price" style="color:black">
           <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-          <b>{{getShoppingCart().flats.length}}</b>
+          <b>Coùt appartement : {{cart.totalFlatPrice}}€</b>
+          <b>Coùt materiel de sport : {{cart.totalStuffPrice}}€</b>
+          <b>Coùt forfait : {{cart.totalLiftPrice}}€</b>
         </span>
       </h4>
-      <p *ngFor="let flat of getShoppingCart().flats">
-        <a href="/flat/{{flat.flatId}}">{{flat.title}}</a> <span class="price">90€</span>
-      </p>
-      <hr>
-      <p style="color: black">Total <span class="price" style="color:black"><b>180€</b></span></p>
+      <p style="color: black">Total <span class="price" style="color:black"><b>{{cart.totalPrice}}€</b></span></p>
     </div>
   </div>
 </div>

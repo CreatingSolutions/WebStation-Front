@@ -61,10 +61,7 @@ export class StuffsComponent implements OnInit {
     const value = +document.getElementById(`${stuff.stuffId}`).innerHTML;
     this.store.dispatch(new CartModule.LoadAddStuffCart({
       stuffId: stuff.stuffId,
-      title: stuff.title,
-      description: stuff.store,
       taked: value,
-      price: stuff.price * value,
     }));
   }
 }

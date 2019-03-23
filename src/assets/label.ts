@@ -4,7 +4,7 @@ const Constantes = {
   description: 'Description',
   price: 'Prix',
   taked: 'Quantité',
-  insurrance: 'Assurrance'
+  insurance: 'Assurrance'
 };
 
 export default Constantes;

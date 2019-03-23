@@ -60,6 +60,7 @@ export class UserEffects {
   public LogOut: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGOUT),
     tap(() => {
+      this.apiService.logout();
       localStorage.removeItem('token');
     })
   );

@@ -59,14 +59,7 @@ export class ShoppingCartComponent {
   }
 
   public validateCart() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.alertService.success('Votre panier a bien été enregistré', true);
-      this.router.navigate(['/payment']);
-    } else {
-      this.router.navigate(['/']);
-      this.alertService.error('Vous n\'etes pas connecté');
-    }
+      this.router.navigate(['/payment']).catch(err => console.error(err));
   }
 
   public keys(o: any): string[] {

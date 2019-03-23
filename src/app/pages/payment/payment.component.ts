@@ -5,6 +5,11 @@ import {
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertService, ApiService, LoadingService} from '../../services';
 import {Cart} from '../../store/models';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {selectCarts$} from '../../store/selectors';
+import {CartModule} from '../../store/actions';
 
 @Component({
   selector: 'payment',
@@ -13,13 +18,17 @@ import {Cart} from '../../store/models';
 })
 export class PaymentComponent implements OnInit, OnDestroy {
   public paymentForm: FormGroup;
+  public cart$: Observable<Cart>;
 
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private loader: LoadingService,
-    private alertService: AlertService
-  ) {}
+    private alertService: AlertService,
+    private store: Store<AppState>
+  ) {
+    this.cart$ = store.select(selectCarts$);
+  }
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
@@ -44,11 +53,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.alertService.success('Paiement du panier validé');
-  }
-
-  public getShoppingCart(): Cart {
-    return null;
+    this.store.dispatch(new CartModule.ValidateCart());
   }
 
   ngOnDestroy(): void {

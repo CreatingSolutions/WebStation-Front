@@ -269,7 +269,7 @@
         "title": "Forfait 1/2 J",
         "description": "Forfait jeune",
         "taked": 3,
-        "insurrance": false,
+        "insurance": false,
         "price": 80
       }],
       "totalLiftPrice": 200,

@@ -38,7 +38,7 @@ export class LiftsForfaitComponent implements OnInit {
           width: '60%',
           height: '65%',
           data: {
-          insurrance: true,
+          insurance: true,
           description,
           ...forfait
       }
