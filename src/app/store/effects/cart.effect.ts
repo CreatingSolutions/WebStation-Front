@@ -110,6 +110,9 @@ export class CartEffects {
       switchMap(() => this.apiService.validateCart()),
       tap(validate => {
         if (validate) {
+          const blob = new Blob([validate], { type: 'application/pdf' });
+          const url = window.URL.createObjectURL(blob);
+          window.open(url);
           this.alertService.success('Paiement du panier validé');
           this.router.navigate(['']).catch(err => of(new CartModule.ErrorLoadAction(err)));
         }
