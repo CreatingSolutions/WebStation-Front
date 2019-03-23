@@ -54,7 +54,7 @@ export class ApiService {
   }
 
   public addStuffToCart(stuff: {stuffId: number, taked: number}): Observable<any> {
-    return this.httpClient.post<any>(`${environment.apiUrl}/flats`, stuff);
+    return this.httpClient.post<any>(`${environment.apiUrl}/stuffs`, stuff);
   }
 
   public deleteStuffInCart(stuffId: number): Observable<Cart> {

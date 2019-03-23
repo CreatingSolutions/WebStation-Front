@@ -12,9 +12,10 @@ export class StuffEffects {
   @Effect() LoadStuffs$: Observable<StuffModule.Actions> = this.actions
     .pipe(
       ofType(ActionTypes.LOAD_INIT_STUFFS),
-      switchMap(() => this.apiService.getAllStuff()),
-      map(stuffs => new StuffModule.SuccessInitStuffs(stuffs)),
-      catchError((err) => of(new StuffModule.ErrorLoadAction(err)))
+      switchMap(() => this.apiService.getAllStuff().pipe(
+        map(stuffs => new StuffModule.SuccessInitStuffs(stuffs)),
+        catchError((err) => of(new StuffModule.ErrorLoadAction(err)))
+      )),
     );
 
   @Effect({ dispatch: false })

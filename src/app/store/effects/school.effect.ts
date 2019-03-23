@@ -12,9 +12,10 @@ export class SchoolEffects {
   @Effect() LoadSchools$: Observable<SchoolModule.Actions> = this.actions
     .pipe(
       ofType(ActionTypes.LOAD_INIT_SCHOOLS),
-      switchMap(() => this.apiService.getAllSchool()),
-      map(schools => new SchoolModule.SuccessInitSchools(schools)),
-      catchError((err) => of(new SchoolModule.ErrorLoadAction(err)))
+      switchMap(() => this.apiService.getAllSchool().pipe(
+        map(schools => new SchoolModule.SuccessInitSchools(schools)),
+        catchError((err) => of(new SchoolModule.ErrorLoadAction(err)))
+      )),
     );
 
   @Effect({ dispatch: false })

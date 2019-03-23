@@ -13,9 +13,10 @@ export class LiftEffects {
   @Effect() LoadLifts$: Observable<LiftModule.Actions> = this.actions
     .pipe(
       ofType(ActionTypes.LOAD_INIT_LIFTS),
-      switchMap((type: any) => this.apiService.getLiftForfait(type.payload)),
-      map(lifts => new LiftModule.SuccessInitLifts(lifts)),
-      catchError((err) => of(new LiftModule.ErrorLoadAction(err)))
+      switchMap((type: any) => this.apiService.getLiftForfait(type.payload).pipe(
+        map(lifts => new LiftModule.SuccessInitLifts(lifts)),
+        catchError((err) => of(new LiftModule.ErrorLoadAction(err)))
+      )),
     );
 
     @Effect({dispatch: false})
