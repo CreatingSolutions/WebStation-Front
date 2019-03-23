@@ -23,17 +23,10 @@ export const initialState: CartStateEntity = CartAdapter.getInitialState({
   logs: null
 });
 
-export const {
-  selectIds: selectCartsIds,
-  selectEntities: selectCartsEntities,
-  selectAll: selectCarts,
-  selectTotal: selectTotalCarts
-} = CartAdapter.getSelectors();
-
-export function cartsReducer(
+export const cartsReducer = (
   state = initialState,
   action: CartModule.Actions
-): CartStateEntity {
+): CartStateEntity => {
   switch (action.type) {
     case CartModule.ActionTypes.LOAD_INIT_CARTS:
       return {
@@ -46,33 +39,41 @@ export function cartsReducer(
         selectCart: action.payload,
         loading: false,
         loaded: true,
-        logs: {type: 'SUCCESS', message: 'Le panié a été récupéré avec succès'}
+        logs: {type: 'SUCCESS', message: 'Le panier a été récupéré avec succès'}
+      };
+    case CartModule.ActionTypes.LOAD_DELETE_FLAT_CART:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CartModule.ActionTypes.LOAD_DELETE_LIFT_CART:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CartModule.ActionTypes.LOAD_DELETE_STUFF_CART:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CartModule.ActionTypes.SUCCESS_DELETE_ELEMENT_CART:
+      return {
+        ...state,
+        loading: false,
+        selectCart: action.payload,
+        logs: {type: 'SUCCESS', message: 'L\'element du panié a été supprimé avec succès'}
       };
     case CartModule.ActionTypes.LOAD_DELETE_CART:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case CartModule.ActionTypes.SUCCESS_DELETE_CART:
       return {
         ...state,
         loading: false,
-        selectCart: null,
-        logs: {type: 'SUCCESS', message: 'Le panié a été supprimée avec succès'}
-      };
-    case CartModule.ActionTypes.LOAD_CREATE_CART:
-      return {
-        ...state,
-        loading: true,
-        loaded: true
-      };
-    case CartModule.ActionTypes.SUCCESS_CREATE_CART:
-      return {
-        ...state,
         selectCart: action.payload,
-        loading: false,
-        loaded: true,
-        logs: {type: 'SUCCESS', message: 'Le panié a été crée avec succès'}
+        logs: {type: 'SUCCESS', message: 'Le panier a été supprimée avec succès'}
       };
     case CartModule.ActionTypes.ERROR_LOAD_ACTION:
       return {

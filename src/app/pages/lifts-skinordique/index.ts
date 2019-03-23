@@ -1,0 +1,1 @@
+export * from './liftsSkiNordique.component';

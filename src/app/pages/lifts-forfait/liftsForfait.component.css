@@ -1,0 +1,48 @@
+.lift-card {
+  transition: box-shadow 0.3s;
+  background: #fff;
+  width: auto;
+  text-align: center;
+}
+
+.lift-card:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1em;
+}
+
+.card-content > img {
+  margin: 1em;
+}
+
+.text-lift {
+  height: 200px;
+  hyphens: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+}
+
+.carousel-img {
+  min-width: 100%;
+}
+
+.lift-forfait__card {
+  display: flex !important;
+  margin: 1em;
+  justify-content: space-between;
+}
+
+.lift-forfait__card::after {
+  content: '>';
+}
+
+.lift-forfait__card:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}

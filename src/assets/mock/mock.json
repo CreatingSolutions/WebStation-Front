@@ -1,0 +1,288 @@
+{
+    "flats" : [{
+      "flatId": 1,
+      "title": "Appartement situé plein sud",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein sud",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "sud",
+      "prices": 500,
+      "saison": "hiver",
+      "startDate": "2019-02-28T16:22:46+01:00",
+      "endDate": "2019-02-21T16:22:54+01:00",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    },
+    {
+      "flatId": 2,
+      "title": "Appartement situé plein nord",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein nord, disponible avec le WIFI gratuit.",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "nord",
+      "prices": 300.21,
+      "saison": "hiver",
+      "startDate": "2019-03-30T16:22:46+01:00",
+      "endDate": "2019-03-23T16:22:54+01:00",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    },
+    {
+      "flatId": 3,
+      "title": "Appartement situé plein ouest",
+      "description": "Un bel appartement situé proche des remontées mécaniques et un visuel plein ouest",
+      "nbPersonsMin": 1,
+      "nbPersonsMax": 4,
+      "SdBWC": true,
+      "orientation": "ouest",
+      "prices": 90,
+      "saison": "hiver",
+      "images": [
+        "https://picsum.photos/256/256/?image=1029",
+        "https://picsum.photos/256/256/?image=650",
+        "https://picsum.photos/256/256/?image=1031"
+      ]
+    }],
+    "lifts" : {
+      "skinordique": {
+        "jeunes": {
+          "description": "Forfait jeune de 5 à 15 ans",
+          "normal" : [
+            {
+              "id": 1,
+              "label": "1/2 J",
+              "prices": 3.4
+            }
+          ]
+        },
+        "description": "Ski Nordique"
+      }
+    },
+    "stuffs" : [
+      {
+        "stuffId": 1,
+        "title": "Skis alpins avec bâtons et chaussuuuuuures (-15 ans)",
+        "store": "Vendu par ToutSchuss",
+        "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
+        "price": 30.0,
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
+    },
+      {
+        "stuffId": 2,
+        "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
+        "store": "Vendu par ToutSchuss",
+        "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
+        "price": 30.0,
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
+      },
+      {
+        "stuffId": 3,
+        "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
+        "store": "Vendu par ToutSchuss",
+        "img": "https://www.pepeski.fr/images/Image/pack-skis.jpg",
+        "price": 30.0,
+        "qualities": [
+          {
+            "label": "Confort :",
+            "note": "4/5"
+          },
+          {
+            "label": "Sécurité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Qualité :",
+            "note": "4/5"
+          },
+          {
+            "label": "Performance :",
+            "note": "4/5"
+          }
+        ]
+      }
+    ],
+    "packs" : [{
+      "packId": 1,
+      "period": {
+        "periodId": 1,
+        "startDate": "2019-02-25T16:22:46+01:00",
+        "endDate": "2019-02-25T16:22:54+01:00"
+      },
+      "tickets": {
+        "MORNING": 3,
+        "NOON": 4,
+        "AFTERNOON": 4,
+        "EVENING": 3,
+        "ALL": 10
+      },
+      "price": 30.0,
+      "available": true
+    },
+      {
+        "packId": 2,
+        "period": {
+          "periodId": 2,
+          "startDate": "2019-02-25T16:22:46+01:00",
+          "endDate": "2019-02-25T16:22:54+01:00"
+        },
+        "tickets": {
+          "MORNING": 3
+        },
+        "price": 1000000.0,
+        "available": true
+      }],
+    "login": {
+      "user": {
+        "id": 48,
+        "emailAddress": "mat@gmail.com",
+        "password": "$2a$10$m5xpvRvGAJOFWs42.UY5Ju6QHUAISfDMARKdMZOdbEHV6rL47dZni"
+      },
+      "applicationToken": "83b2314b7e67c25752865eda72368cee0db44ee33bb25876f9c9243f5859e075"
+    },
+    "register": {
+      "id": 48,
+      "emailAddress": "mat@gmail.com",
+      "password": "$2a$10$m5xpvRvGAJOFWs42.UY5Ju6QHUAISfDMARKdMZOdbEHV6rL47dZni"
+    },
+    "skialpin": {},
+    "jeunes": {
+      "normal": [
+        {
+          "id": 1,
+          "label": "1 J",
+          "prices": 20
+        },
+        {
+          "id": 2,
+          "label": "2 J",
+          "prices": 30
+        },
+        {
+          "id": 3,
+          "label": "3 J",
+          "prices": 40
+        },
+        {
+          "id": 4,
+          "label": "4 J",
+          "prices": 50
+        },
+        {
+          "id": 5,
+          "label": "5 J",
+          "prices": 60
+        } 
+      ],
+      "diamant": [
+        {
+          "id": 6,
+          "label": "1/2 J",
+          "prices": 23.2
+        },
+        {
+          "id": 7,
+          "label": "1 J",
+          "prices": 54.2
+        },
+        {
+          "id": 8,
+          "label": "2 J",
+          "prices": 89.2
+        }
+      ],
+      "description": "Forfait jeune de 5 à 15 ans"
+    },
+    "telesiege": {
+      "unitaire": {
+        "id": 9,
+        "label": "1 aller/retour",
+        "prices": 7.5
+      },
+      "groupe": {
+        "id": 10,
+        "label": "6 aller/retour",
+        "prices": 40
+      },
+      "description": "Forfait telesiege"
+    },
+    "cart": {
+      "cartId": 48,
+      "userId": 48,
+      "flats" : [
+        {
+          "flatId": 1,
+          "title": "Appartement situé plein sud",
+          "description": "L'appartement situé dans un petit coin de paradis avec cristiano ronaldo criant 'Siiiiiiiiiii'",
+          "price": 200
+        },
+        {
+          "flatId": 2,
+          "title": "Appartement situé plein sud",
+          "description": "L'appartement situé dans un petit coin de paradis avec cristiano ronaldo criant 'Siiiiiiiiiii'",
+          "price": 400.20
+        }],
+      "totalFlatPrice": 200,
+      "lifts": [{
+        "liftId": 1,
+        "title": "Forfait 1/2 J",
+        "description": "Forfait jeune",
+        "taked": 3,
+        "insurance": false,
+        "price": 80
+      }],
+      "totalLiftPrice": 200,
+      "stuffs": [{
+        "stuffId": 1,
+        "title": "Skis alpins avec bâtons et chaussuuuuuures pour adultes",
+        "description": "Vendu par ToutSchuss",
+        "taked": 3,
+        "price": 80
+      }],
+      "totalStuffPrice": 200,
+      "totalPrice": 200,
+      "validate": false,
+      "paid": false
+    }
+  }

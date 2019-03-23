@@ -1,0 +1,50 @@
+<ng-container *ngIf="lift$ | async as lift ; else not_found">
+  <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">{{lift.description}}</h1>
+    </div>
+  </div>
+  <div class="card-content">
+    <div *ngIf="lift.normal">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Voir les forfaits normals
+            </mat-panel-title>
+            <mat-panel-description>
+              Tous les forfaits correspondant a l'abonnement normal
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card class="lift-forfait__card" *ngFor="let normal of lift.normal" (click)="showDetailLift(normal, lift.description)">
+              <span>Durée : {{normal.label}}</span>
+              <span>Prix : {{normal.prices}}€</span>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="lift.diamant">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Voir les forfaits diamant
+            </mat-panel-title>
+            <mat-panel-description>
+              Tous les forfaits correspondant a l'abonnement diamant
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-card class="lift-forfait__card" *ngFor="let diamant of lift.diamant" (click)="showDetailLift(diamant, lift.description)">
+            <span>Durée : {{diamant.label}}</span>
+            <span>Prix : {{diamant.prices}}€</span>
+          </mat-card>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</ng-container>
+<ng-template #not_found>
+  <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+    Il n'y a pas de forfait disponible.
+  </p>
+ </ng-template>

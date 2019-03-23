@@ -1,7 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import {AlertService, ApiService} from '../../services';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserModule} from '../../store/actions';
@@ -18,10 +16,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private apiService: ApiService,
-    private alertService: AlertService,
     private store: Store<AppState>
   ) {}
 
@@ -30,7 +24,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.email, Validators.required])],
       password: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(6)
+        Validators.minLength(4)
       ])]
     });
   }

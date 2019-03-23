@@ -1,0 +1,33 @@
+<div>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>{{title}}</strong>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" [(ngModel)]="selectedSDBWC">Salle de bain et wc séparée</mat-checkbox>
+                <label for="nbpersonsmin">Nombre min. de personne</label>
+                <input 
+                    id="nbpersonsmin" 
+                    name="nbpersonsmin"
+                    type="number" 
+                    (input)="setNumberPersons($event.target)" 
+                    placeholder="Nombre min. de personne" 
+                />
+                <label for="nbpersonsmin">Nombre max. de personne</label>
+                <input 
+                    id="nbpersonsmax" 
+                    name="nbpersonsmax"
+                    type="number" 
+                    (input)="setNumberPersons($event.target)" 
+                    placeholder="Nombre max. de personne" 
+                />
+            </section>
+            <mat-action-row>
+                <button (click)="makeFilter()" class="mr-lg-3 btn btn-primary">Filtrer</button>
+            </mat-action-row>
+         </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,65 +1,76 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AlertService,
-  ApiService,
   LoadingService
 } from '../../services';
 import {Router} from '@angular/router';
-import {Cart} from '../../store/models';
+import {Cart, User} from '../../store/models';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import {selectCarts$, selectUsers$} from 'src/app/store/selectors';
+import { AppState } from 'src/app/store';
+import {CartModule} from '../../store/actions';
+import LoadInitCarts = CartModule.LoadInitCarts;
+import Constantes from '../../../assets/label';
 
 @Component({
   selector: 'shopping',
   templateUrl: './shoppingCart.component.html',
   styleUrls: ['./shoppingCart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
-  public shoppingCart: Cart;
-  public noCartsMessage: string;
-  public flatDisabled = false;
+export class ShoppingCartComponent {
+  public shoppingCart$: Observable<Cart>;
+  public users$: Observable<User>;
 
   constructor(
-    private apiService: ApiService,
     private loader: LoadingService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>,
   ) {
-    this.noCartsMessage = 'Votre panier est vide';
-  }
-
-  ngOnInit(): void {
-    /*const user = this.userService.getUser();
-    this.apiService.getCartOf(user.id).subscribe((res: any) => {
-      console.log(res);
-      if (res && res.flats) {
-        this.shoppingCart = <CartModel>res;
-        localStorage.setItem('cart', JSON.stringify(<CartModel>res));
+    this.shoppingCart$ = store.select(selectCarts$);
+    this.users$ = store.select(selectUsers$);
+    this.users$.subscribe(user => {
+      if (user) {
+        this.store.dispatch(new LoadInitCarts(user));
       }
-    }, error => {
-      console.log(error);
-    });*/
+    });
   }
 
-  public clear(value: string = '') {
-    /*if (value === 'flats') {
-      this.shoppingCart.clear();
-    } else if (value === '') {
-      this.shoppingCart.clear();
-    }*/
-  }
-
-  public update(value: any) {
-    this.flatDisabled = value.source.selectedOptions.selected.length > 0;
+  public delete(type: string = '', id: number = -1) {
+    switch (type) {
+      case 'flat': {
+        this.store.dispatch(new CartModule.LoadDeleteFlatCart(id));
+        break;
+      }
+      case 'stuff': {
+        this.store.dispatch(new CartModule.LoadDeleteStuffCart(id));
+        break;
+      }
+      case 'lift': {
+        this.store.dispatch(new CartModule.LoadDeleteLiftCart(id));
+        break;
+      }
+      default : {
+        this.store.dispatch(new CartModule.LoadDeleteCart());
+        break;
+      }
+    }
   }
 
   public validateCart() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.alertService.success('Votre panier a bien été enregistré', true);
-      this.router.navigate(['/payment']);
-    } else {
-      this.router.navigate(['/']);
-      this.alertService.error('Vous n\'etes pas connecté');
-    }
+      this.router.navigate(['/payment']).catch(err => console.error(err));
+  }
+
+  public keys(o: any): string[] {
+    const values: string[] = [];
+    const keys = Object.keys(o);
+    const constantes = Object.keys(Constantes);
+    keys.forEach(key => {
+      const value = constantes.find(x => x === key);
+      values.push(Constantes[value]);
+    });
+    return values;
   }
 
   public error(error) {

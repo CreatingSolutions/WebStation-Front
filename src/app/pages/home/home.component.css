@@ -1,17 +1,13 @@
 .homepage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-items: center;
   background: url('../../../assets/background.png') no-repeat center center
     fixed;
   background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   overflow: hidden;
   text-align: center;
   color: #fff;
+  min-height: -webkit-fill-available;
 }
 
 .presentation {

@@ -1,0 +1,36 @@
+<div *ngIf="schools$ | async as schools ; else not_found">
+  <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">Réserver votre séance de cours</h1>
+    </div>
+  </div>
+  <div *ngIf="schools.length > 0 ; else empty_schools" class="card-content">
+    <div class="pack-content" *ngFor="let pack of schools">
+      <p class="pack-content__period">{{pack.period.startDate | localizedDate}} - {{pack.period.endDate | localizedDate}}</p>
+      <ul class="pack-content__tickets">
+        <li *ngIf="pack.tickets.MORNING">Morning : {{pack.tickets.MORNING}}</li>
+        <li *ngIf="pack.tickets.NOON">Noon : {{pack.tickets.NOON}}</li>
+        <li *ngIf="pack.tickets.AFTERNOON">Afternoon : {{pack.tickets.AFTERNOON}}</li>
+        <li *ngIf="pack.tickets.EVENING">Evening : {{pack.tickets.EVENING}}</li>
+        <li *ngIf="pack.tickets.ALL">All : {{pack.tickets.ALL}}</li>
+      </ul>
+      <div class="pack-content__action">
+        <p>Coût de {{pack.price}}€</p>
+        <button class="btn btn-primary">
+          <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon>
+          Selectionner ce pack
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #empty_schools>
+    <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+      Il n'y a pas de cours à voir.
+    </p>
+  </ng-template>
+</div>
+<ng-template #not_found>
+  <div class="p-xl-5 d-inline-block">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

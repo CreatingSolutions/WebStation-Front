@@ -1,0 +1,46 @@
+<div *ngIf="stuffs$ | async as stuffs ; else not_found">
+  <div class="jumbotron jumbotron-fluid bg-white border-bottom">
+    <div class="container">
+      <h1 class="display-7 text-dark">Réserver votre matériel</h1>
+    </div>
+  </div>
+  <div *ngIf="stuffs.length > 0 ; else empty_stuffs" class="card-content">
+      <div class="stuff-element" *ngFor="let stuff of stuffs">
+        <img
+          [src]="stuff.img"
+          alt="{{stuff.title}}"
+          width="128"
+          height="128"
+        />
+        <div class="stuff-description">
+          <span class="text-dark">{{stuff.title}}</span>
+          <span class="stuff-description__store">{{stuff.store}}</span>
+          <div class="stuff-description__quality">
+            <p class="text-dark" *ngFor="let quality of stuff.qualities">{{quality.label}} {{quality.note}}</p>
+          </div>
+          <small style="color: lightgray; text-align: justify;">Une assurance perte de matériel sera proposée en sus de chaque location : équivalent à 3% du prix de la location</small>
+        </div>
+        <div class="stuff-action">
+          <div>
+            <button class="btn btn-primary"><fa-icon style="color: white" [icon]="['fas', 'minus']" (click)="discrease(stuff.stuffId)"></fa-icon></button>
+            <span class="stuff-action_number" [id]="stuff.stuffId">1</span>
+            <button class="btn btn-primary"><fa-icon style="color: white" [icon]="['fas', 'plus']" (click)="increase(stuff.stuffId)"></fa-icon></button>
+          </div>
+          <button class="btn btn-primary" (click)="addStuffToCart(stuff)">
+            <fa-icon style="color: white" [icon]="['fas', 'plus']"></fa-icon> Ajouter au panier
+          </button>
+          <p class="text-dark">Prix unitaire : {{stuff.price}}€</p>
+        </div>
+      </div>
+    </div>
+  <ng-template #empty_stuffs>
+    <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+      Il n'y a pas de matériel à voir.
+    </p>
+  </ng-template>
+</div>
+<ng-template #not_found>
+  <div class="p-xl-5 d-inline-block">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

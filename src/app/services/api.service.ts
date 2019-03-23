@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpHeaders,
   HttpClient,
-  HttpErrorResponse, HttpParams
+  HttpParams
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import {Cart, Flat, User} from '../store/models';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { LoadingService } from './loading.service';
 import {environment} from '../../environments/environment';
+import {Flat, User, Lift, Stuff, School, Cart} from '../store/models';
+import { timeout } from 'q';
 
 @Injectable()
 export class ApiService {
@@ -22,36 +21,63 @@ export class ApiService {
   }
 
   public getAllFlat(): Observable<Flat[]> {
-    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flat`);
+    return this.httpClient.get<Flat[]>(`${environment.apiUrl}/flats`);
+  }
+
+  public addFlatToCart(flatId: number): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/flats`, { flatId });
+  }
+
+  public deleteFlatInCart(flatId: number): Observable<Cart> {
+    return this.httpClient.delete<Cart>(`${environment.apiUrl}/cart`, {
+      params: new HttpParams().set('flatId', `${flatId}`)
+    });
+  }
+
+  public getLiftForfait({type, forfait}): Observable<Lift> {
+    const link = `lifts/${type}${forfait ? `/${forfait}` : ''}`;
+    return this.httpClient.get<Lift>(`${environment.apiUrl}/${link}`);
+  }
+
+  public addForfaitToCart(forfait: {liftId: number, insurance: boolean, taked: number}) {
+    return this.httpClient.post(`${environment.apiUrl}/lifts`, forfait);
+  }
+
+  public deleteForfaitInCart(liftId: number): Observable<Cart> {
+    return this.httpClient.delete<Cart>(`${environment.apiUrl}/cart`, {
+      params: new HttpParams().set('liftId', `${liftId}`)
+    });
+  }
+
+  public getAllStuff(): Observable<Stuff[]> {
+    return this.httpClient.get<Stuff[]>(`${environment.apiUrl}/stuffs`);
+  }
+
+  public addStuffToCart(stuff: {stuffId: number, taked: number}): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/flats`, stuff);
+  }
+
+  public deleteStuffInCart(stuffId: number): Observable<Cart> {
+    return this.httpClient.delete<Cart>(`${environment.apiUrl}/cart`, {
+      params: new HttpParams().set('stuffId', `${stuffId}`)
+    });
+  }
+
+  public getAllSchool(): Observable<School[]> {
+    return this.httpClient.get<School[]>(`${environment.apiUrl}/packs`);
   }
 
   public login(email: string, password: string): Observable<any> {
-    return this.httpClient
-      .post<any>(`${environment.apiUrl}/login`, {email: email, password: password});
+    return this.httpClient.post<any>(`${environment.apiUrl}/login`, {email: email, password: password});
   }
 
   public register(email: string, password: string): Observable<any> {
-    this.loader.show();
-    return this.httpClient
-      .post<any>(`${environment.apiUrl}/register`, {email: email, password: password});
+    return this.httpClient.post<any>(`${environment.apiUrl}/register`, {email: email, password: password});
   }
 
-  /*public logout(): Observable<HttpResponse<any>> {
-    this.loader.show();
-    return this.httpClient
-      .get<HttpResponse<any>>(`${environment.apiUrl}/logout`, {
-        observe: 'response',
-        params: new HttpParams().set(
-          'applicationToken',
-          localStorage.getItem('token')
-        )
-      })
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+  public logout(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/logout`);
   }
-  */
 
   public getCartOf(user: User): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiUrl}/cart`, {
@@ -59,30 +85,11 @@ export class ApiService {
       });
   }
 
-  /*public sendCartWith(userId: number, flats: Flat[]): Observable<HttpResponse<any>> {
-    const flatsIds: number[] = flats.map(x => x.flatId);
-    this.loader.show();
-
-    return this.httpClient
-      .post<HttpResponse<any>>(
-        `${environment.apiUrl}/cart/addElements?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatsIds)}`,
-        { observe: 'response'}
-      )
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+  public deleteCart(): Observable<Cart> {
+    return this.httpClient.delete<Cart>(`${environment.apiUrl}/cart`);
   }
 
-  public addElementToCart(userId: number, flatId: number): Observable<HttpResponse<any>> {
-    this.loader.show();
-
-    return this.httpClient.post<HttpResponse<any>>(
-      `${environment.apiUrl}/cart/addOne?userId=${JSON.stringify(userId)}&flatId=${JSON.stringify(flatId)}`,
-      { observe: 'response'}
-      ).pipe(
-        retry(3),
-        catchError(this.handleError)
-    );
-  }*/
+  public validateCart(): Observable<any> {
+    return this.httpClient.post<any>(`${environment.apiUrl}/cart/valider`, {});
+  }
 }
