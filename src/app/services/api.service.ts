@@ -64,7 +64,7 @@ export class ApiService {
   }
 
   public getAllSchool(): Observable<School[]> {
-    return this.httpClient.get<School[]>(`${environment.apiUrl}/packs`);
+    return this.httpClient.get<School[]>(`${environment.apiUrl}/ecole/pack`);
   }
 
   public login(email: string, password: string): Observable<any> {
