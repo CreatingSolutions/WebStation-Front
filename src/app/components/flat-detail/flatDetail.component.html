@@ -4,7 +4,7 @@
         <p class="flat-detail-content__title">Description de l'appartement</p>
         <div class="flat-detail-content__details">
             <ngb-carousel *ngIf="data.images">
-                <ng-template *ngFor="let image of data.images" ngbSlide>
+                <ng-template *ngFor="let image of images" ngbSlide>
                     <img
                         class="carousel-img"
                         [src]="image"

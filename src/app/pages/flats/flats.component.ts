@@ -20,6 +20,11 @@ import { FlatDetailComponent } from 'src/app/components/flat-detail/flatDetail.c
 export class FlatsComponent implements OnInit {
   public flats$: Observable<Flat[]>;
   public flatsLogs$: Observable<any>;
+  public images = [
+    'https://picsum.photos/256/256/?image=1029',
+    'https://picsum.photos/256/256/?image=650',
+    'https://picsum.photos/256/256/?image=1031'
+  ];
 
   constructor(
     private alertService: AlertService,
