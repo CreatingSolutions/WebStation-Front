@@ -32,27 +32,18 @@ export function usersReducer(
         ...state,
         isAuthenticated: true,
         user: {
-          id: action.payload.user.id,
-          email: action.payload.user.emailAddress
+          id: action.payload.id,
+          email: action.payload.emailAddress
         },
-        logs: {
-          message: 'Connection réussi',
-          type: 'SUCCESS'
-        }
+        logs: { message: 'Connection réussi', type: 'SUCCESS'}
       };
     }
     case ActionTypes.SIGNUP_SUCCESS: {
       return {
         ...state,
         isAuthenticated: false,
-        user: {
-          id: action.payload.user.id,
-          email: action.payload.user.emailAddress
-        },
-        logs: {
-          message: 'Enregistrement réussi',
-          type: 'SUCCESS'
-        }
+        user: { id: action.payload.id, email: action.payload.emailAddress},
+        logs: { message: 'Enregistrement réussi', type: 'SUCCESS'}
       };
     }
     case ActionTypes.LOGIN_FAILURE: {
