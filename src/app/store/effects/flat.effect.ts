@@ -12,10 +12,9 @@ export class FlatEffects {
   @Effect() LoadFlats$: Observable<FlatModule.Actions> = this.actions
     .pipe(
       ofType(ActionTypes.LOAD_INIT_FLATS),
-      switchMap(() => this.apiService.getAllFlat().pipe(
-        map(flats => new FlatModule.SuccessInitFlats(flats)),
-        catchError((err) => of(new FlatModule.ErrorLoadAction(err)))
-      )),
+      switchMap(() => this.apiService.getAllFlat()),
+      map(flats => new FlatModule.SuccessInitFlats(flats)),
+      catchError((err) => of(new FlatModule.ErrorLoadAction(err)))
     );
 
   @Effect({ dispatch: false })
