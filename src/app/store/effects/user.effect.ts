@@ -19,17 +19,19 @@ export class UserEffects {
   @Effect()
   LogIn: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.LOGIN),
-    switchMap((login: LogIn) => this.apiService.login(login.payload.email, login.payload.password)),
-    map(action => new LogInSuccess(action)),
-    catchError(err => of(new LogInFailure(err)))
+    switchMap((login: LogIn) => this.apiService.login(login.payload.email, login.payload.password).pipe(
+      map(action => new LogInSuccess(action)),
+      catchError(err => of(new LogInFailure(err)))
+    )),
   );
 
   @Effect()
   SignUp: Observable<UserModule.Actions> = this.actions.pipe(
     ofType(ActionTypes.SIGNUP),
-    switchMap((login: SignUp) => this.apiService.register(login.payload.email, login.payload.password)),
-    map(action => new SignUpSuccess(action)),
-    catchError(err => of(new SignUpFailure(err)))
+    switchMap((login: SignUp) => this.apiService.register(login.payload.email, login.payload.password).pipe(
+      map(action => new SignUpSuccess(action)),
+      catchError(err => of(new SignUpFailure(err)))
+    )),
   );
 
   @Effect({ dispatch: false })
