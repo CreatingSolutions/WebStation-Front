@@ -1,4 +1,4 @@
-<div *ngIf="lift$ | async as lift ; else not_found">
+<ng-container *ngIf="lift$ | async as lift ; else not_found">
   <div class="jumbotron jumbotron-fluid bg-white border-bottom">
     <div class="container">
       <h1 class="display-7 text-dark">{{lift.description}}</h1>
@@ -42,8 +42,9 @@
       </mat-accordion>
     </div>
   </div>
-  <ng-template #not_found>
-    <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
-      Il n'y a pas de forfait disponible.
-    </p>
-  </ng-template>
+</ng-container>
+<ng-template #not_found>
+  <p class="text-dark text-justify text-xl-center font-weight-bold p-lg-5">
+    Il n'y a pas de forfait disponible.
+  </p>
+ </ng-template>
