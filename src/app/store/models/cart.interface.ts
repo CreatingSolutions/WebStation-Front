@@ -1,6 +1,6 @@
 export interface Cart {
   cartId: number;
-  userId: number;
+  id: number;
   flats: any[];
   stuffs: any[];
   lifts: any[];

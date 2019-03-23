@@ -21,8 +21,7 @@ export class CartEffects {
   @Effect() LoadCarts$: Observable<any> = this.actions$
     .pipe(
       ofType(ActionTypes.LOAD_INIT_CARTS),
-      map((action: LoadInitCarts) => action.payload),
-      switchMap(payload => this.apiService.getCartOf(payload).pipe(
+      switchMap(() => this.apiService.getCartOf().pipe(
         map(cart => new CartModule.SuccessInitCarts(cart)),
         catchError((err) => of(new CartModule.ErrorLoadAction(err)))
       )),

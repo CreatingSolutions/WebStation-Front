@@ -79,10 +79,8 @@ export class ApiService {
     return this.httpClient.get<any>(`${environment.apiUrl}/logout`);
   }
 
-  public getCartOf(user: User): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}/cart`, {
-        params: new HttpParams().set('userId', `${user.id}`)
-      });
+  public getCartOf(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/cart`);
   }
 
   public deleteCart(): Observable<Cart> {
