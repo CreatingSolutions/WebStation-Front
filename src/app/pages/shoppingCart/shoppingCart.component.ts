@@ -4,10 +4,10 @@ import {
   LoadingService
 } from '../../services';
 import {Router} from '@angular/router';
-import {Cart, User} from '../../store/models';
+import {Cart} from '../../store/models';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import {selectCarts$, selectUsers$} from 'src/app/store/selectors';
+import {selectCarts$} from 'src/app/store/selectors';
 import { AppState } from 'src/app/store';
 import {CartModule} from '../../store/actions';
 import LoadInitCarts = CartModule.LoadInitCarts;
@@ -20,7 +20,6 @@ import Constantes from '../../../assets/label';
 })
 export class ShoppingCartComponent {
   public shoppingCart$: Observable<Cart>;
-  public users$: Observable<User>;
 
   constructor(
     private loader: LoadingService,
