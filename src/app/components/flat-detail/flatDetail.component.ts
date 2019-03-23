@@ -21,6 +21,11 @@ export class FlatDetailComponent {
     private now = moment.now();
     public dateFormatInvalid = false;
     public nbPersons = [1];
+    public images = [
+      'https://picsum.photos/256/256/?image=1029',
+      'https://picsum.photos/256/256/?image=650',
+      'https://picsum.photos/256/256/?image=1031'
+    ];
 
     constructor(
         public dialogRef: MatDialogRef<FlatDetailComponent>,
@@ -78,10 +83,10 @@ export class FlatDetailComponent {
             const endDate = moment.unix(this.endDate.getTime() / 1000);
 
             if (startDate.isAfter(this.now) && endDate.isAfter(this.now) && startDate.isBefore(endDate)) {
-                this.dateFormatInvalid = false;
+                this.dateFormatInvalid = true;
                 this.prices = Math.abs(this.data.prices * startDate.diff(endDate, 'days'));
             } else {
-                this.dateFormatInvalid = true;
+                this.dateFormatInvalid = false;
                 this.prices = this.data.prices;
             }
         }

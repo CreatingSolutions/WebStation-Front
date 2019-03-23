@@ -19,7 +19,7 @@
       </mat-card-header>
       <div>
         <ngb-carousel *ngIf="flat.images">
-          <ng-template *ngFor="let image of flat.images" ngbSlide>
+          <ng-template *ngFor="let image of images" ngbSlide>
             <img
               class="carousel-img"
               [src]="image"
