@@ -32,8 +32,8 @@ export function usersReducer(
         ...state,
         isAuthenticated: true,
         user: {
-          id: action.payload.id,
-          email: action.payload.emailAddress
+          id: action.payload.user.id,
+          email: action.payload.user.emailAddress
         },
         logs: { message: 'Connection réussi', type: 'SUCCESS'}
       };
