@@ -18,7 +18,7 @@ import Constantes from '../../../assets/label';
   templateUrl: './shoppingCart.component.html',
   styleUrls: ['./shoppingCart.component.css']
 })
-export class ShoppingCartComponent {
+export class ShoppingCartComponent implements OnInit {
   public shoppingCart$: Observable<Cart>;
 
   constructor(
@@ -28,7 +28,9 @@ export class ShoppingCartComponent {
     private store: Store<AppState>,
   ) {
     this.shoppingCart$ = store.select(selectCarts$);
-
+  }
+  
+  public ngOnInit() {
     this.store.dispatch(new LoadInitCarts());
   }
 

@@ -30,7 +30,10 @@ export class CartEffects {
   @Effect() LoadAddFlat$: Observable<any> = this.actions$
     .pipe(
       ofType(ActionTypes.LOAD_ADD_FLAT_CART),
-      map((action: LoadAddFlatCart) => action.payload),
+      map((action: LoadAddFlatCart) => {
+        console.log(action);
+        return action.payload;
+      }),
       switchMap(payload => this.apiService.addFlatToCart(payload)
           .pipe(
             tap(() => new CartModule.SuccessAddToCart()),
@@ -42,7 +45,10 @@ export class CartEffects {
   @Effect() LoadAddStuff$: Observable<any> = this.actions$
     .pipe(
       ofType(ActionTypes.LOAD_ADD_STUFF_CART),
-      map((action: LoadAddStuffCart) => action.payload),
+      map((action: LoadAddStuffCart) => {
+        console.log(action);
+        return action.payload;
+      }),
       switchMap(payload => this.apiService.addStuffToCart(payload)
           .pipe(
             tap(() => new CartModule.SuccessAddToCart()),
@@ -54,7 +60,10 @@ export class CartEffects {
   @Effect() LoadAddLift$: Observable<any> = this.actions$
     .pipe(
       ofType(ActionTypes.LOAD_ADD_LIFT_CART),
-      map((action: LoadAddLiftCart) => action.payload),
+      map((action: LoadAddLiftCart) => {
+        console.log(action);
+        return action.payload;
+      }),
       switchMap(payload => this.apiService.addForfaitToCart(payload)
           .pipe(
             tap(() => new CartModule.SuccessAddToCart()),
