@@ -113,7 +113,7 @@ export class CartEffects {
 
   @Effect() ValidateCart$: Observable<any> = this.actions$
     .pipe(
-      ofType(ActionTypes.LOAD_ADD_LIFT_CART),
+      ofType(ActionTypes.VALIDATE_CART),
       switchMap(() => this.apiService.validateCart()
           .pipe(
             tap(validate => {
